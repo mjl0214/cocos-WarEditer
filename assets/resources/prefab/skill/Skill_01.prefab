@@ -78,8 +78,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "ref_id": 0,
-    "unit_id": -1,
     "unit_type": 4,
     "unit_list": [],
     "holder_id": -1,
@@ -95,8 +93,6 @@
   },
   {
     "__type__": "Trigger",
-    "ref_id": 6,
-    "unit_id": -1,
     "unit_type": 5,
     "unit_list": [],
     "trigger_id": -1,
@@ -143,6 +139,7 @@
         "__id__": 8
       }
     ],
+    "formula": 0,
     "implements": [
       {
         "__id__": 9
@@ -159,7 +156,8 @@
       {
         "__id__": 13
       }
-    ]
+    ],
+    "timer": null
   },
   {
     "__type__": "Condition",

@@ -1,6 +1,6 @@
 /*
  * @Description: 预制体注册类(挂到节点上用于初始化需要的预制体, 预制体节点上要挂上 PoolUnit 组件)
- * @Author: megjl
+ * @Author: mengjl
  * @LastEditors: megjl
  * @Date: 2019-04-12 08:51:20
  * @LastEditTime: 2019-04-12 14:29:12

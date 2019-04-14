@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.25831705729166665,
-      "y": 0.25831705729166665,
+      "x": 1,
+      "y": 1,
       "z": 1
     },
     "_quat": {
@@ -576,8 +576,6 @@
       "__id__": 11
     },
     "_enabled": true,
-    "ref_id": 3,
-    "unit_id": -1,
     "unit_type": 1,
     "unit_list": [],
     "attributes": [
@@ -804,8 +802,6 @@
       "__id__": 24
     },
     "_enabled": true,
-    "ref_id": 4,
-    "unit_id": -1,
     "unit_type": 1,
     "unit_list": [],
     "attributes": [

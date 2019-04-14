@@ -1,6 +1,6 @@
 /*
  * @Description: Buff类
- * @Author: megjl
+ * @Author: mengjl
  * @LastEditors: megjl
  * @Date: 2019-04-12 08:51:20
  * @LastEditTime: 2019-04-14 12:32:47

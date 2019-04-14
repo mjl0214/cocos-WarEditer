@@ -1,9 +1,9 @@
 /*
  * @Description: 基类(用于Unit中不能引用自身)
- * @Author: megjl
- * @LastEditors: megjl
+ * @Author: mengjl
+ * @LastEditors: Please set LastEditors
  * @Date: 2019-04-12 22:56:28
- * @LastEditTime: 2019-04-12 23:25:51
+ * @LastEditTime: 2019-04-14 23:32:53
  */
 
 let ref_index = 0;
@@ -19,6 +19,7 @@ cc.Class({
             type : cc.Integer, 
             tooltip : "RefID",
             visible : false,
+            serializable: false,
         },
     },
 

@@ -70,7 +70,6 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -82,19 +81,32 @@
       "__id__": 1
     },
     "_enabled": true,
-    "_srcBlendFactor": 770,
-    "_dstBlendFactor": 771,
     "paused": false,
     "defaultSkin": "",
     "defaultAnimation": "walk",
+    "_preCacheMode": 0,
+    "_cacheMode": 0,
     "loop": true,
     "premultipliedAlpha": true,
     "timeScale": 1,
+    "_accTime": 0,
+    "_playCount": 0,
+    "_frameCache": null,
+    "_curFrame": null,
+    "_skeletonCache": null,
+    "_animationName": "walk",
+    "_animationQueue": [],
+    "_headAniInfo": null,
+    "_playTimes": 0,
+    "_isAniComplete": true,
     "_N$skeletonData": {
       "__uuid__": "1c773853-e41d-471d-9601-6de697cd3187"
     },
+    "_N$_defaultCacheMode": 0,
     "_N$debugSlots": false,
     "_N$debugBones": false,
+    "_N$useTint": false,
+    "_N$enableBatch": false,
     "_id": ""
   },
   {
@@ -105,8 +117,8 @@
       "__id__": 1
     },
     "_enabled": true,
-    "unit_id": -1,
     "unit_type": 1,
+    "unit_list": [],
     "attributes": [
       {
         "__id__": 4

@@ -78,8 +78,6 @@
       "__id__": 1
     },
     "_enabled": true,
-    "ref_id": 5,
-    "unit_id": -1,
     "unit_type": 5,
     "unit_list": [],
     "trigger_id": -1,
@@ -87,6 +85,7 @@
     "events": [],
     "conditions": [],
     "actions": [],
+    "poolNum": 1,
     "cloneTrigger": false,
     "_N$cloneTriggerPrefab": null,
     "_id": ""

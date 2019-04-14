@@ -1,9 +1,9 @@
 /*
  * @Description: Unit类
- * @Author: megjl
- * @LastEditors: megjl
+ * @Author: mengjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-13 00:54:55
+ * @LastEditTime: 2019-04-14 23:39:25
  */
 
 let Ref = require("Ref")
@@ -19,6 +19,7 @@ cc.Class({
             type : cc.Integer, 
             tooltip : "UnitID",
             visible : false,
+            serializable: false,
         },
 
         unit_type : {
