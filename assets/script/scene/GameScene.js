@@ -1,0 +1,34 @@
+// let PoolManager = require("PoolManager")
+let SkillDef = require('SkillDef')
+let Listener = require("Listener")
+let EventDef = require("EventDef")
+
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+        actor : cc.Node,
+        actor2 : cc.Node,
+    },
+
+    // LIFE-CYCLE CALLBACKS:
+
+    // onLoad () {},
+
+    start () {
+        gs.gameLogic.gameBegin();
+    },
+
+    onButtonClick()
+    {
+        var actor = gs.gameLogic.getActorUnit(this.actor);
+        var actor2 = gs.gameLogic.getActorUnit(this.actor2);
+
+        var actorId = actor.getActorId();
+        gs.gameLogic.useSkill(SkillDef.SkillID.attack_normal, actorId, [actor2.getActorId()]);
+    },
+
+    update (dt) {
+        gs.gameLogic.update(dt);
+    },
+});

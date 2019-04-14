@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "67103dee-8e74-4f14-ad51-db6beae5423b",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "spineboy-old": {
+      "ver": "1.0.3",
+      "uuid": "95729a74-9b26-493c-bbd1-a69498b54ca3",
+      "rawTextureUuid": "67103dee-8e74-4f14-ad51-db6beae5423b",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 2,
+      "trimY": 2,
+      "width": 508,
+      "height": 124,
+      "rawWidth": 512,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

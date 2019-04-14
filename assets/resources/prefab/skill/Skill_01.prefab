@@ -1,0 +1,242 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Skill_01",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [],
+    "_active": true,
+    "_level": 1,
+    "_components": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_prefab": {
+      "__id__": 14
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cd449oClb9O/KulillF5Qzs",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "ref_id": 0,
+    "unit_id": -1,
+    "unit_type": 4,
+    "unit_list": [],
+    "holder_id": -1,
+    "skill_id": 1,
+    "skill_name": "双刀流",
+    "skill_desc": "对目标造成5~10点伤害",
+    "skill_level": 1,
+    "trigger_unit": {
+      "__id__": 3
+    },
+    "poolNum": 1,
+    "_id": ""
+  },
+  {
+    "__type__": "Trigger",
+    "ref_id": 6,
+    "unit_id": -1,
+    "unit_type": 5,
+    "unit_list": [],
+    "trigger_id": -1,
+    "show_general": true,
+    "events": [
+      {
+        "__id__": 4
+      }
+    ],
+    "conditions": [
+      {
+        "__id__": 5
+      }
+    ],
+    "actions": [
+      {
+        "__id__": 6
+      }
+    ]
+  },
+  {
+    "__type__": "Event",
+    "event_desc": "[任意单位]释放技能",
+    "_N$unit_type": 1,
+    "_N$event_type": 1
+  },
+  {
+    "__type__": "Condition",
+    "condition_desc": "[技能ID] = [attack_normal]",
+    "temp_value": 1,
+    "_N$condition_type": 1,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 0,
+    "_N$skill_id": 1,
+    "_N$target_type": 0
+  },
+  {
+    "__type__": "Action",
+    "conditions": [
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 8
+      }
+    ],
+    "implements": [
+      {
+        "__id__": 9
+      },
+      {
+        "__id__": 10
+      },
+      {
+        "__id__": 11
+      },
+      {
+        "__id__": 12
+      },
+      {
+        "__id__": 13
+      }
+    ]
+  },
+  {
+    "__type__": "Condition",
+    "condition_desc": "[目标类型] = [enemy]",
+    "temp_value": 3,
+    "_N$condition_type": 4,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 0,
+    "_N$skill_id": 0,
+    "_N$target_type": 3
+  },
+  {
+    "__type__": "Condition",
+    "condition_desc": "[目标数量] = [1]",
+    "temp_value": 1,
+    "_N$condition_type": 5,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 1,
+    "_N$skill_id": 0,
+    "_N$target_type": 0
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [],
+    "_N$implement_type": 1,
+    "_N$implement_value_type": 0,
+    "_N$damage_source_type": 0,
+    "_N$implement_function": 1
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [],
+    "_N$implement_type": 3,
+    "_N$implement_value_type": 0,
+    "_N$damage_source_type": 1,
+    "_N$implement_function": 0
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [
+      5,
+      10
+    ],
+    "_N$implement_type": 4,
+    "_N$implement_value_type": 3,
+    "_N$damage_source_type": 0,
+    "_N$implement_function": 0
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [
+      0
+    ],
+    "_N$implement_type": 7,
+    "_N$implement_value_type": 0,
+    "_N$damage_source_type": 0,
+    "_N$implement_function": 0
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [
+      0
+    ],
+    "_N$implement_type": 6,
+    "_N$implement_value_type": 0,
+    "_N$damage_source_type": 0,
+    "_N$implement_function": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "1cbd4652-8e39-4e47-88bd-491f85786e63"
+    },
+    "fileId": "9fHvhQDj9OFotRSvOHotrz",
+    "sync": false
+  }
+]
