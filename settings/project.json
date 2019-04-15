@@ -21,7 +21,6 @@
     "width": 960,
     "height": 640
   },
-  "assets-sort-type": "name",
   "facebook": {
     "enable": false,
     "appID": "",
@@ -31,5 +30,10 @@
     "audience": {
       "enable": false
     }
+  },
+  "cocos-analytics": {
+    "enable": false,
+    "appID": "13798",
+    "appSecret": "959b3ac0037d0f3c2fdce94f8421a9b2"
   }
 }
