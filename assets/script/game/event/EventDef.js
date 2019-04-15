@@ -1,9 +1,9 @@
 /*
  * @Description: 事件定义
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 20:22:46
+ * @LastEditTime: 2019-04-15 14:12:48
  */
 
 
@@ -12,7 +12,7 @@ var EventDef = module.exports;
 // 事件类型
 EventDef.EventType = cc.Enum({
     unknown : 0,                    // 未知
-    release_skill : 1,              // 释放技能
+    cast_skill : 1,              // 释放技能
     pickup_item : 2,                // 拾取物品
     giveup_item : 3,                // 丢弃物品
     enter_region : 4,               // 进入区域
@@ -31,10 +31,8 @@ EventDef.EventType = cc.Enum({
 EventDef.UnitType = cc.Enum({
     unknown : 0,             // 未知
     any_unit : 1,            // 任意单位
-    friend_unit : 2,         // 友方单位
-    enemy_unit : 3,          // 敌方单位
-    timer_unit : 4,          // 计时器单位
-    system_unit : 5,         // 系统单位
+    timer_unit : 2,          // 计时器单位
+    system_unit : 3,         // 系统单位
 });
 
 // // 事件ID

@@ -1,9 +1,9 @@
 /*
  * @Description: 触发器可视化组件
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 21:43:20
+ * @LastEditTime: 2019-04-15 12:56:22
  */
 
 
@@ -63,7 +63,7 @@ cc.Class({
     getPoolName()
     {
         poolIndex++;
-        return 'Trigger_' + poolIndex;
+        return 'Sysytem_Trigger_' + poolIndex;
     },
 
     start () {

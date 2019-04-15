@@ -1,9 +1,9 @@
 /*
  * @Description: 事件
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 20:58:03
+ * @LastEditTime: 2019-04-15 14:26:35
  */
 
 
@@ -74,12 +74,12 @@ cc.Class({
             case EventDef.UnitType.any_unit:
                 desc = '任意单位';
                 break;
-            case EventDef.UnitType.friend_unit:
-                desc = '友方单位';
-                break;
-            case EventDef.UnitType.enemy_unit:
-                desc = '敌方单位';
-                break;
+            // case EventDef.UnitType.friend_unit:
+            //     desc = '友方单位';
+            //     break;
+            // case EventDef.UnitType.enemy_unit:
+            //     desc = '敌方单位';
+            //     break;
             case EventDef.UnitType.timer_unit:
                 desc = '计时器单位';
                 break;  
@@ -97,7 +97,7 @@ cc.Class({
     {
 
     //     unknown : 0,                    // 未知
-    // release_skill : 1,              // 释放技能
+    // cast_skill : 1,              // 释放技能
     // pickup_item : 2,                // 拾取物品
     // giveup_item : 3,                // 丢弃物品
     // enter_region : 4,               // 进入区域
@@ -108,7 +108,7 @@ cc.Class({
             case EventType.unknown:
                 desc = '未知事件';
                 break;
-            case EventType.release_skill:
+            case EventType.cast_skill:
                 desc = '释放技能';
                 break;
             case EventType.pickup_item:

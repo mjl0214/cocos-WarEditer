@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 23:39:44
+ * @LastEditTime: 2019-04-15 10:11:56
  */
 
 
@@ -29,7 +29,22 @@ cc.Class({
         formula : {
             default: FormulaEnum.none_function,
             type : cc.Enum(FormulaEnum), 
-            tooltip : "执行函数",
+            tooltip : "动作-执行函数",
+            notify() {
+                this._setFormulaDesc();
+            },
+        },
+
+        formula_desc : {
+            default: '',
+            tooltip : "执行函数描述",
+            multiline : true,
+            readonly : true,
+            visible() {
+                this._setFormulaDesc();
+                return true;
+            },
+            serializable: false,
         },
 
         implements : {
@@ -86,6 +101,20 @@ cc.Class({
         this.action_desc += implDesc;
 
         return this.action_desc;
+    },
+
+    _setFormulaDesc()
+    {
+        if (this.formula == FormulaEnum.none_function) {
+            this.formula_desc = '不使用函数';
+        }
+        else if (this.formula == FormulaEnum.damage_function01) {
+            this.formula_desc = '普通伤害计算函数\n'
+                + '   参数列表:\n'
+                + '     [damage_source]\n'
+                + '     [damage_value]\n'
+                + '';
+        }
     },
 
     // update (dt) {},

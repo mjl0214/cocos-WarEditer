@@ -1,12 +1,13 @@
 /*
  * @Description: 定时器
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 22:07:06
+ * @LastEditTime: 2019-04-15 10:13:34
  */
 
 let Unit = require("Unit")
+let UnitDef = require("UnitDef")
 
 cc.Class({
     extends: Unit,
@@ -14,14 +15,22 @@ cc.Class({
     name : "Timer",
 
     properties: {
+        unit_type : {
+            default: UnitDef.TypeID.timer,
+            type : cc.Enum(UnitDef.TypeID), 
+            tooltip : "Unit类型",
+            readonly : true,
+            override : true,
+        },
+        
         time_duration : {
-            default: -1,
+            default: 0,
             type : cc.Float, 
             tooltip : "持续时间",
         },
 
         time_interval : {
-            default: 0,
+            default: -1,
             type : cc.Float, 
             tooltip : "间隔",
         },

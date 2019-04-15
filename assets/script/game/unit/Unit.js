@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 23:39:25
+ * @LastEditTime: 2019-04-15 14:16:49
  */
 
 let Ref = require("Ref")
@@ -32,6 +32,7 @@ cc.Class({
             default: [],
             type : [Ref], 
             tooltip : "Unit列表",
+            visible : false,
         },
     },
 
@@ -52,6 +53,11 @@ cc.Class({
     setUnitId(id)
     {
         this.unit_id = id;
+    },
+
+    getUnitId()
+    {
+        return this.unit_id;
     },
 
     getUnitType()

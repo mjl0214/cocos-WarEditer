@@ -1,19 +1,21 @@
 /*
  * @Description: 条件
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-13 01:29:55
+ * @LastEditTime: 2019-04-15 11:31:16
  */
 
 
 let ConditionDef = require("ConditionDef")
 let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
+let ActorDef = require("ActorDef")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
 let TarType = ActionDef.TargetType;
+let AttributeKey = ActorDef.AttributeKey;
 
 cc.Class({
     // extends: cc.Component,
@@ -47,6 +49,7 @@ cc.Class({
                 switch (this.condition_type) {
                     case CondType.skill_id:
                     case CondType.target_appoint:
+                    // case CondType.actor_attribute:
                         return false;
 
                     default:
@@ -79,6 +82,19 @@ cc.Class({
             displayName : "Condition Value",
             visible() {
                 return this.condition_type == CondType.target_appoint;
+            },
+            notify() {
+                this._setEventDesc();
+            },
+        },
+
+        actor_attribute_key : {
+            default: AttributeKey.unknown,
+            type : cc.Enum(AttributeKey), 
+            tooltip : "actor属性",
+            displayName : "Condition Value",
+            visible() {
+                return this.condition_type == CondType.actor_attribute;
             },
             notify() {
                 this._setEventDesc();
@@ -172,6 +188,15 @@ cc.Class({
         this.temp_desc = this.condition_value;
     },
 
+    _setActorArrKeyDesc()
+    {
+        // this.temp_name = 'actor属性';
+        var desc = AttributeKey[this.actor_attribute_key];
+        this.temp_name = 'actor属性' + desc;
+        this.temp_value = this.condition_value;
+        this.temp_desc = this.condition_value;
+    },
+
     _setLogicGate()
     {
         switch (this.logic_gate) {
@@ -226,9 +251,11 @@ cc.Class({
                 this._setTargetTypeDesc();
                 break;
             case CondType.target_amount:
-            this._setValue('目标数量');
+                this._setValue('目标数量');
                 break;
-
+            case CondType.actor_attribute:
+                this._setActorArrKeyDesc();
+                break;
 
             default:
                 this._setUnknownDesc();

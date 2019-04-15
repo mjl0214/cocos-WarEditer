@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 23:40:07
+ * @LastEditTime: 2019-04-15 11:17:59
  */
 
 
@@ -12,9 +12,9 @@ let UnitDef = require("UnitDef")
 let ActorDef = require("ActorDef")
 let Attribute = require("Attribute")
 // let Listener = require("Listener")
-// let ActionDef = require("ActionDef")
+let StateDef = require("StateDef")
 
-// let ActionType = ActionDef.ActionType;
+let StateType = StateDef.StateType;
 
 let AT = ActorDef.AttributeType;
 
@@ -40,6 +40,13 @@ cc.Class({
             default: -1,
             type : cc.Float, 
             tooltip : "实际血量",
+            readonly : true,
+        },
+
+        current_mana : {
+            default: -1,
+            type : cc.Float, 
+            tooltip : "实际魔法",
             readonly : true,
         },
 
@@ -70,6 +77,13 @@ cc.Class({
             tooltip : "实际等级值",
             readonly : true,
         },
+
+        actor_state : {
+            default: StateType.idle,
+            type : cc.Enum(StateType),
+            tooltip : "actor状态",
+            readonly : true,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -98,10 +112,14 @@ cc.Class({
     initAttributeValue()
     {
         this.current_health = this._getVal(AT.health_point) + this._getVal(AT.health_point_ex);
+        this.current_mana = this._getVal(AT.mana_point) + this._getVal(AT.mana_point_ex);
         this.current_attack = this._getVal(AT.attack_point) + this._getVal(AT.attack_point_ex);
         this.current_armor = this._getVal(AT.armor_point) + this._getVal(AT.armor_point_ex);
         this.current_anger = this._getVal(AT.anger_point) + this._getVal(AT.anger_point_ex);
         this.current_level = this._getVal(AT.level_point);
+
+        this.current_attack_type = this._getVal(AT.attack_type);
+        this.current_armor_type = this._getVal(AT.armor_type);
     },
 
     // 'health' 'attack' 'armor' 'anger' 'level'

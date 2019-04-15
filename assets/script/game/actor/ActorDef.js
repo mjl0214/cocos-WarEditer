@@ -3,13 +3,26 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 23:40:12
+ * @LastEditTime: 2019-04-15 11:17:42
  */
 
 
 var ActorDef = module.exports;
 
-// 模型属性
+// actor属性key
+ActorDef.AttributeKey = cc.Enum({
+    unknown : 0,
+    health : 1,       // 生命值
+    mana : 2,         // 魔法值
+    attack : 3,       // 攻击值
+    attack_type : 4,        // 攻击类型
+    armor : 5,        // 护甲值
+    armor_type : 6,         // 护甲类型
+    anger : 7,        // 愤怒值
+    level : 8,        // 等级
+});
+
+// actor属性
 ActorDef.AttributeType = cc.Enum({
     unknown : 0,
     health_point : 1,       // 生命值

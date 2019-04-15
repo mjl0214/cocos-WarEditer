@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 14
+      "__id__": 13
     },
     "_opacity": 255,
     "_color": {
@@ -67,6 +67,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -127,7 +128,8 @@
     "_N$logic_gate": 0,
     "_N$condition_value": 0,
     "_N$skill_id": 1,
-    "_N$target_type": 0
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0
   },
   {
     "__type__": "Action",
@@ -137,27 +139,23 @@
       },
       {
         "__id__": 8
-      }
-    ],
-    "formula": 0,
-    "implements": [
+      },
       {
         "__id__": 9
-      },
+      }
+    ],
+    "implements": [
       {
         "__id__": 10
       },
       {
         "__id__": 11
-      },
-      {
-        "__id__": 12
-      },
-      {
-        "__id__": 13
       }
     ],
-    "timer": null
+    "timer": {
+      "__id__": 12
+    },
+    "_N$formula": 1
   },
   {
     "__type__": "Condition",
@@ -167,7 +165,8 @@
     "_N$logic_gate": 0,
     "_N$condition_value": 0,
     "_N$skill_id": 0,
-    "_N$target_type": 3
+    "_N$target_type": 3,
+    "_N$actor_attribute_key": 0
   },
   {
     "__type__": "Condition",
@@ -177,23 +176,26 @@
     "_N$logic_gate": 0,
     "_N$condition_value": 1,
     "_N$skill_id": 0,
-    "_N$target_type": 0
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0
+  },
+  {
+    "__type__": "Condition",
+    "condition_desc": "[actor属性health] > [0]",
+    "temp_value": 0,
+    "_N$condition_type": 8,
+    "_N$logic_gate": 1,
+    "_N$condition_value": 0,
+    "_N$skill_id": 0,
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 1
   },
   {
     "__type__": "Implement",
     "implement_value_list": [],
-    "_N$implement_type": 1,
+    "_N$implement_type": 2,
     "_N$implement_value_type": 0,
-    "_N$damage_source_type": 0,
-    "_N$implement_function": 1
-  },
-  {
-    "__type__": "Implement",
-    "implement_value_list": [],
-    "_N$implement_type": 3,
-    "_N$implement_value_type": 0,
-    "_N$damage_source_type": 1,
-    "_N$implement_function": 0
+    "_N$damage_source_type": 1
   },
   {
     "__type__": "Implement",
@@ -201,30 +203,19 @@
       5,
       10
     ],
-    "_N$implement_type": 4,
+    "_N$implement_type": 3,
     "_N$implement_value_type": 3,
-    "_N$damage_source_type": 0,
-    "_N$implement_function": 0
+    "_N$damage_source_type": 1
   },
   {
-    "__type__": "Implement",
-    "implement_value_list": [
-      0
-    ],
-    "_N$implement_type": 7,
-    "_N$implement_value_type": 0,
-    "_N$damage_source_type": 0,
-    "_N$implement_function": 0
-  },
-  {
-    "__type__": "Implement",
-    "implement_value_list": [
-      0
-    ],
-    "_N$implement_type": 6,
-    "_N$implement_value_type": 0,
-    "_N$damage_source_type": 0,
-    "_N$implement_function": 0
+    "__type__": "Timer",
+    "unit_type": 7,
+    "unit_list": [],
+    "time_duration": 0,
+    "time_interval": 0,
+    "timer_active": false,
+    "time_delay": "Float",
+    "timer_current": "Float"
   },
   {
     "__type__": "cc.PrefabInfo",

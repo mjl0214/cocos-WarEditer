@@ -1,9 +1,9 @@
 /*
  * @Description: 条件定义
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 14:22:39
+ * @LastEditTime: 2019-04-15 11:06:12
  */
 
 
@@ -17,6 +17,9 @@ ConditionDef.ConditionType = cc.Enum({
     range_max : 3,      // 最大射程
     target_appoint : 4,   // 指定目标(目标类型)
     target_amount : 5,  // 目标数量
+    unit_alive : 6,     // 存活的单位
+    unit_dead : 7,      // 死亡的单位
+    actor_attribute : 8, // actor属性
     // unit_friend : 4,    // 友方单位
     // unit_enemy : 5,     // 敌方单位
 });

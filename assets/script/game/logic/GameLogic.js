@@ -1,9 +1,9 @@
 /*
  * @Description: 游戏逻辑
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 20:52:59
+ * @LastEditTime: 2019-04-15 14:45:33
  */
 
 
@@ -18,12 +18,6 @@ module.exports = {
     init()
     {
 
-    },
-
-    gameBegin()
-    {
-        var event_type = EventType[EventType.game_begin]
-        Listener.dispatch(event_type, {event_type : event_type,});
     },
 
     update(dt)
@@ -47,35 +41,27 @@ module.exports = {
         return skillNode.getComponent("SkillUnit");
     },
 
+    gameBegin()
+    {
+        var event_type = EventType.game_begin;
+        Listener.dispatch(EventType[event_type], {event_type : event_type,});
+    },
+
     /*
         skillId cc.Integer
         targets [cc.Integer]
     */
-    useSkill(skillId, holderId, targets)
+    castSkill(skillId, unitId, targets)
     {
-        var target_units = [];
-        for (let index = 0; index < targets.length; index++) {
-            const targetId = targets[index];
-            var target = gs.actorMgr.getActorById(targetId);
-            if (target) {
-                target_units.push({
-                    actorId : targetId,
-                    teamId : target.getTeamId(),
-                });
-            }
+        var event_type = EventType.cast_skill;
+
+        var msg = {
+            event_type : event_type,
+            unit_id : unitId,
+            skill_id : skillId, 
+            target_ids : targets,
         }
-
-        // console.log('skillId', skillId);
-
-        var event_type = EventType[EventType.release_skill];
-
-        Listener.dispatch(event_type, 
-            {
-                event_type : event_type,
-                holder_id : holderId,
-                skill_id : skillId, 
-                targets : target_units,
-            }
-        );
+        // console.log(msg);
+        Listener.dispatch(EventType[event_type], msg);
     },
 };

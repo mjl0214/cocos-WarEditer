@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 23:40:01
+ * @LastEditTime: 2019-04-15 10:41:07
  */
 
 
@@ -36,9 +36,7 @@ cc.Class({
                 if (this.implement_type == ImpType.damage_source) {
                     return false;
                 }
-                if (this.implement_type == ImpType.function_used) {
-                    return false;
-                }
+
                 return true;
             },
             notify() {
@@ -69,18 +67,6 @@ cc.Class({
             // displayName : "Implement Value List",
             visible() {
                 return this.implement_type == ImpType.damage_source;
-            },
-            notify() {
-
-            },
-        },
-
-        implement_function : {
-            default: FormulaEnum.none_function,
-            type : cc.Enum(FormulaEnum), 
-            tooltip : "执行函数",
-            visible() {
-                return this.implement_type == ImpType.function_used;
             },
             notify() {
 
@@ -126,7 +112,6 @@ cc.Class({
         data.implement_value_type = this.implement_value_type;
         data.implement_value_list = this.implement_value_list;
         data.damage_source_type = this.damage_source_type;
-        data.implement_function = this.implement_function;
         return data;
     },
 

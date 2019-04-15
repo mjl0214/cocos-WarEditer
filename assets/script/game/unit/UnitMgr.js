@@ -1,9 +1,9 @@
 /*
  * @Description: Unit管理器
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 21:24:10
+ * @LastEditTime: 2019-04-15 14:33:37
  */
 
 
@@ -21,12 +21,14 @@ module.exports = {
     update(dt)
     {
         for (const key in this.m_units.m_datapools) {
-            if (this.m_units.m_datapools.hasOwnProperty(key)) {
-                const pool = this.m_units.m_datapools[key];
-                for (let index = 0; index < pool.length; index++) {
-                    const unit = pool[index];
-                    unit.update(dt);
-                }
+            if (!this.m_units.m_datapools.hasOwnProperty(key)) {
+                continue;
+            }
+
+            const pool = this.m_units.m_datapools[key];
+            for (let index = 0; index < pool.length; index++) {
+                const unit = pool[index];
+                unit.update(dt);
             }
         }
     },
@@ -46,7 +48,26 @@ module.exports = {
         this.m_units.removeFromPool(unit.getUnitType(), unit);
     },
 
-    getUnitByType(type)
+    getUnitById(id)
+    {
+        for (const key in this.m_units.m_datapools) {
+            if (!this.m_units.m_datapools.hasOwnProperty(key)) {
+                continue;
+            }
+
+            const pool = this.m_units.m_datapools[key];
+            for (let index = 0; index < pool.length; index++) {
+                const unit = pool[index];
+                if (unit.getUnitId() == id) {
+                    return unit;
+                }
+            }
+        }
+
+        return null;
+    },
+
+    getUnitPool(type)
     {
         return this.m_units.getPool(type);
     },

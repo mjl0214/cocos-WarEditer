@@ -1,14 +1,17 @@
 /*
  * @Description: 事件处理类
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 20:57:59
+ * @LastEditTime: 2019-04-15 14:41:35
  */
 
 
 let EventDef = require("EventDef")
 let ActionDef = require("ActionDef")
+let ActorMgr = require("ActorMgr")
+let UnitMgr = require("UnitMgr")
+let UnitDef = require("UnitDef")
 
 module.exports = {
 
@@ -32,6 +35,21 @@ module.exports = {
     // 是否触发成功
     _isEventHold(msg, event)
     {
+        // event_type : event_type,
+        //     unit_id : unitId,
+        //     skill_id : skillId, 
+        //     target_ids : targets,
+
+        // console.log(msg, event)
+
+        var unit = UnitMgr.getUnitById(msg.unit_id);
+        var unit_type = UnitDef.TypeID.unknown;
+        if (unit) {
+            unit_type = unit.getUnitType();
+        }
+
+        console.log('UnitDef.TypeID', UnitDef.TypeID[unit_type]);
+
         var isHold = true;
         if (event.unit_type == EventDef.UnitType.any_unit) {
             isHold = isHold && true;

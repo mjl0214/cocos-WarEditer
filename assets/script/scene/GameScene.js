@@ -24,8 +24,8 @@ cc.Class({
         var actor = gs.gameLogic.getActorUnit(this.actor);
         var actor2 = gs.gameLogic.getActorUnit(this.actor2);
 
-        var actorId = actor.getActorId();
-        gs.gameLogic.useSkill(SkillDef.SkillID.attack_normal, actorId, [actor2.getActorId()]);
+        var actorId = actor.getUnitId();
+        gs.gameLogic.castSkill(SkillDef.SkillID.attack_normal, actorId, [actor2.getUnitId()]);
     },
 
     update (dt) {
