@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 3
+      "__id__": 4
     },
     "_opacity": 255,
     "_color": {
@@ -79,16 +79,27 @@
     },
     "_enabled": true,
     "unit_type": 5,
+    "unit_active": false,
     "unit_list": [],
     "trigger_id": -1,
     "show_general": true,
-    "events": [],
+    "events": [
+      {
+        "__id__": 3
+      }
+    ],
     "conditions": [],
     "actions": [],
     "poolNum": 1,
     "cloneTrigger": false,
     "_N$cloneTriggerPrefab": null,
     "_id": ""
+  },
+  {
+    "__type__": "Event",
+    "event_desc": "[系统事件]游戏开始",
+    "_N$unit_type": 3,
+    "_N$event_type": 101
   },
   {
     "__type__": "cc.PrefabInfo",

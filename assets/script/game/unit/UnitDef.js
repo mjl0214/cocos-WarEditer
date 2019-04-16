@@ -1,9 +1,9 @@
 /*
  * @Description: Unit定义
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 22:46:49
+ * @LastEditTime: 2019-04-16 23:11:02
  */
 
 
@@ -19,6 +19,7 @@ UnitDef.TypeID = cc.Enum({
     trigger : 5,            // 触发器
     buff : 6,               // buff
     timer : 7,              // 定时器
+    system : 8,             // 系统
 });
 
 // 攻击类型

@@ -1,9 +1,9 @@
 /*
  * @Description: 触发器
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 13:13:44
+ * @LastEditTime: 2019-04-16 23:05:27
  */
 
 
@@ -79,11 +79,14 @@ cc.Class({
     },
 
     onLoad () {
+        // console.log('Trigger onLoad')
         this._super();
         TriggerMgr.pushTrigger(this);
     },
 
     onDestroy () {
+        // console.log('Trigger onDestroy')
+        this._super();
         TriggerMgr.removeTrigger(this);
     },
 

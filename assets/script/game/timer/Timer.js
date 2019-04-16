@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 10:13:34
+ * @LastEditTime: 2019-04-16 23:24:12
  */
 
 let Unit = require("Unit")
@@ -35,13 +35,6 @@ cc.Class({
             tooltip : "间隔",
         },
 
-        timer_active : {
-            default: false,
-            // type : cc.Float, 
-            tooltip : "是否是活跃的",
-            visible : false,
-        },
-
         time_delay : {
             default: cc.Float,
             // type : cc.Float, 
@@ -67,13 +60,17 @@ cc.Class({
         this._super();
     },
 
+    onDestroy () {
+        this._super();
+    },
+
     start () {
 
     },
 
     begin(duration, interval, callback)
     {
-        this.timer_active = true;
+        this.unit_active = true;
         this.timer_current = 0;
         this.time_delay = 0;
 
@@ -84,13 +81,13 @@ cc.Class({
 
     rebegin()
     {
-        this.timer_active = true;
+        this.unit_active = true;
         this.timer_current = 0;
         this.time_delay = 0;
     },
 
     update (dt) {
-        if (this.timer_active == false) {
+        if (this.unit_active == false) {
             return;
         }
         this.timer_current += dt;
@@ -104,7 +101,7 @@ cc.Class({
         }
 
         if (this.timer_current >= this.time_duration && this.time_duration > -1) {
-            this.timer_active = false;
+            this.unit_active = false;
         }
         
     },

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 14:28:58
+ * @LastEditTime: 2019-04-16 23:04:59
  */
 
 
@@ -49,19 +49,30 @@ module.exports = {
             }
         }
 
+
+        // setTimeout(() => {
+        //     var pool = this.m_triggers.getPool('trigger');
+        //     for (let index = 0; index < pool.length; index++) {
+        //         const trigger = pool[index];
+        //         trigger.onDestroy();
+        //         break;
+        //     }
+        // }, 2000);
     },
 
     onTrigger(msg)
     {
-        console.log('event_type', msg.event_type);
+        // console.log('event_type', msg.event_type);
         // console.trace();
 
         var pool = this.m_triggers.getPool('trigger');
-        // console.log('pool.length', pool.length);
+        console.log('pool.length', pool.length);
         // var _msg_ = this._extractTriggerInfo(msg);
         for (let index = 0; index < pool.length; index++) {
             const trigger = pool[index];
-            trigger.isTriggerHold(msg);
+            if (trigger.isUnitActive()) {
+                trigger.isTriggerHold(msg);
+            }
         }
     },
 
@@ -76,8 +87,8 @@ module.exports = {
 
     removeTrigger(trigger)
     {
-        this.m_triggerIndex++;
-        this.m_triggers.pushToPool('trigger', trigger);
+        console.log(trigger);
+        this.m_triggers.removeFromPool('trigger', trigger);
     },
 
     // // 提取触发器需要的信息

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 14:16:49
+ * @LastEditTime: 2019-04-16 23:09:12
  */
 
 let Ref = require("Ref")
@@ -28,6 +28,13 @@ cc.Class({
             tooltip : "Unit类型",
         },
 
+        unit_active : {
+            default: false,
+            // type : cc.Float, 
+            tooltip : "是否是活跃的",
+            visible : false,
+        },
+
         unit_list : {
             default: [],
             type : [Ref], 
@@ -39,10 +46,12 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        this.unit_active = true;
         UnitMgr.pushUnit(this);
     },
 
     onDestroy() {
+        this.unit_active = false;
         UnitMgr.removeUnit(this);
     },
 
@@ -60,16 +69,33 @@ cc.Class({
         return this.unit_id;
     },
 
+    setUnitType(type)
+    {
+        this.unit_type = type;
+    },
+
     getUnitType()
     {
         return this.unit_type;
     },
 
+    isUnitActive()
+    {
+        return this.unit_active;
+    },
+
+    setUnitActive(active)
+    {
+        this.unit_active = active;
+    },
+
+    // 绑定unit
     bindUnit(ref)
     {
         this.unit_list.push(ref);
     },
 
+    // 解除unit
     untyUnit(ref)
     {
         for (let index = 0; index < this.unit_list.length; index++) {
