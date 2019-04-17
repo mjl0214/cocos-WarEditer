@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 12:56:22
+ * @LastEditTime: 2019-04-17 14:26:21
  */
 
 
@@ -51,13 +51,15 @@ cc.Class({
     },
 
     onLoad () {
-        var unit = new Trigger();
-        unit.onLoad.apply(this);
+        // var unit = new Trigger();
+        // unit.onLoad.apply(this);
+        this.onEnter();
     },
 
     onDestroy () {
-        var unit = new Trigger();
-        unit.onLoad.onDestroy(this);
+        this.onExit();
+        // var unit = new Trigger();
+        // unit.onLoad.onDestroy(this);
     },
 
     getPoolName()

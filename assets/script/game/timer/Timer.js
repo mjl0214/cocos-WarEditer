@@ -3,11 +3,12 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:24:12
+ * @LastEditTime: 2019-04-17 16:20:34
  */
 
 let Unit = require("Unit")
 let UnitDef = require("UnitDef")
+let TimerMgr = require("TimerMgr")
 
 cc.Class({
     extends: Unit,
@@ -30,21 +31,21 @@ cc.Class({
         },
 
         time_interval : {
-            default: -1,
+            default: 0,
             type : cc.Float, 
             tooltip : "间隔",
         },
 
         time_delay : {
-            default: cc.Float,
-            // type : cc.Float, 
+            default: 0,
+            type : cc.Float, 
             tooltip : "延迟",
             visible : false,
         },
 
         timer_current : {
-            default: cc.Float,
-            // type : cc.Float, 
+            default: 0,
+            type : cc.Float, 
             tooltip : "当前",
             visible : false,
         },
@@ -56,16 +57,32 @@ cc.Class({
 
     },
 
-    onLoad () {
+    onEnter () {
         this._super();
+        TimerMgr.pushTimer(this);
     },
 
-    onDestroy () {
+    onExit () {
         this._super();
+        TimerMgr.removeTimer(this);
     },
 
     start () {
 
+    },
+
+    setCallBack(callback)
+    {
+        this._callback = callback;
+    },
+
+    clone()
+    {
+        var timer = new (this.constructor);
+        timer.time_duration = this.time_duration;
+        timer.time_interval = this.time_interval;
+        timer.time_delay = this.time_interval;
+        return timer;
     },
 
     begin(duration, interval, callback)

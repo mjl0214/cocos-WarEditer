@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 11:17:59
+ * @LastEditTime: 2019-04-17 14:24:04
  */
 
 
@@ -88,11 +88,16 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
+    onEnter () {
         this._super();
         // console.log(this.getAttributeValue(AT.health_point));
         // console.log(this.getAttributeValue(AT.attack_point));
         this.initAttributeValue();
+    },
+
+    onExit () {
+        // console.log('Actor onDestroy')
+        this._super();
     },
 
     ctor () {

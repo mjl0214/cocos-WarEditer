@@ -1,9 +1,9 @@
 /*
  * @Description: 技能单位可视化组件
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-13 00:56:52
+ * @LastEditTime: 2019-04-17 14:26:54
  */
 
 
@@ -35,8 +35,13 @@ cc.Class({
     },
 
     onLoad () {
-        var unit = new Skill();
-        unit.onLoad.apply(this);
+        // var unit = new Skill();
+        // unit.onLoad.apply(this);
+        this.onEnter();
+    },
+
+    onDestroy () {
+        this.onExit();
     },
 
     getPoolName()

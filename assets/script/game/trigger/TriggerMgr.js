@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:04:59
+ * @LastEditTime: 2019-04-17 16:38:01
  */
 
 
@@ -62,14 +62,15 @@ module.exports = {
 
     onTrigger(msg)
     {
-        // console.log('event_type', msg.event_type);
+        // console.log('event_type', msg);
         // console.trace();
 
         var pool = this.m_triggers.getPool('trigger');
-        console.log('pool.length', pool.length);
+        // console.log('pool.length', pool.length);
         // var _msg_ = this._extractTriggerInfo(msg);
         for (let index = 0; index < pool.length; index++) {
             const trigger = pool[index];
+            // console.log(trigger.isUnitActive());
             if (trigger.isUnitActive()) {
                 trigger.isTriggerHold(msg);
             }

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 14:33:37
+ * @LastEditTime: 2019-04-17 14:32:23
  */
 
 
@@ -37,7 +37,7 @@ module.exports = {
     {
         unit.setUnitId(++this.m_unitId);
         this.m_units.pushToPool(unit.getUnitType(), unit);
-        // console.log('pushUnit', this.m_unitId, unit.getUnitType());
+
         if (unit.getUnitType() == 0) {
             console.trace()
         }

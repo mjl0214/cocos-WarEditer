@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:05:27
+ * @LastEditTime: 2019-04-17 14:47:21
  */
 
 
@@ -56,19 +56,19 @@ cc.Class({
             serializable: false,
         },
 
-        events : {
+        trigger_events : {
             default: [],
             type : [Event], 
             tooltip : "事件",
         },
 
-        conditions : {
+        trigger_conditions : {
             default: [],
             type : [Condition], 
             tooltip : "条件",
         },
 
-        actions : {
+        trigger_actions : {
             default: [],
             type : [Action], 
             tooltip : "动作",
@@ -78,13 +78,13 @@ cc.Class({
     ctor () {
     },
 
-    onLoad () {
+    onEnter () {
         // console.log('Trigger onLoad')
         this._super();
         TriggerMgr.pushTrigger(this);
     },
 
-    onDestroy () {
+    onExit () {
         // console.log('Trigger onDestroy')
         this._super();
         TriggerMgr.removeTrigger(this);
@@ -100,8 +100,8 @@ cc.Class({
     {
         var isEvent = true;
 
-        for (let index = 0; index < this.events.length; index++) {
-            const event = this.events[index];
+        for (let index = 0; index < this.trigger_events.length; index++) {
+            const event = this.trigger_events[index];
             isEvent = isEvent && EventHandle.isEventHold(msg, event);
             if (isEvent == false) {
                 return false;
@@ -109,8 +109,8 @@ cc.Class({
         }
 
         var isCondition = true;
-        for (let index = 0; index < this.conditions.length; index++) {
-            const condition = this.conditions[index];
+        for (let index = 0; index < this.trigger_conditions.length; index++) {
+            const condition = this.trigger_conditions[index];
             isCondition = isCondition && ConditionHandle.isConditionHold(msg, condition);
             if (isCondition == false) {
                 return false;
@@ -118,8 +118,8 @@ cc.Class({
         }
 
         var isAction = true;
-        for (let index = 0; index < this.actions.length; index++) {
-            const action = this.actions[index];
+        for (let index = 0; index < this.trigger_actions.length; index++) {
+            const action = this.trigger_actions[index];
             isAction = isAction && ActionHandle.isActionHold(msg, action);
             if (isAction == false) {
                 return false;
@@ -134,14 +134,14 @@ cc.Class({
         var data = {};
 
         data['events'] = new Array();
-        for (let index = 0; index < this.events.length; index++) {
-            const event = this.events[index];
+        for (let index = 0; index < this.trigger_events.length; index++) {
+            const event = this.trigger_events[index];
             data['events'].push(event.getJson()); 
         }
 
         data['conditions'] = new Array();
-        for (let index = 0; index < this.conditions.length; index++) {
-            const condition = this.conditions[index];
+        for (let index = 0; index < this.trigger_conditions.length; index++) {
+            const condition = this.trigger_conditions[index];
             data['conditions'].push(condition.getJson());  
         }
 
@@ -155,30 +155,30 @@ cc.Class({
         var condDesc = '条件:\n';
         var actionDesc = '动作:\n';
 
-        for (let index = 0; index < this.events.length; index++) {
-            const event = this.events[index];
+        for (let index = 0; index < this.trigger_events.length; index++) {
+            const event = this.trigger_events[index];
             eventDesc += '   事件[' + (index) + '] : ' + event.getEventDesc() + '\n'; 
         }
 
-        if (this.events.length <= 0) {
+        if (this.trigger_events.length <= 0) {
             eventDesc += '   无\n';
         }
 
-        for (let index = 0; index < this.conditions.length; index++) {
-            const condition = this.conditions[index];
+        for (let index = 0; index < this.trigger_conditions.length; index++) {
+            const condition = this.trigger_conditions[index];
             condDesc += '   条件[' + (index) + '] : ' + condition.getConditionDesc() + '\n'; 
         }
 
-        if (this.conditions.length <= 0) {
+        if (this.trigger_conditions.length <= 0) {
             condDesc += '   无\n';
         }
 
-        for (let index = 0; index < this.actions.length; index++) {
-            const action = this.actions[index];
+        for (let index = 0; index < this.trigger_actions.length; index++) {
+            const action = this.trigger_actions[index];
             actionDesc += '   动作[' + (index) + '] : ' + action.getActionDesc() + '\n'; 
         }
 
-        if (this.actions.length <= 0) {
+        if (this.trigger_actions.length <= 0) {
             actionDesc += '   无\n';
         }
 
@@ -190,20 +190,20 @@ cc.Class({
     _clone(trigger)
     {
         this.events = [];
-        for (let index = 0; index < trigger.events.length; index++) {
-            const event = trigger.events[index];
+        for (let index = 0; index < trigger.trigger_events.length; index++) {
+            const event = trigger.trigger_events[index];
             this.events.push(event);
         }
 
         this.conditions = [];
-        for (let index = 0; index < trigger.conditions.length; index++) {
-            const condition = trigger.conditions[index];
+        for (let index = 0; index < trigger.trigger_conditions.length; index++) {
+            const condition = trigger.trigger_conditions[index];
             this.conditions.push(condition);
         }
 
         this.actions = [];
-        for (let index = 0; index < trigger.actions.length; index++) {
-            const action = trigger.actions[index];
+        for (let index = 0; index < trigger.trigger_actions.length; index++) {
+            const action = trigger.trigger_actions[index];
             this.actions.push(action);
         }
     },

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:22:34
+ * @LastEditTime: 2019-04-17 16:17:23
  */
 
 
@@ -12,6 +12,7 @@ let EventDef = require("EventDef")
 let ActionDef = require("ActionDef")
 let Unit = require("Unit")
 let UnitDef = require("UnitDef")
+let TriggerMsg = require("TriggerMsg")
 
 let EventType = EventDef.EventType;
 
@@ -28,12 +29,13 @@ module.exports = {
     {
         this.m_systemUnit = new Unit();
         this.m_systemUnit.setUnitType(UnitDef.TypeID.system);
-        this.m_systemUnit.onLoad();
+        this.m_systemUnit.onEnter();
     },
 
     update(dt)
     {
         gs.unitMgr.update(dt);
+        gs.timerMgr.update(dt);
     },
 
     getActorUnit(actorNode)
@@ -56,10 +58,9 @@ module.exports = {
     {
         var event_type = EventType.game_begin;
 
-        var msg = {
-            event_type : event_type,
-            unit_id : this.m_systemUnit.getUnitId(),
-        }
+        var msg = TriggerMsg.getMsg();
+        msg.event_type = event_type;
+        msg.unit_id = this.m_systemUnit.getUnitId();
         
         Listener.dispatch(EventType[event_type], msg);
     },
@@ -72,12 +73,12 @@ module.exports = {
     {
         var event_type = EventType.cast_skill;
 
-        var msg = {
-            event_type : event_type,
-            unit_id : unitId,
-            skill_id : skillId, 
-            target_ids : targets,
-        }
+        var msg = TriggerMsg.getMsg();
+        msg.event_type = event_type;
+        msg.unit_id = unitId;
+        msg.skill_id = skillId;
+        msg.target_ids = targets;
+
         // console.log(msg);
         Listener.dispatch(EventType[event_type], msg);
     },

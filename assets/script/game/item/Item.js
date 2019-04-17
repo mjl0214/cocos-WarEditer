@@ -1,9 +1,9 @@
 /*
  * @Description: 物品类
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 23:18:30
+ * @LastEditTime: 2019-04-17 14:24:20
  */
 
 
@@ -23,7 +23,12 @@ cc.Class({
         },
     },
 
-    onLoad () {
+    onEnter () {
+        this._super();
+    },
+
+    onExit () {
+        // console.log('Item onDestroy')
         this._super();
     },
 

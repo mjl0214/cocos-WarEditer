@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:09:12
+ * @LastEditTime: 2019-04-17 14:23:24
  */
 
 let Ref = require("Ref")
@@ -45,12 +45,12 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    onLoad () {
+    onEnter () {
         this.unit_active = true;
         UnitMgr.pushUnit(this);
     },
 
-    onDestroy() {
+    onExit() {
         this.unit_active = false;
         UnitMgr.removeUnit(this);
     },

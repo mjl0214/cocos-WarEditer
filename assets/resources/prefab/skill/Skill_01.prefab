@@ -80,6 +80,7 @@
     },
     "_enabled": true,
     "unit_type": 4,
+    "unit_active": false,
     "unit_list": [],
     "holder_id": -1,
     "skill_id": 1,
@@ -95,6 +96,7 @@
   {
     "__type__": "Trigger",
     "unit_type": 5,
+    "unit_active": false,
     "unit_list": [],
     "trigger_id": -1,
     "show_general": true,
@@ -210,10 +212,10 @@
   {
     "__type__": "Timer",
     "unit_type": 7,
+    "unit_active": false,
     "unit_list": [],
     "time_duration": 0,
     "time_interval": 0,
-    "timer_active": false,
     "time_delay": "Float",
     "timer_current": "Float"
   },

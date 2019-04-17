@@ -17,6 +17,12 @@ cc.Class({
 
     start () {
         gs.gameLogic.gameBegin();
+
+        // console.log(window.curl_rand())
+        // console.log(window.curl_rand())
+        // console.log(window.curl_rand())
+        // console.log(window.curl_rand())
+        // console.log(window.curl_rand())
     },
 
     onButtonClick()

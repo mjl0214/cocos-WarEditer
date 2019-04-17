@@ -1,40 +1,43 @@
 /*
- * @Description: In User Settings Edit
+ * @Description: Buff管理器
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 14:22:16
+ * @LastEditTime: 2019-04-17 16:36:48
  */
 
+let DataPool = require("DataPool")
 
-cc.Class({
-    extends: cc.Component,
+module.exports = {
+    m_buffs : new DataPool(), // 定时器列表
 
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
+    init()
+    {
+
+    },
+
+    update(dt)
+    {
+        // var pool = this.m_buffs.getPool('timer');
+        // for (let index = pool.length - 1; index >= 0; index--) {
+        //     const timer = pool[index];
+        //     if (timer.isUnitActive() == false) {
+        //         timer.onExit();
+        //         // pool.splice(index, 1);
         //     }
-        // },
+        // }
     },
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
-    start () {
-
+    // 添加计时器
+    pushBuff(buff)
+    {
+        // console.log('pushTimer', timer);
+        this.m_buffs.pushToPool('buff', buff);
     },
 
-    // update (dt) {},
-});
+    removeBuff(buff)
+    {
+        // console.log('removeTimer', timer);
+        this.m_buffs.removeFromPool('buff', buff);
+    },
+};

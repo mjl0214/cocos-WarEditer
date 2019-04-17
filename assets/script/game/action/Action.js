@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 10:11:56
+ * @LastEditTime: 2019-04-17 14:41:49
  */
 
 
@@ -20,13 +20,13 @@ cc.Class({
     name : 'Action',
 
     properties: {
-        conditions : {
+        action_conditions : {
             default: [],
             type : [Condition], 
             tooltip : "动作-条件列表",
         },
 
-        formula : {
+        action_formula : {
             default: FormulaEnum.none_function,
             type : cc.Enum(FormulaEnum), 
             tooltip : "动作-执行函数",
@@ -47,13 +47,13 @@ cc.Class({
             serializable: false,
         },
 
-        implements : {
+        action_implements : {
             default: [],
             type : [Implement], 
             tooltip : "动作-参数列表",
         },
 
-        timer : {
+        action_timer : {
             default: null,
             type : Timer, 
             tooltip : "动作-计时器",
@@ -78,22 +78,22 @@ cc.Class({
         this.action_desc = '';
 
         var condDesc = '\n      条件:\n';
-        for (let index = 0; index < this.conditions.length; index++) {
-            const condition = this.conditions[index];
+        for (let index = 0; index < this.action_conditions.length; index++) {
+            const condition = this.action_conditions[index];
             condDesc += '         条件[' + (index) + '] : ' + condition.getConditionDesc() + '\n'; 
         }
 
-        if (this.conditions.length <= 0) {
+        if (this.action_conditions.length <= 0) {
             condDesc += '         无';
         }
 
         var implDesc = '      执行:\n';
-        for (let index = 0; index < this.implements.length; index++) {
-            const implement = this.implements[index];
+        for (let index = 0; index < this.action_implements.length; index++) {
+            const implement = this.action_implements[index];
             implDesc += '         动作[' + (index) + '] : ' + implement.getImplementDesc() + '\n'; 
         }
 
-        if (this.implements.length <= 0) {
+        if (this.action_implements.length <= 0) {
             implDesc += '         无';
         }
 
@@ -105,10 +105,10 @@ cc.Class({
 
     _setFormulaDesc()
     {
-        if (this.formula == FormulaEnum.none_function) {
+        if (this.action_formula == FormulaEnum.none_function) {
             this.formula_desc = '不使用函数';
         }
-        else if (this.formula == FormulaEnum.damage_function01) {
+        else if (this.action_formula == FormulaEnum.damage_function01) {
             this.formula_desc = '普通伤害计算函数\n'
                 + '   参数列表:\n'
                 + '     [damage_source]\n'

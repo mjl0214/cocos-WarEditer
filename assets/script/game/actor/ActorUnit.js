@@ -1,9 +1,9 @@
 /*
  * @Description: 演员可视化组件
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 14:30:48
+ * @LastEditTime: 2019-04-17 14:28:53
  */
 
 
@@ -43,11 +43,16 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        var actor = new Actor();
-        actor.onLoad.apply(this);
+        // var actor = new Actor();
+        // actor.onLoad.apply(this);
+        this.onEnter();
 
         this.actor_id = ActorMgr.createActorId();
-        this.initSkill();
+        // this.initSkill();
+    },
+
+    onDestroy () {
+        this.onExit();
     },
 
     start () {

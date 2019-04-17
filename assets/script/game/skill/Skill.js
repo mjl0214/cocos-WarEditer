@@ -1,9 +1,9 @@
 /*
  * @Description: 技能类
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 22:47:30
- * @LastEditTime: 2019-04-14 21:22:01
+ * @LastEditTime: 2019-04-17 14:25:28
  */
 
 let Item = require("Item")
@@ -62,12 +62,18 @@ cc.Class({
         },
     },
 
-    onLoad () {
+    onEnter () {
         this._super();
         // console.log('this.trigger_unit', this.trigger_unit)
 
-        // 手动调用触发器的onLoad
-        this.trigger_unit.onLoad();
+        // 调用触发器的onLoad
+        this.trigger_unit.onEnter();
+    },
+
+    onExit () {
+        // console.log('Skill onDestroy')
+        this._super();
+        this.trigger_unit.onExit();
     },
 
     ctor () {

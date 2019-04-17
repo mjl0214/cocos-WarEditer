@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 4
+      "__id__": 6
     },
     "_opacity": 255,
     "_color": {
@@ -67,6 +67,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -83,13 +84,17 @@
     "unit_list": [],
     "trigger_id": -1,
     "show_general": true,
-    "events": [
+    "trigger_events": [
       {
         "__id__": 3
       }
     ],
-    "conditions": [],
-    "actions": [],
+    "trigger_conditions": [],
+    "trigger_actions": [
+      {
+        "__id__": 4
+      }
+    ],
     "poolNum": 1,
     "cloneTrigger": false,
     "_N$cloneTriggerPrefab": null,
@@ -100,6 +105,25 @@
     "event_desc": "[系统事件]游戏开始",
     "_N$unit_type": 3,
     "_N$event_type": 101
+  },
+  {
+    "__type__": "Action",
+    "action_conditions": [],
+    "action_implements": [],
+    "action_timer": {
+      "__id__": 5
+    },
+    "_N$action_formula": 0
+  },
+  {
+    "__type__": "Timer",
+    "unit_type": 7,
+    "unit_active": false,
+    "unit_list": [],
+    "time_duration": 0,
+    "time_interval": 0,
+    "time_delay": 0,
+    "timer_current": 0
   },
   {
     "__type__": "cc.PrefabInfo",
