@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 14:28:53
+ * @LastEditTime: 2019-04-17 22:58:24
  */
 
 
@@ -20,24 +20,7 @@ cc.Class({
     mixins: [Actor],
 
     properties: {
-        actor_id : {
-            default: -1,
-            type : cc.Integer, 
-            tooltip : "actor ID",
-            readonly : true,
-        },  
-
-        team_id : {
-            default: -1,
-            type : cc.Integer, 
-            tooltip : "队伍ID",
-        },
-
-        skill_list : {
-            default : [],
-            type : [cc.Enum(SkillDef.SkillID)],
-            tooltip : "技能ID列表",
-        }
+        
     },
 
     // LIFE-CYCLE CALLBACKS:

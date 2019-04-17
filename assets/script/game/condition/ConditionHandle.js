@@ -1,15 +1,16 @@
 /*
  * @Description: 条件处理类
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-13 01:43:35
+ * @LastEditTime: 2019-04-17 23:08:24
  */
 
 
 let ConditionDef = require("ConditionDef")
 let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
+let ActorMgr = require("ActorMgr")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
@@ -81,7 +82,7 @@ module.exports = {
     },
 
     handle_target_amount(){
-        return this._juageLogicGate(this.m_msg.target_amount, 
+        return this._juageLogicGate(this.m_msg.target_ids.length, 
             this.condition_value, 
             this.logic_gate);
     },
@@ -137,10 +138,22 @@ module.exports = {
         // all : 1,                    // 所有人
         // self : 2,                   // 自己
         // enemy : 3,                  // 敌方单位
-        // self_team : 4,              // 己方队伍
-        // enemy_team : 5,             // 敌方队伍
-        // self_team_random : 6,       // 己方队伍随机
-        // enemy_team_random : 7,      // 敌方队伍随机
+
+        var holder_team = -1;
+        var actor = ActorMgr.getActorByUnitId(this.m_msg.unit_id);
+        if (actor != null) {
+            holder_team = actor.team_id;
+        }
+
+        var targets = [];
+        for (let index = 0; index < this.m_msg.target_ids.length; index++) {
+            const unit_id = this.m_msg.target_ids[index];
+            var actor = ActorMgr.getActorByUnitId(unit_id);
+            if (actor != null) {
+                targets.push({unit_id : unit_id, team_id : actor.team_id});
+            }
+        }
+
         var result = true;
         switch (this.condition_value) {
             case TarType.none:
@@ -151,33 +164,22 @@ module.exports = {
                 break;
             case TarType.self:
                 result = this.m_msg.target_amount == 1 && 
-                    (this.m_msg.holder_id > -1) &&
-                    (this.m_msg.targets[0].actorId == this.m_msg.holder_id)
+                    (this.m_msg.unit_id > -1) &&
+                    (targets.length > 0) &&
+                    (targets[0].unit_id == this.m_msg.unit_id);
                 break;
             case TarType.enemy:
-            case TarType.enemy_team:
-            case TarType.enemy_team_random:
-                for (let index = 0; index < this.m_msg.targets.length; index++) {
-                    const element = this.m_msg.targets[index];
-                    if (element.teamId = this.m_msg.teamId) {
+            // case TarType.enemy_team:
+            // case TarType.enemy_team_random:
+                for (let index = 0; index < targets.length; index++) {
+                    const target = targets[index];
+                    var actor = ActorMgr.getActorByUnitId(target.unit_id);
+                    if (target.team_id == holder_team) {
                         result = false;
                         break;
                     }
                 }
-                if (this.m_msg.targets.length == 0) {
-                    result = false;
-                }
-                break;
-            case TarType.self_team:
-            case TarType.self_team_random:
-                for (let index = 0; index < this.m_msg.targets.length; index++) {
-                    const element = this.m_msg.targets[index];
-                    if (element.teamId != this.m_msg.teamId) {
-                        result = false;
-                        break;
-                    }
-                }
-                if (this.m_msg.targets.length == 0) {
+                if (targets.length == 0) {
                     result = false;
                 }
                 break;

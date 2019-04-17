@@ -3,13 +3,14 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 22:47:30
- * @LastEditTime: 2019-04-17 14:25:28
+ * @LastEditTime: 2019-04-18 00:50:29
  */
 
 let Item = require("Item")
 let UnitDef = require("UnitDef")
 let SkillDef = require('SkillDef')
 let Trigger = require("Trigger")
+let SkillMgr = require("SkillMgr")
 
 cc.Class({
     extends: Item,
@@ -64,6 +65,7 @@ cc.Class({
 
     onEnter () {
         this._super();
+        SkillMgr.pushSkill(this);
         // console.log('this.trigger_unit', this.trigger_unit)
 
         // 调用触发器的onLoad
@@ -73,6 +75,8 @@ cc.Class({
     onExit () {
         // console.log('Skill onDestroy')
         this._super();
+        SkillMgr.removeSkill(this);
+
         this.trigger_unit.onExit();
     },
 

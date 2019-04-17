@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 15:13:04
- * @LastEditTime: 2019-04-17 15:45:44
+ * @LastEditTime: 2019-04-18 00:53:30
  */
 
 
@@ -16,6 +16,7 @@ TriggerMsg.getMsg = function()
         unit_id : -1,
         skill_id : -1, 
         target_ids : [],
+        skill_level : 1,
     }
 
     return msg;

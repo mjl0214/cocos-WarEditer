@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 16:45:10
+ * @LastEditTime: 2019-04-17 22:10:49
  */
 
 
@@ -12,7 +12,7 @@ let Item = require("Item")
 let Action = require("Action")
 let BuffMgr = require("BuffMgr")
 let EventDef = require("EventDef")
-let ActionHandle = require("ActionHandle")
+let FormulaHandle = require("FormulaHandle")
 
 let EventType = EventDef.EventType;
 
@@ -71,7 +71,8 @@ cc.Class({
     {
         // console.log(this.buff_msg);
         console.log('触发！！！', '[' + EventType[this.buff_msg.event_type] + "]", new Date());
-        ActionHandle.excuteAction(this.buff_msg, this.buff_action);
+        FormulaHandle.executeAction(this.buff_msg, this.buff_action);
+        // console.log(ActionHandle);
     },
 
     init(msg, action)

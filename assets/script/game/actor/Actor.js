@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 14:24:04
+ * @LastEditTime: 2019-04-17 23:06:54
  */
 
 
@@ -13,6 +13,7 @@ let ActorDef = require("ActorDef")
 let Attribute = require("Attribute")
 // let Listener = require("Listener")
 let StateDef = require("StateDef")
+let SkillDef = require("SkillDef")
 
 let StateType = StateDef.StateType;
 
@@ -28,6 +29,25 @@ cc.Class({
             tooltip : "Unit类型",
             readonly : true,
             override : true,
+        },
+
+        actor_id : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "actor ID",
+            readonly : true,
+        },  
+
+        team_id : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "队伍ID",
+        },
+
+        skill_list : {
+            default : [],
+            type : [cc.Enum(SkillDef.SkillID)],
+            tooltip : "技能ID列表",
         },
 
         attributes : {

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 10:38:23
+ * @LastEditTime: 2019-04-17 22:42:31
  */
 
 
@@ -15,10 +15,10 @@ ActionDef.TargetType = cc.Enum({
     all : 1,                    // 所有人
     self : 2,                   // 自己
     enemy : 3,                  // 敌方单位
-    self_team : 4,              // 己方队伍
-    enemy_team : 5,             // 敌方队伍
-    self_team_random : 6,       // 己方队伍随机
-    enemy_team_random : 7,      // 敌方队伍随机
+    // self_team : 4,              // 己方队伍
+    // enemy_team : 5,             // 敌方队伍
+    // self_team_random : 6,       // 己方队伍随机
+    // enemy_team_random : 7,      // 敌方队伍随机
 });
 
 // 伤害来源

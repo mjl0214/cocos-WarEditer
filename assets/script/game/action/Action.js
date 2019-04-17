@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 14:41:49
+ * @LastEditTime: 2019-04-18 01:06:00
  */
 
 
@@ -84,21 +84,25 @@ cc.Class({
         }
 
         if (this.action_conditions.length <= 0) {
-            condDesc += '         无';
+            condDesc += '         无\n';
         }
 
-        var implDesc = '      执行:\n';
+        var implDesc = '      参数:\n';
         for (let index = 0; index < this.action_implements.length; index++) {
             const implement = this.action_implements[index];
-            implDesc += '         动作[' + (index) + '] : ' + implement.getImplementDesc() + '\n'; 
+            implDesc += '         参数[' + (index) + '] : ' + implement.getImplementDesc() + '\n'; 
         }
 
         if (this.action_implements.length <= 0) {
-            implDesc += '         无';
+            implDesc += '         无\n';
         }
 
+        var timerDesc = '      计时器:\n';
+
         this.action_desc += condDesc;
+        this.action_desc += ('      函数:\n        ' + this.formula_desc + '\n');
         this.action_desc += implDesc;
+        this.action_desc += timerDesc;
 
         return this.action_desc;
     },
@@ -108,12 +112,12 @@ cc.Class({
         if (this.action_formula == FormulaEnum.none_function) {
             this.formula_desc = '不使用函数';
         }
-        else if (this.action_formula == FormulaEnum.damage_function01) {
-            this.formula_desc = '普通伤害计算函数\n'
-                + '   参数列表:\n'
-                + '     [damage_source]\n'
-                + '     [damage_value]\n'
-                + '';
+        else if (this.action_formula == FormulaEnum.attack_damage_function01) {
+            this.formula_desc = '普通伤害计算函数'
+                + '(参数列表:'
+                + '[damage_source]'
+                + ' [damage_value]'
+                + ')';
         }
     },
 

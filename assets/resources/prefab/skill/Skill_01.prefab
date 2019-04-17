@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 13
+      "__id__": 12
     },
     "_opacity": 255,
     "_color": {
@@ -67,7 +67,6 @@
     },
     "_skewX": 0,
     "_skewY": 0,
-    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -100,17 +99,17 @@
     "unit_list": [],
     "trigger_id": -1,
     "show_general": true,
-    "events": [
+    "trigger_events": [
       {
         "__id__": 4
       }
     ],
-    "conditions": [
+    "trigger_conditions": [
       {
         "__id__": 5
       }
     ],
-    "actions": [
+    "trigger_actions": [
       {
         "__id__": 6
       }
@@ -135,29 +134,26 @@
   },
   {
     "__type__": "Action",
-    "conditions": [
+    "action_conditions": [
       {
         "__id__": 7
       },
       {
         "__id__": 8
-      },
+      }
+    ],
+    "action_implements": [
       {
         "__id__": 9
-      }
-    ],
-    "implements": [
-      {
-        "__id__": 10
       },
       {
-        "__id__": 11
+        "__id__": 10
       }
     ],
-    "timer": {
-      "__id__": 12
+    "action_timer": {
+      "__id__": 11
     },
-    "_N$formula": 1
+    "_N$action_formula": 1
   },
   {
     "__type__": "Condition",
@@ -182,17 +178,6 @@
     "_N$actor_attribute_key": 0
   },
   {
-    "__type__": "Condition",
-    "condition_desc": "[actor属性health] > [0]",
-    "temp_value": 0,
-    "_N$condition_type": 8,
-    "_N$logic_gate": 1,
-    "_N$condition_value": 0,
-    "_N$skill_id": 0,
-    "_N$target_type": 0,
-    "_N$actor_attribute_key": 1
-  },
-  {
     "__type__": "Implement",
     "implement_value_list": [],
     "_N$implement_type": 2,
@@ -207,7 +192,7 @@
     ],
     "_N$implement_type": 3,
     "_N$implement_value_type": 3,
-    "_N$damage_source_type": 1
+    "_N$damage_source_type": 0
   },
   {
     "__type__": "Timer",
@@ -216,8 +201,8 @@
     "unit_list": [],
     "time_duration": 0,
     "time_interval": 0,
-    "time_delay": "Float",
-    "timer_current": "Float"
+    "time_delay": 0,
+    "timer_current": 0
   },
   {
     "__type__": "cc.PrefabInfo",

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-16 23:18:12
+ * @LastEditTime: 2019-04-17 22:22:31
  */
 
 
@@ -54,10 +54,10 @@ module.exports = {
         if (event.unit_type == EventDef.UnitType.any_unit) {
             isHold = isHold && true;
         }
-        if (event.unit_type == EventDef.UnitType.timer_unit) {
+        else if (event.unit_type == EventDef.UnitType.timer_unit) {
             isHold = isHold && (unit_type == UnitDef.TypeID.timer);
         }
-        if (event.unit_type == EventDef.UnitType.system_unit) {
+        else if (event.unit_type == EventDef.UnitType.system_unit) {
             isHold = isHold && (unit_type == UnitDef.TypeID.system);
         }
         else
