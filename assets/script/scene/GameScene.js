@@ -15,7 +15,7 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        DialogMgr.init();
+        // DialogMgr.init();
     },
 
 
@@ -31,13 +31,16 @@ cc.Class({
 
     onButtonClick()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book);
-        return;
         var actor = gs.gameLogic.getActorUnit(this.actor);
         var actor2 = gs.gameLogic.getActorUnit(this.actor2);
 
         var actorId = actor.getUnitId();
         gs.gameLogic.castSkill(SkillDef.SkillID.attack_normal, actorId, [actor2.getUnitId()]);
+    },
+
+    onClickOpen()
+    {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, true);
     },
 
     update (dt) {

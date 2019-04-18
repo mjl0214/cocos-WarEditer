@@ -12,21 +12,24 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        maskNode : {
+            default: null,
+            type : cc.Node, 
+            tooltip : "遮罩节点",
+        },
+
+        inputNode : {
+            default: null,
+            type : cc.Node,  
+            tooltip : "穿透节点",
+        },
+
+        maskId : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "遮罩对话框ID",
+            visible : false,
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -35,6 +38,26 @@ cc.Class({
 
     start () {
 
+    },
+
+    setMaskId(maskId)
+    {
+        this.maskId = maskId;
+    },
+
+    getMaskId()
+    {
+        return this.maskId;
+    },
+
+    setMask(mask)
+    {
+        this.maskNode.active = mask;
+    },
+
+    setInput(input)
+    {
+        this.inputNode.active = input;
     },
 
     // update (dt) {},

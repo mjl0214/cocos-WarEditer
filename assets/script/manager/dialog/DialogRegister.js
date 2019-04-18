@@ -3,12 +3,12 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-18 16:52:16
- * @LastEditTime: 2019-04-18 17:40:47
+ * @LastEditTime: 2019-04-19 00:24:47
  */
 
 
 let PoolManager = require("PoolManager")
-let DialogDef = require("DialogDef")
+let DialogMgr = require("DialogMgr")
 
 cc.Class({
     extends: cc.Component,
@@ -30,6 +30,14 @@ cc.Class({
             // serializable: true, 
         },
 
+        maskPrefab : {
+            // ATTRIBUTES:
+            default: null,
+            type: cc.Prefab,
+            tooltip : '遮罩预制体',
+            // serializable: true, 
+        },
+
         prefabList : {
             // ATTRIBUTES:
             default: [],
@@ -44,6 +52,7 @@ cc.Class({
     onLoad () {
         this._poolNameList = new Array();
         this._componetName = 'DialogBase'
+        DialogMgr.m_maskPrefab = this.maskPrefab;
         this._register();
     },
 

@@ -1,25 +1,17 @@
 
 let DialogBase = require("DialogBase")
+let DialogMgr = require("DialogMgr")
+let DialogDef = require("DialogDef")
 
 cc.Class({
     extends: DialogBase,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        showLabel : {
+            default: null,
+            type : cc.Label, 
+            tooltip : "显示文字",
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -27,12 +19,22 @@ cc.Class({
     // onLoad () {},
 
     start () {
-
+        this.showLabel.string = '我是图鉴,' + '第[' + DialogMgr.getDialogAmount() + ']个对话框';
     },
 
     onClickClose()
     {
         this.closeDialog(true);
+    },
+
+    onClickOpen()
+    {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, true);
+    },
+
+    onClickCloseAll()
+    {
+        DialogMgr.closeAllDialog(true);
     },
 
     // update (dt) {},
