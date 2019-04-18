@@ -3,13 +3,14 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-18 01:08:14
+ * @LastEditTime: 2019-04-18 10:49:38
  */
 
 let EventDef = require("EventDef")
 let ActionDef = require("ActionDef")
 let Listener = require("Listener")
 let ActorMgr = require("ActorMgr")
+let ActorDef = require("ActorDef")
 let FormulaTool = require("FormulaTool")
 let ConditionHandle = require("ConditionHandle")
 // let Buff = require("Buff")
@@ -35,7 +36,8 @@ module.exports = {
                 
                 break;
             case FormulaTool.FormulaEnum.attack_damage_function01:
-                this._attack_damage_func01(msg, action);
+            case FormulaTool.FormulaEnum.attack_damage_function02:
+                this._attack_damage_func(msg, action);
                 break;
             default:
                 break;
@@ -58,12 +60,14 @@ module.exports = {
     // 获取伤害值
     _getHurtVal(unitId, skillLevel, implement)
     {
-        var ivt = implement.implement_value_type
+        var actor = ActorMgr.getActorByUnitId(unitId);
+
+        var ivt = implement.implement_value_type;
+
         if (ivt == ActionDef.ImplementValueType.constant) {
             return implement.implement_value_list[0];
         }
         else if (ivt == ActionDef.ImplementValueType.level_user) {
-            var actor = ActorMgr.getActorByUnitId(unitId);
             var actorLevel = 0;
             if (actor == null) {
                 return 0;
@@ -77,6 +81,17 @@ module.exports = {
         else if (ivt == ActionDef.ImplementValueType.random_value) {
             var value = window.getRandom(implement.implement_value_list[0], implement.implement_value_list[1]);
             return value;
+        }
+        else if (ivt == ActionDef.ImplementValueType.attribute_user) {
+            if (actor == null) {
+                return 0;
+            }
+
+            var key = ActorDef.AttributeKey[implement.user_attribute_key];
+
+            var actorAttributeValue = actor.getVal(key);
+            // console.log('actorAttributeValue', actorAttributeValue)
+            return actorAttributeValue;
         }
     },
 
@@ -94,7 +109,7 @@ module.exports = {
         }
     },
 
-    _attack_damage_func01(msg, action)
+    _attack_damage_func(msg, action)
     {
         var funcName = FormulaTool.FormulaEnum[action.action_formula];
         // console.log('funcName', funcName);

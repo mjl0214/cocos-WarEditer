@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:22:31
+ * @LastEditTime: 2019-04-18 08:55:40
  */
 
 
@@ -25,7 +25,7 @@ module.exports = {
         }
         else
         {
-            console.error(result, '{事件}', event.event_desc);
+            // console.error(result, '{事件}', event.event_desc);
         }
         
         return result;
@@ -48,7 +48,7 @@ module.exports = {
             unit_type = unit.getUnitType();
         }
 
-        console.log('UnitDef.TypeID', UnitDef.TypeID[unit_type]);
+        // console.log('UnitDef.TypeID', UnitDef.TypeID[unit_type]);
 
         var isHold = true;
         if (event.unit_type == EventDef.UnitType.any_unit) {

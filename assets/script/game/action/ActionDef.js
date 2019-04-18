@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:42:31
+ * @LastEditTime: 2019-04-18 10:05:34
  */
 
 
@@ -33,7 +33,8 @@ ActionDef.ImplementValueType = cc.Enum({
     constant : 0,           // 定值
     level_user : 1,         // 使用者等级
     level_skill : 2,        // 技能等级
-    random_value : 3,       // 随机   
+    random_value : 3,       // 随机 
+    attribute_user : 4,     // 玩家属性
 });
 
 // 执行类型

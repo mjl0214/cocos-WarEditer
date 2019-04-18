@@ -67,6 +67,7 @@
     },
     "_skewX": 0,
     "_skewY": 0,
+    "_zIndex": 0,
     "groupIndex": 0,
     "_id": ""
   },
@@ -83,8 +84,8 @@
     "unit_list": [],
     "holder_id": -1,
     "skill_id": 1,
-    "skill_name": "双刀流",
-    "skill_desc": "对目标造成5~10点伤害",
+    "skill_name": "普通攻击",
+    "skill_desc": "对目标造成攻击者攻击力值大小点伤害",
     "skill_level": 1,
     "trigger_unit": {
       "__id__": 3
@@ -153,7 +154,7 @@
     "action_timer": {
       "__id__": 11
     },
-    "_N$action_formula": 1
+    "_N$action_formula": 2
   },
   {
     "__type__": "Condition",
@@ -182,7 +183,8 @@
     "implement_value_list": [],
     "_N$implement_type": 2,
     "_N$implement_value_type": 0,
-    "_N$damage_source_type": 1
+    "_N$damage_source_type": 1,
+    "_N$user_attribute_key": 0
   },
   {
     "__type__": "Implement",
@@ -191,16 +193,17 @@
       10
     ],
     "_N$implement_type": 3,
-    "_N$implement_value_type": 3,
-    "_N$damage_source_type": 0
+    "_N$implement_value_type": 4,
+    "_N$damage_source_type": 0,
+    "_N$user_attribute_key": 3
   },
   {
     "__type__": "Timer",
     "unit_type": 7,
     "unit_active": false,
     "unit_list": [],
-    "time_duration": 0,
-    "time_interval": 0,
+    "time_duration": 0.1,
+    "time_interval": -1,
     "time_delay": 0,
     "timer_current": 0
   },

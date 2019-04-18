@@ -3,11 +3,12 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 10:41:07
+ * @LastEditTime: 2019-04-18 10:14:26
  */
 
 
 let ActionDef = require("ActionDef")
+let ActorDef = require("ActorDef")
 let FormulaTool = require("FormulaTool")
 
 let ImpType = ActionDef.ImplementType;
@@ -36,6 +37,9 @@ cc.Class({
                 if (this.implement_type == ImpType.damage_source) {
                     return false;
                 }
+                // else if (this.implement_type == ImpType.attribute_user) {
+                //     return false;
+                // }
 
                 return true;
             },
@@ -53,9 +57,13 @@ cc.Class({
                 if (this.implement_type == ImpType.damage_source) {
                     return false;
                 }
-                if (this.implement_type == ImpType.function_used) {
+                
+                if (this.implement_value_type == ActionDef.ImplementValueType.attribute_user) {
                     return false;
                 }
+                // if (this.implement_type == ImpType.function_used) {
+                //     return false;
+                // }
                 return true;
             },
         },
@@ -67,6 +75,19 @@ cc.Class({
             // displayName : "Implement Value List",
             visible() {
                 return this.implement_type == ImpType.damage_source;
+            },
+            notify() {
+
+            },
+        },
+
+        user_attribute_key : {
+            default: ActorDef.AttributeKey.unknown,
+            type : cc.Enum(ActorDef.AttributeKey), 
+            tooltip : "使用者属性键值",
+            // displayName : "Implement Value List",
+            visible() {
+                return this.implement_value_type == ActionDef.ImplementValueType.attribute_user;
             },
             notify() {
 

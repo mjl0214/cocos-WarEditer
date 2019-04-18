@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:13:15
+ * @LastEditTime: 2019-04-18 13:07:01
  */
 
 
@@ -11,9 +11,9 @@ let EventDef = require("EventDef")
 let ActionDef = require("ActionDef")
 let ConditionHandle = require("ConditionHandle")
 let Listener = require("Listener")
-let ActorMgr = require("ActorMgr")
-let FormulaTool = require("FormulaTool")
-let Buff = require("Buff")
+let UnitCreator = require("UnitCreator")
+// let UnitDef = require("UnitDef")
+// let Buff = require("Buff")
 
 
 let ImplementEvent = ActionDef.ImplementEvent;
@@ -69,7 +69,8 @@ module.exports = {
 
     // 触发成功(产生一个buff)
     _onTriggerSuccess(msg, action) {
-        var buff = new Buff();
+        var buff = UnitCreator.createUnitByName('buff');
+        // var buff = new Buff();
         buff.init(msg, action);// 先init
         buff.onEnter();//再onEnter
     },

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 16:20:34
+ * @LastEditTime: 2019-04-18 11:11:56
  */
 
 let Unit = require("Unit")
@@ -81,7 +81,10 @@ cc.Class({
         var timer = new (this.constructor);
         timer.time_duration = this.time_duration;
         timer.time_interval = this.time_interval;
-        timer.time_delay = this.time_interval;
+        if (this.time_interval > 0) {
+            timer.time_delay = this.time_interval;
+        }
+        
         return timer;
     },
 
@@ -110,14 +113,19 @@ cc.Class({
         this.timer_current += dt;
         this.time_delay += dt;
 
-        if (this.time_delay >= this.time_interval && this.time_interval > -1) {
+        if (this.time_delay >= this.time_interval && this.time_interval > 0) {
             this.time_delay = 0;
             if (this._callback) {
                 this._callback()
             }
         }
 
-        if (this.timer_current >= this.time_duration && this.time_duration > -1) {
+        if (this.timer_current >= this.time_duration && this.time_duration > 0) {
+            if (this.time_interval < 0) {
+                if (this._callback) {
+                    this._callback()
+                }
+            }
             this.unit_active = false;
         }
         

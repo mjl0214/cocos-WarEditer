@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 01:06:00
+ * @LastEditTime: 2019-04-18 08:53:43
  */
 
 
@@ -113,7 +113,14 @@ cc.Class({
             this.formula_desc = '不使用函数';
         }
         else if (this.action_formula == FormulaEnum.attack_damage_function01) {
-            this.formula_desc = '普通伤害计算函数'
+            this.formula_desc = '简单伤害计算函数(攻击-护甲)'
+                + '(参数列表:'
+                + '[damage_source]'
+                + ' [damage_value]'
+                + ')';
+        }
+        else if (this.action_formula == FormulaEnum.attack_damage_function02) {
+            this.formula_desc = '伤害计算函数'
                 + '(参数列表:'
                 + '[damage_source]'
                 + ' [damage_value]'
