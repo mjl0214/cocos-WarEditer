@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-18 10:49:38
+ * @LastEditTime: 2019-04-18 13:35:54
  */
 
 let EventDef = require("EventDef")
@@ -152,7 +152,7 @@ module.exports = {
             
             var damage = formula_func(dv, dt, ta, at);
 
-            actor.changeVal('health', -damage);
+            actor.modifyVal('health', -damage);
 
             var unitId = this._getDamageSource(msg.unit_id, unit_id, damage_source_type);
 
@@ -221,7 +221,7 @@ module.exports = {
             
             damage = formula_func(dv, dt, ta, at);
 
-            actor.changeVal('health', -damage);
+            actor.modifyVal('health', -damage);
 
             var holderId = this._getDamageSource(msg.holder_id, element.actorId, damage_source_type);
 

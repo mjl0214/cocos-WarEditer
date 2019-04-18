@@ -1,7 +1,8 @@
 // let PoolManager = require("PoolManager")
 let SkillDef = require('SkillDef')
-let Listener = require("Listener")
-let EventDef = require("EventDef")
+
+let DialogMgr = require('DialogMgr')
+let DialogDef = require("DialogDef")
 
 cc.Class({
     extends: cc.Component,
@@ -13,7 +14,10 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        DialogMgr.init();
+    },
+
 
     start () {
         gs.gameLogic.gameBegin();
@@ -27,6 +31,8 @@ cc.Class({
 
     onButtonClick()
     {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book);
+        return;
         var actor = gs.gameLogic.getActorUnit(this.actor);
         var actor2 = gs.gameLogic.getActorUnit(this.actor2);
 

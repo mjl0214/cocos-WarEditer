@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 23:06:54
+ * @LastEditTime: 2019-04-18 13:36:12
  */
 
 
@@ -158,7 +158,7 @@ cc.Class({
         return 0;
     },
 
-    // 尽量用changeVal
+    // 尽量用modifyVal
     setVal(name, value)
     {
         var key = 'current_' + name;
@@ -170,7 +170,7 @@ cc.Class({
         return false;
     },
 
-    changeVal(name, value)
+    modifyVal(name, value)
     {
         var key = 'current_' + name;
         if (this.hasOwnProperty(key)) {
@@ -214,7 +214,7 @@ cc.Class({
         }
     },
 
-    _changeVal(type, value)
+    _modifyVal(type, value)
     {
         // console.log(type, value);
         for (let index = 0; index < this.attributes.length; index++) {
