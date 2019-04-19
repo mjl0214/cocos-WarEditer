@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2019-04-19 00:48:46
+ * @LastEditTime: 2019-04-19 14:17:45
  */
 
 let DialogDef = require("DialogDef")
@@ -15,8 +15,10 @@ module.exports = {
     m_maskPool : new cc.NodePool(),
     m_masks : new Array(),
     m_maskIndex : 0,
-    m_localZOrder : 0,
+    m_baseZIndex : 1000,
+    m_maxZIndex : 0,        // 当前最大ZIndex
     m_maskPrefab : null,
+    m_dialogIndex : 0,
 
     init()
     {
@@ -35,7 +37,7 @@ module.exports = {
         // });
     },
 
-    showDialog(id, ani)
+    showDialog(id, ani, params)
     {
         var dialog_name = DialogDef.DialogID[id];
         if (dialog_name == null) {
@@ -43,7 +45,9 @@ module.exports = {
             return;
         }
 
-        var zIndex = this.m_dialogs.length;
+        // 自动分配ZIndex
+        this.m_dialogIndex++;
+        var zIndex = this.m_baseZIndex + this.m_dialogIndex;
 
         var dialogPrefab = PoolManager.getPerfab(dialog_name);
         dialogPrefab.setPosition(cc.v2(cc.winSize.width / 2, cc.winSize.height / 2));
@@ -65,26 +69,41 @@ module.exports = {
 
         this._getParent().addChild(maskPrefab, zIndex);
         this._getParent().addChild(dialogPrefab, zIndex);
+        
+        dlgComp.onEnter(params);
 
         this.m_dialogs.push(dialogPrefab);
 
-        if (ani) {
-            this._playShowAni(dialogPrefab);
+        if (ani && ani > 0) {
+            dlgComp.playShowAni(ani);
         }
         else
         {
             dlgComp.setState(1);
         }
+
+        this._autoMaxZIndex();
     },
 
+    /**
+     * @description: 
+     * @param dialog(class or number)
+     * @return: 
+     */
     closeDialog(dialog, ani)
     {
-        if (ani) {
-            this._playCloseAni(dialog);
+        var _dialog = dialog;
+        // console.log(typeof dialog);
+        if (typeof dialog == 'number') {
+            _dialog = this.getDialog(dialog);
+        }
+
+        if (ani && ani > 0) {
+            _dialog.playCloseAni(ani);
         }
         else
         {
-            this._closeDialog(dialog);
+            this._closeDialog(_dialog);
         }
     },
 
@@ -102,11 +121,32 @@ module.exports = {
         return this.m_dialogs.length;
     },
 
+    getDialog(id)
+    {
+        for (let index = this.m_dialogs.length - 1; index >= 0; index--) {
+            const dialogPrefab = this.m_dialogs[index];
+            var dlgComp = dialogPrefab.getComponent('DialogBase');
+            // console.log(dlgComp.dialog_id);
+            if (dlgComp.dialog_id == id) {
+                return dlgComp;
+            }
+        }
+        return null;
+    },
+
+    setDialogZIndex(dialog, zIndex)
+    {
+        dialog.node.zIndex = zIndex;
+        this._autoMaxZIndex();
+        // console.log('dialog.node.zIndex', dialog.node.zIndex)
+    },
+
     _closeDialog(dialog)
     {
         var dialog_name = dialog.getDialogName();
         var maskId = dialog.getMaskId();
         dialog.setState(-1);
+        dialog.onLeave();
         PoolManager.recoveryPerfab(dialog_name, dialog.node);
 
         for (let index = 0; index < this.m_dialogs.length; index++) {
@@ -119,7 +159,26 @@ module.exports = {
 
         this._subMask(maskId);
 
+        this._autoMaxZIndex();
+
         // console.log(this.m_dialogs.length);
+    },
+
+    _autoMaxZIndex()
+    {
+        this.m_maxZIndex = this.m_baseZIndex;
+        for (let index = 0; index < this.m_dialogs.length; index++) {
+            const element = this.m_dialogs[index];
+            if (element.zIndex > this.m_maxZIndex) {
+                this.m_maxZIndex = element.zIndex;
+            }
+        }
+
+        if (this.m_dialogs.length <= 0) {
+            this.m_dialogIndex = 0;
+        }
+
+        // console.log('this.m_maxZIndex', this.m_maxZIndex);
     },
 
     _getParent()
@@ -160,35 +219,5 @@ module.exports = {
             }
         }
         return null;
-    },
-
-    _playShowAni(dialogPrefab)
-    {
-        dialogPrefab.stopAllActions();
-
-        var dlgComp = dialogPrefab.getComponent('DialogBase');
-        dlgComp.setState(0);
-        var orgScale = dialogPrefab.scale;
-        dialogPrefab.scale = 0;
-        var action = cc.sequence(cc.scaleTo(0.5, orgScale).easing(cc.easeBackOut()), cc.callFunc((target) => {
-            dlgComp.setState(1);
-        }));
-        // action.easing(cc.easeBackOut());
-        dialogPrefab.runAction(action);
-    },
-
-    _playCloseAni(dialog)
-    {
-        dialog.node.stopAllActions();
-        dialog.setState(2);
-
-        var orgScale = dialog.node.scale;
-
-        var action = cc.sequence(cc.scaleTo(0.2, 0), cc.callFunc((target) => {
-            dialog.node.scale = orgScale;
-            this._closeDialog(dialog);
-        }));
-
-        dialog.node.runAction(action);
     },
 };

@@ -40,7 +40,7 @@ cc.Class({
 
     onClickOpen()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, true);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, 1);
     },
 
     update (dt) {

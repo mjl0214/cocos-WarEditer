@@ -19,17 +19,31 @@ cc.Class({
     // onLoad () {},
 
     start () {
-        this.showLabel.string = '我是图鉴,' + '第[' + DialogMgr.getDialogAmount() + ']个对话框';
+    },
+
+    onEnter(params)
+    {
+        this.showLabel.string = '我是图鉴,' + '第[' + (DialogMgr.getDialogAmount() + 1) + ']个对话框';
+    },
+
+    onLeave()
+    {
+        // console.log('onDisable');
     },
 
     onClickClose()
     {
-        this.closeDialog(true);
+        this.closeDialog(1);
     },
 
     onClickOpen()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, true);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, 1);
+    },
+
+    onClickTip()
+    {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_tip, 1);
     },
 
     onClickCloseAll()

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2019-04-18 23:43:38
+ * @LastEditTime: 2019-04-19 14:15:50
  */
 
 let DialogMgr = require("DialogMgr")
@@ -60,6 +60,16 @@ cc.Class({
 
     // update (dt) {},
 
+    onEnter(params)
+    {// 对话框被激活时
+        console.log('DialogBase onEnable');
+    },
+
+    onLeave()
+    {// 对话框被关闭时
+        console.log('DialogBase onDisable');
+    },
+
     setMaskId(maskId)
     {
         this.maskId = maskId;
@@ -85,9 +95,66 @@ cc.Class({
         this._state = state;
     },
 
+    setDialogZIndex(zIndex)
+    {
+        DialogMgr.setDialogZIndex(this, zIndex);
+    },
+
     closeDialog(ani)
     {
+        // 两种关闭方式
         DialogMgr.closeDialog(this, ani);
+        // DialogMgr.closeDialog(this.dialog_id, ani);
+    },
+
+    playShowAni(ani)
+    {
+        switch (ani) {
+            case 1:
+            this.playShowScaleAni();
+                break;
+            // todo
+            default:
+                break;
+        }
+    },
+
+    playCloseAni(ani)
+    {
+        switch (ani) {
+            case 1:
+            this.playCloseScaleAni();
+                break;
+            // todo
+            default:
+                break;
+        }
+    },
+
+    playShowScaleAni()
+    {
+        this.node.stopAllActions();
+        this.setState(0);
+        var orgScale = this.node.scale;
+        this.node.scale = 0;
+        var action = cc.sequence(cc.scaleTo(0.5, orgScale).easing(cc.easeBackOut()), cc.callFunc((target) => {
+            this.setState(1);
+        }));
+
+        this.node.runAction(action);
+    },
+
+    playCloseScaleAni()
+    {
+        this.node.stopAllActions();
+        this.setState(2);
+        var orgScale = this.node.scale;
+        var action = cc.sequence(cc.scaleTo(0.2, 0), cc.callFunc((target) => {
+            this.node.scale = orgScale;
+            DialogMgr._closeDialog(this);
+        }));
+
+        this.node.runAction(action);
     },
 
     getDialogName()
