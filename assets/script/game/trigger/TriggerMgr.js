@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 16:38:01
+ * @LastEditTime: 2019-04-24 10:56:50
  */
 
 
@@ -71,7 +71,7 @@ module.exports = {
         for (let index = 0; index < pool.length; index++) {
             const trigger = pool[index];
             // console.log(trigger.isUnitActive());
-            if (trigger.isUnitActive()) {
+            if (trigger.isUnitActive() && trigger.getTurnOn()) {
                 trigger.isTriggerHold(msg);
             }
         }
@@ -91,38 +91,5 @@ module.exports = {
         console.log(trigger);
         this.m_triggers.removeFromPool('trigger', trigger);
     },
-
-    // // 提取触发器需要的信息
-    // _extractTriggerInfo(msg)
-    // {
-    //     // console.log(msg.hasOwnProperty('holder_id'));
-
-    //     msg.skill_level = 1;
-    //     if (msg.hasOwnProperty('holder_id')) {
-    //         var holder = ActorMgr.getActorById(msg.holder_id);
-    //         // console.log(holder);
-    //         if (holder) {
-    //             msg.holder_team = holder.getTeamId();
-    //         }
-    //     }
-    //     else
-    //     {
-    //         msg.holder_team = -1;
-    //     }
-
-    //     if (msg.hasOwnProperty('targets')) {
-    //         var targets = msg['targets'];
-    //         msg.target_amount = targets.length;
-    //     }
-    //     else
-    //     {
-    //         msg.target_amount = 0;
-    //         msg.targets = [];
-    //     }
-
-    //     // console.log(msg)
-
-    //     return msg;
-    // },
 
 };

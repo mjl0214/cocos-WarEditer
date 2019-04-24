@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 13:36:12
+ * @LastEditTime: 2019-04-24 16:04:30
  */
 
 
@@ -11,9 +11,12 @@ let Unit = require("Unit")
 let UnitDef = require("UnitDef")
 let ActorDef = require("ActorDef")
 let Attribute = require("Attribute")
-// let Listener = require("Listener")
+let Listener = require("Listener")
 let StateDef = require("StateDef")
 let SkillDef = require("SkillDef")
+let Buff = require("Buff")
+let EventDef = require("EventDef")
+let TriggerMsg = require("TriggerMsg")
 
 let StateType = StateDef.StateType;
 
@@ -84,13 +87,6 @@ cc.Class({
             readonly : true,
         },
 
-        current_anger : {
-            default: -1,
-            type : cc.Float, 
-            tooltip : "实际愤怒值",
-            readonly : true,
-        },
-
         current_level : {
             default: 1,
             type : cc.Float, 
@@ -104,6 +100,7 @@ cc.Class({
             tooltip : "actor状态",
             readonly : true,
         },
+
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -113,6 +110,12 @@ cc.Class({
         // console.log(this.getAttributeValue(AT.health_point));
         // console.log(this.getAttributeValue(AT.attack_point));
         this.initAttributeValue();
+
+        var event_type = EventDef.EventType.unit_create;
+        var msg = TriggerMsg.getSystemMsg();
+        msg.event_type = event_type;
+        msg.unit_id = this.getUnitId();
+        Listener.dispatch(EventDef.EventType[event_type], msg);
     },
 
     onExit () {
@@ -140,14 +143,13 @@ cc.Class({
         this.current_mana = this._getVal(AT.mana_point) + this._getVal(AT.mana_point_ex);
         this.current_attack = this._getVal(AT.attack_point) + this._getVal(AT.attack_point_ex);
         this.current_armor = this._getVal(AT.armor_point) + this._getVal(AT.armor_point_ex);
-        this.current_anger = this._getVal(AT.anger_point) + this._getVal(AT.anger_point_ex);
         this.current_level = this._getVal(AT.level_point);
 
         this.current_attack_type = this._getVal(AT.attack_type);
         this.current_armor_type = this._getVal(AT.armor_type);
     },
 
-    // 'health' 'attack' 'armor' 'anger' 'level'
+    // 'health' 'attack' 'armor' 'level'
     getVal(name)
     {
         var key = 'current_' + name;
@@ -158,7 +160,7 @@ cc.Class({
         return 0;
     },
 
-    // 尽量用modifyVal
+    // 
     setVal(name, value)
     {
         var key = 'current_' + name;
@@ -190,6 +192,16 @@ cc.Class({
         }
 
         return 0;
+    },
+
+    setState(state)
+    {
+        this.actor_state = state;
+    },
+
+    getState()
+    {
+        return this.actor_state;
     },
 
     _getVal(type)

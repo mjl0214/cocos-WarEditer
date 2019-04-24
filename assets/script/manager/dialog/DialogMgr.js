@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2019-04-19 14:17:45
+ * @LastEditTime: 2019-04-23 10:04:33
  */
 
 let DialogDef = require("DialogDef")
@@ -45,18 +45,26 @@ module.exports = {
             return;
         }
 
+        var _dialog = this.getDialog(id);
+        if (_dialog && _dialog.single == true) {
+            this.closeDialog(_dialog);
+        }
+
         // 自动分配ZIndex
         this.m_dialogIndex++;
         var zIndex = this.m_baseZIndex + this.m_dialogIndex;
 
         var dialogPrefab = PoolManager.getPerfab(dialog_name);
+        if (dialogPrefab == null) {
+            console.error('预制体未注册 id =[' + dialog_name + ']');
+            return;
+        }
         dialogPrefab.setPosition(cc.v2(cc.winSize.width / 2, cc.winSize.height / 2));
+        var dlgComp = dialogPrefab.getComponent('DialogBase');
 
         // 分配mask
         var maskPrefab = this._addMask();
         maskPrefab.setPosition(cc.v2(cc.winSize.width / 2, cc.winSize.height / 2));
-
-        var dlgComp = dialogPrefab.getComponent('DialogBase');
         var maskComp = maskPrefab.getComponent('DialogMask');
 
         var maskId = this.m_maskIndex++;
@@ -69,6 +77,7 @@ module.exports = {
 
         this._getParent().addChild(maskPrefab, zIndex);
         this._getParent().addChild(dialogPrefab, zIndex);
+        console.log('zIndex', zIndex);
         
         dlgComp.onEnter(params);
 
@@ -109,6 +118,7 @@ module.exports = {
 
     closeAllDialog(ani)
     {
+        // console.log(this.m_dialogs);
         for (let index = this.m_dialogs.length - 1; index >= 0; index--) {
             const dialogPrefab = this.m_dialogs[index];
             var dlgComp = dialogPrefab.getComponent('DialogBase');
@@ -138,6 +148,15 @@ module.exports = {
     {
         dialog.node.zIndex = zIndex;
         this._autoMaxZIndex();
+
+        var maskPrefab = this._getMask(dialog.getMaskId());
+        console.log(maskPrefab);
+        if (maskPrefab) {
+            var maskComp = maskPrefab.getComponent('DialogMask');
+            maskComp.node.zIndex = zIndex;
+            console.log(maskComp.node.zIndex);
+        }
+        
         // console.log('dialog.node.zIndex', dialog.node.zIndex)
     },
 

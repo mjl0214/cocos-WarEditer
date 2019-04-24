@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 14:32:23
+ * @LastEditTime: 2019-04-23 10:58:34
  */
 
 
@@ -46,6 +46,11 @@ module.exports = {
     removeUnit(unit)
     {
         this.m_units.removeFromPool(unit.getUnitType(), unit);
+    },
+
+    clearAllUnit()
+    {
+        this.m_units.clearAllPool();
     },
 
     getUnitById(id)

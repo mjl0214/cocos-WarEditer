@@ -1,9 +1,9 @@
 /*
  * @Description: 监听
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-12 14:24:19
+ * @LastEditTime: 2019-04-24 15:52:06
  */
 
 
@@ -42,6 +42,7 @@ module.exports = {
 
     dispatch(key, param)
     {
+        console.warn(key, param);
         for (let i = this.m_funcArray.length - 1; i >= 0; i--) {
             const o = this.m_funcArray[i];
             if(key == o.key || (o.type && o.type == 'all')){

@@ -83,6 +83,8 @@
     "unit_active": false,
     "unit_list": [],
     "trigger_id": -1,
+    "trigger_name": "刷兵",
+    "turn_on": true,
     "show_general": true,
     "trigger_events": [
       {
@@ -101,27 +103,28 @@
     "_id": ""
   },
   {
-    "__type__": "Event",
-    "event_desc": "[系统事件]游戏开始",
+    "__type__": "EventUnit",
     "_N$unit_type": 3,
-    "_N$event_type": 101
+    "_N$event_type": 101,
+    "event_desc": "[系统事件]游戏开始"
   },
   {
-    "__type__": "Action",
+    "__type__": "ActionUnit",
     "action_conditions": [],
+    "action_formula": 0,
     "action_implements": [],
     "action_timer": {
       "__id__": 5
     },
-    "_N$action_formula": 0
+    "action_trigger_actorId": -1
   },
   {
-    "__type__": "Timer",
+    "__type__": "TimerUnit",
     "unit_type": 7,
     "unit_active": false,
     "unit_list": [],
-    "time_duration": 0,
     "time_interval": 0,
+    "time_duration": 0,
     "time_delay": 0,
     "timer_current": 0
   },

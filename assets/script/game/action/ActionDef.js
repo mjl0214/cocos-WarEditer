@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 10:05:34
+ * @LastEditTime: 2019-04-24 16:54:34
  */
 
 
@@ -34,7 +34,7 @@ ActionDef.ImplementValueType = cc.Enum({
     level_user : 1,         // 使用者等级
     level_skill : 2,        // 技能等级
     random_value : 3,       // 随机 
-    attribute_user : 4,     // 玩家属性
+    percentage : 4,         // 百分比    
 });
 
 // 执行类型
@@ -48,9 +48,9 @@ ActionDef.ImplementType = cc.Enum({
     consume_anger : 6,      // 怒气消耗
 });
 
-// 执行事件
-ActionDef.ImplementEvent = cc.Enum({
-    unknown : 0,
-    begin : 1,
-    end : 2,
-});
+// // 执行事件
+// ActionDef.ImplementEvent = cc.Enum({
+//     unknown : 0,
+//     begin : 1,
+//     end : 2,
+// });

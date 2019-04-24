@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 13:07:01
+ * @LastEditTime: 2019-04-24 13:53:20
  */
 
 
@@ -14,11 +14,14 @@ let Listener = require("Listener")
 let UnitCreator = require("UnitCreator")
 // let UnitDef = require("UnitDef")
 // let Buff = require("Buff")
+let FormulaTool = require("FormulaTool")
+// let Timer = require("Timer")
 
 
 let ImplementEvent = ActionDef.ImplementEvent;
 let EventType = EventDef.EventType;
 let ImpType = ActionDef.ImplementType;
+let FormulaEnum = FormulaTool.FormulaEnum;
 
 module.exports = {
 
@@ -40,9 +43,7 @@ module.exports = {
             return;
         }
 
-        // this._implementHold(msg, implementMsg);
         this._onTriggerSuccess(msg, action);
-        this._onTriggerEnd(msg);
 
         return true;
     },
@@ -61,18 +62,16 @@ module.exports = {
         return isCondition;
     },
 
-    _onTriggerEnd(msg)
-    {
-        // 发送动作结果给触发器
-        Listener.dispatch(ImplementEvent[ImplementEvent.end], msg);
-    },
-
-    // 触发成功(产生一个buff)
+    // 触发成功(产生一个时光鸡)
     _onTriggerSuccess(msg, action) {
-        var buff = UnitCreator.createUnitByName('buff');
-        // var buff = new Buff();
-        buff.init(msg, action);// 先init
-        buff.onEnter();//再onEnter
+        /*
+        * 我是时光鸡
+        */
+        let TimerMachine = require("TimerMachine")
+        var timerMachine = new TimerMachine();
+        timerMachine.init(msg, action);
+        timerMachine.onEnter();
+
     },
 
 }

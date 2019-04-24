@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 14:26:54
+ * @LastEditTime: 2019-04-23 13:12:28
  */
 
 
@@ -62,7 +62,7 @@ cc.Class({
 
     start () {
         // JSON.parse(this.getSkillJson())
-        console.log(JSON.stringify(this.getSkillJson()));
+        // console.log(JSON.stringify(this.getSkillJson()));
     },
 
     // update (dt) {},

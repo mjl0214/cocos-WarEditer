@@ -3,16 +3,16 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 13:25:21
+ * @LastEditTime: 2019-04-24 15:56:16
  */
 
 
-let Event = require("Event")
-let Condition = require("Condition")
+let EventUnit = require("EventUnit")
+let ConditionUnit = require("ConditionUnit")
 let ConditionHandle = require("ConditionHandle")
 let EventHandle = require("EventHandle")
 let ActionHandle = require("ActionHandle")
-let Action = require("Action")
+let ActionUnit = require("ActionUnit")
 let Unit = require("Unit")
 let TriggerMgr = require("TriggerMgr")
 let UnitDef = require("UnitDef")
@@ -38,6 +38,16 @@ cc.Class({
             visible : false,
         },
 
+        trigger_name : {
+            default : '',
+            tooltip : "触发器名字",
+        },
+
+        turn_on : {
+            default : true,
+            tooltip : "开关",
+        },
+
         show_general : {
             default : true,
             tooltip : "显示总纲",
@@ -58,19 +68,19 @@ cc.Class({
 
         trigger_events : {
             default: [],
-            type : [Event], 
+            type : [EventUnit], 
             tooltip : "事件",
         },
 
         trigger_conditions : {
             default: [],
-            type : [Condition], 
+            type : [ConditionUnit], 
             tooltip : "条件",
         },
 
         trigger_actions : {
             default: [],
-            type : [Action], 
+            type : [ActionUnit], 
             tooltip : "动作",
         },
     },
@@ -93,6 +103,16 @@ cc.Class({
     setTriggerId(triggerId)
     {
         this.trigger_id = triggerId;
+    },
+
+    getTurnOn()
+    {
+        return this.turn_on;
+    },
+
+    setTurnOn(on)
+    {
+        this.turn_on = on;
     },
 
     // 是否触发成功

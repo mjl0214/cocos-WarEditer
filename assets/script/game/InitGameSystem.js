@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 16:17:02
+ * @LastEditTime: 2019-04-23 11:03:56
  */
 
 
@@ -21,5 +21,9 @@ gs.triggerMgr.init();
 gs.actorMgr.init();
 gs.timerMgr.init();
 gs.gameLogic.init();
+
+var Logger = require("Logger");
+gs.gameLogger = new Logger();
+gs.gameLogger.turnon();
 
 window.gs = window.$ = gs;

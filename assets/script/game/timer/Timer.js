@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 11:11:56
+ * @LastEditTime: 2019-04-23 13:47:52
  */
 
 let Unit = require("Unit")
@@ -23,17 +23,17 @@ cc.Class({
             readonly : true,
             override : true,
         },
-        
-        time_duration : {
-            default: 0,
-            type : cc.Float, 
-            tooltip : "持续时间",
-        },
 
         time_interval : {
             default: 0,
             type : cc.Float, 
             tooltip : "间隔",
+        },
+
+        time_duration : {
+            default: 0,
+            type : cc.Float, 
+            tooltip : "持续时间",
         },
 
         time_delay : {
@@ -54,12 +54,22 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     ctor () {
-
+        /*
+        * 说明
+        * interval >= 0 (call at first)
+        * interval < 0  duration > 0 (call at end)
+        * interval -1 (no call at any)
+        */
     },
 
     onEnter () {
         this._super();
         TimerMgr.pushTimer(this);
+
+        // console.log('timer onEnter', new Date());
+        if (this.time_interval >= 0) {
+            this.doCall();
+        }
     },
 
     onExit () {
@@ -81,9 +91,9 @@ cc.Class({
         var timer = new (this.constructor);
         timer.time_duration = this.time_duration;
         timer.time_interval = this.time_interval;
-        if (this.time_interval > 0) {
-            timer.time_delay = this.time_interval;
-        }
+        // if (this.time_interval > 0) {
+        //     timer.time_delay = this.time_interval;
+        // }
         
         return timer;
     },
@@ -106,6 +116,14 @@ cc.Class({
         this.time_delay = 0;
     },
 
+    doCall()
+    {
+        console.log('doCall！！！', new Date());
+        if (this._callback) {
+            this._callback()
+        }
+    },
+
     update (dt) {
         if (this.unit_active == false) {
             return;
@@ -115,16 +133,12 @@ cc.Class({
 
         if (this.time_delay >= this.time_interval && this.time_interval > 0) {
             this.time_delay = 0;
-            if (this._callback) {
-                this._callback()
-            }
+            this.doCall();
         }
 
-        if (this.timer_current >= this.time_duration && this.time_duration > 0) {
-            if (this.time_interval < 0) {
-                if (this._callback) {
-                    this._callback()
-                }
+        if (this.timer_current >= this.time_duration && this.time_duration >= 0) {
+            if (this.time_interval > 0) {
+                this.doCall();
             }
             this.unit_active = false;
         }

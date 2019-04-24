@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 16:17:23
+ * @LastEditTime: 2019-04-23 14:09:30
  */
 
 
@@ -58,7 +58,7 @@ module.exports = {
     {
         var event_type = EventType.game_begin;
 
-        var msg = TriggerMsg.getMsg();
+        var msg = TriggerMsg.getSystemMsg();
         msg.event_type = event_type;
         msg.unit_id = this.m_systemUnit.getUnitId();
         
@@ -73,7 +73,7 @@ module.exports = {
     {
         var event_type = EventType.cast_skill;
 
-        var msg = TriggerMsg.getMsg();
+        var msg = TriggerMsg.getSkillMsg();
         msg.event_type = event_type;
         msg.unit_id = unitId;
         msg.skill_id = skillId;

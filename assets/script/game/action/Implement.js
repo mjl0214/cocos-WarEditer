@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 10:14:26
+ * @LastEditTime: 2019-04-24 17:02:43
  */
 
 
@@ -23,9 +23,37 @@ cc.Class({
         implement_type : {
             default: ImpType.nothing,
             type : cc.Enum(ImpType), 
-            tooltip : "执行类型",
+            tooltip : "类型",
             notify() {
                 this.getImplementDesc();
+            },
+        },
+
+        user_attribute_key : {
+            default: ActorDef.AttributeKey.unknown,
+            type : cc.Enum(ActorDef.AttributeKey), 
+            tooltip : "使用者属性键值",
+            // displayName : "Implement Value List",
+            visible() {
+                var result = (this.implement_type == ImpType.actor_attribute) || 
+                    (this.implement_type == ImpType.damage_source);
+                return result;
+            },
+            notify() {
+
+            },
+        },
+
+        damage_source_type : {
+            default: ActionDef.DamageSourceType.nothing,
+            type : cc.Enum(ActionDef.DamageSourceType), 
+            tooltip : "伤害来源",
+            // displayName : "Implement Value List",
+            visible() {
+                return this.implement_type == ImpType.damage_source;
+            },
+            notify() {
+
             },
         },
 
@@ -58,9 +86,9 @@ cc.Class({
                     return false;
                 }
                 
-                if (this.implement_value_type == ActionDef.ImplementValueType.attribute_user) {
-                    return false;
-                }
+                // if (this.implement_value_type == ActionDef.ImplementValueType.attribute_user) {
+                //     return false;
+                // }
                 // if (this.implement_type == ImpType.function_used) {
                 //     return false;
                 // }
@@ -68,31 +96,6 @@ cc.Class({
             },
         },
 
-        damage_source_type : {
-            default: ActionDef.DamageSourceType.nothing,
-            type : cc.Enum(ActionDef.DamageSourceType), 
-            tooltip : "伤害来源",
-            // displayName : "Implement Value List",
-            visible() {
-                return this.implement_type == ImpType.damage_source;
-            },
-            notify() {
-
-            },
-        },
-
-        user_attribute_key : {
-            default: ActorDef.AttributeKey.unknown,
-            type : cc.Enum(ActorDef.AttributeKey), 
-            tooltip : "使用者属性键值",
-            // displayName : "Implement Value List",
-            visible() {
-                return this.implement_value_type == ActionDef.ImplementValueType.attribute_user;
-            },
-            notify() {
-
-            },
-        },
 
         // temp_value : {
         //     default: '', 

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 15:43:48
+ * @LastEditTime: 2019-04-22 16:13:52
  */
 
 
@@ -20,4 +20,5 @@ UnitDef.TypeID = cc.Enum({
     buff : 6,               // buff
     timer : 7,              // 定时器
     system : 8,             // 系统
+    
 });

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 10:51:57
+ * @LastEditTime: 2019-04-23 14:44:12
  */
 
 window.getRandom = function (min, max)
@@ -25,6 +25,8 @@ module.exports = {
         none_function : 0,
         attack_damage_function01 : 1,
         attack_damage_function02 : 2,
+        buff_function : 3,
+        trigger_function : 4,
     }),
 
     /**
@@ -65,4 +67,25 @@ module.exports = {
        damage = damage.toFixed(0);
        return damage;
    },
+
+   /**
+    * @description: buff
+    * @param {type} 
+    * @return: 
+    */
+   buff_function()
+   {
+
+   },
+
+   /**
+    * @description: trigger
+    * @param {type} 
+    * @return: 
+    */
+   trigger_function()
+   {
+
+   },
+   
 };

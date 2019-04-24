@@ -1,9 +1,9 @@
 /*
  * @Description: 数据池
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 12:48:22
+ * @LastEditTime: 2019-04-22 09:00:41
  */
 
 
@@ -78,6 +78,15 @@ cc.Class({
         var pool = this.m_datapools[key];
         if (pool) {
             pool.length = 0;
+        }
+    },
+
+    clearAllPool()
+    {
+        for (const key in this.m_datapools) {
+            if (this.m_datapools.hasOwnProperty(key)) {
+                this.claerPool(key);
+            }
         }
     },
 

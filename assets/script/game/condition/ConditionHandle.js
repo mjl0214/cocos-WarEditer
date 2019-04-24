@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 23:08:24
+ * @LastEditTime: 2019-04-22 12:56:53
  */
 
 
@@ -11,10 +11,12 @@ let ConditionDef = require("ConditionDef")
 let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
 let ActorMgr = require("ActorMgr")
+let StateDef = require("StateDef")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
 let TarType = ActionDef.TargetType;
+let StateType = StateDef.StateType;
 
 module.exports = {
 
@@ -63,28 +65,19 @@ module.exports = {
             case CondType.target_appoint:
                 isHold = isHold && this.handle_target_appoint();
                 break;
+            case CondType.unit_alive:
+                isHold = isHold && this.handle_unit_alive();
+                break;
+            case CondType.unit_dead:
+                isHold = isHold && this.handle_unit_dead();
+                break;
+
             default:
                 isHold = isHold && false;
                 break;
         }
 
         return isHold;
-    },
-
-    handle_unknown(){ 
-        return false;
-    },
-
-    handle_skill_id(){
-        return this._juageLogicGate(this.m_msg.skill_id, 
-            this.condition_value, 
-            this.logic_gate);
-    },
-
-    handle_target_amount(){
-        return this._juageLogicGate(this.m_msg.target_ids.length, 
-            this.condition_value, 
-            this.logic_gate);
     },
 
     _juageLogicGate(value1, value2, logic_gate)
@@ -95,8 +88,8 @@ module.exports = {
         // unequal : 3,        // 不等于
         // greater_equal : 4,  // 大于等于
         // less_equal : 5,     // 小于等于
-        // logic_true : 6,
-        // logic_false : 7,
+        // logic_true : 6,     // true
+        // logic_false : 7,    // false
 
         var result = true;
         switch (logic_gate) {
@@ -131,6 +124,22 @@ module.exports = {
         }
 
         return result;
+    },
+
+    handle_unknown(){ 
+        return false;
+    },
+
+    handle_skill_id(){
+        return this._juageLogicGate(this.m_msg.skill_id, 
+            this.condition_value, 
+            this.logic_gate);
+    },
+
+    handle_target_amount(){
+        return this._juageLogicGate(this.m_msg.target_ids.length, 
+            this.condition_value, 
+            this.logic_gate);
     },
 
     handle_target_appoint(){ 
@@ -191,4 +200,45 @@ module.exports = {
 
         return result;
     },
+
+    handle_unit_alive()
+    {
+        var result = true;
+
+        for (let index = 0; index < this.m_msg.target_ids.length; index++) {
+            const unit_id = this.m_msg.target_ids[index];
+            var actor = ActorMgr.getActorByUnitId(unit_id);
+            if (actor != null) {
+                var state = actor.getState();
+                if (this.logic_gate == LGType.logic_true) {
+                    result = result && (state != StateType.death);
+                } else {
+                    result = result && (state == StateType.death);
+                }
+            }
+        }
+
+        return result;
+    },
+
+    handle_unit_dead()
+    {
+        var result = true;
+
+        for (let index = 0; index < this.m_msg.target_ids.length; index++) {
+            const unit_id = this.m_msg.target_ids[index];
+            var actor = ActorMgr.getActorByUnitId(unit_id);
+            if (actor != null) {
+                var state = actor.getState();
+                if (this.logic_gate == LGType.logic_true) {
+                    result = result && (state == StateType.death);
+                } else {
+                    result = result && (state != StateType.death);
+                }
+            }
+        }
+
+        return result;
+    },
+
 };

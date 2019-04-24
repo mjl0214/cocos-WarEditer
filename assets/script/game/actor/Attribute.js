@@ -3,11 +3,11 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 15:44:42
+ * @LastEditTime: 2019-04-24 15:35:48
  */
 
 let ActorDef = require("ActorDef")
-// let UnitDef = require("UnitDef")
+let ActionDef = require("ActionDef")
 
 cc.Class({
     // extends: cc.Component,
@@ -19,6 +19,25 @@ cc.Class({
             default: ActorDef.AttributeType.unknown,
             type : cc.Enum(ActorDef.AttributeType), 
             tooltip : "属性",
+        },
+
+        value_type : {
+            default: ActionDef.ImplementValueType.constant,
+            type : cc.Enum(ActionDef.ImplementValueType), 
+            tooltip : "值类型",
+            visible() {
+                switch (this.attribute) {
+                    case ActorDef.AttributeType.attack_type:
+                    case ActorDef.AttributeType.armor_type:  
+                    case ActorDef.AttributeType.race_point:
+                    case ActorDef.AttributeType.classes_point:   
+                        return false;
+                
+                    default:
+                        break;
+                }
+                return true;
+            },
         },
 
         attribute_value : {

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 10:53:13
- * @LastEditTime: 2019-04-15 11:00:05
+ * @LastEditTime: 2019-04-22 09:32:24
  */
 
 var StateDef = module.exports;
@@ -14,4 +14,5 @@ StateDef.StateType = cc.Enum({
     moving : 2,                 // 移动中
     hurted : 3,                 // 受伤
     casting : 4,                // 施法中
+    death : 5,                  // 死亡
 });

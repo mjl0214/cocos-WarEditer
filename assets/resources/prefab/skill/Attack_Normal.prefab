@@ -1,0 +1,243 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Attack_Normal",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [],
+    "_active": true,
+    "_level": 1,
+    "_components": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_prefab": {
+      "__id__": 13
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cd449oClb9O/KulillF5Qzs",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "unit_type": 4,
+    "unit_active": false,
+    "unit_list": [],
+    "holder_id": -1,
+    "skill_id": 1,
+    "skill_name": "普通攻击",
+    "skill_desc": "吧啦吧啦吧啦吧啦",
+    "skill_level": 1,
+    "trigger_unit": {
+      "__id__": 3
+    },
+    "poolNum": 1,
+    "_id": ""
+  },
+  {
+    "__type__": "Trigger",
+    "unit_type": 5,
+    "unit_active": false,
+    "unit_list": [],
+    "trigger_id": -1,
+    "trigger_name": "",
+    "turn_on": true,
+    "show_general": true,
+    "trigger_events": [
+      {
+        "__id__": 4
+      }
+    ],
+    "trigger_conditions": [
+      {
+        "__id__": 5
+      }
+    ],
+    "trigger_actions": [
+      {
+        "__id__": 6
+      }
+    ]
+  },
+  {
+    "__type__": "EventUnit",
+    "_N$unit_type": 1,
+    "_N$event_type": 1,
+    "event_desc": "[任意单位]释放技能"
+  },
+  {
+    "__type__": "ConditionUnit",
+    "temp_value": 1,
+    "_N$condition_type": 1,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 0,
+    "_N$skill_id": 1,
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0,
+    "_N$actor_race": 0,
+    "_N$actor_classes": 0,
+    "condition_desc": "[技能ID] = [attack_normal]"
+  },
+  {
+    "__type__": "ActionUnit",
+    "action_conditions": [
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 9
+      }
+    ],
+    "action_formula": 2,
+    "action_implements": [
+      {
+        "__id__": 10
+      },
+      {
+        "__id__": 11
+      }
+    ],
+    "action_timer": {
+      "__id__": 12
+    },
+    "action_trigger_actorId": -1
+  },
+  {
+    "__type__": "ConditionUnit",
+    "temp_value": 3,
+    "_N$condition_type": 4,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 0,
+    "_N$skill_id": 0,
+    "_N$target_type": 3,
+    "_N$actor_attribute_key": 0,
+    "_N$actor_race": 0,
+    "_N$actor_classes": 0,
+    "condition_desc": "[目标类型] = [enemy]"
+  },
+  {
+    "__type__": "ConditionUnit",
+    "temp_value": 1,
+    "_N$condition_type": 5,
+    "_N$logic_gate": 0,
+    "_N$condition_value": 1,
+    "_N$skill_id": 0,
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0,
+    "_N$actor_race": 0,
+    "_N$actor_classes": 0,
+    "condition_desc": "[目标数量] = [1]"
+  },
+  {
+    "__type__": "ConditionUnit",
+    "temp_value": 0,
+    "_N$condition_type": 6,
+    "_N$logic_gate": 6,
+    "_N$condition_value": 0,
+    "_N$skill_id": 0,
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0,
+    "_N$actor_race": 0,
+    "_N$actor_classes": 0,
+    "condition_desc": "[目标存活] = [true]"
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [],
+    "_N$implement_type": 2,
+    "_N$user_attribute_key": 0,
+    "_N$damage_source_type": 1,
+    "_N$implement_value_type": 0
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [],
+    "_N$implement_type": 3,
+    "_N$user_attribute_key": 3,
+    "_N$damage_source_type": 0,
+    "_N$implement_value_type": 0
+  },
+  {
+    "__type__": "TimerUnit",
+    "unit_type": 7,
+    "unit_active": false,
+    "unit_list": [],
+    "time_interval": 0,
+    "time_duration": 0,
+    "time_delay": 0,
+    "timer_current": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "1cbd4652-8e39-4e47-88bd-491f85786e63"
+    },
+    "fileId": "9fHvhQDj9OFotRSvOHotrz",
+    "sync": false
+  }
+]

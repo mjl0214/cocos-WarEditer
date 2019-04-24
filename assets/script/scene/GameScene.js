@@ -43,6 +43,11 @@ cc.Class({
         DialogMgr.showDialog(DialogDef.DialogID.dialog_book, 1);
     },
 
+    onClickToTest()
+    {
+        cc.director.loadScene('TestScene');
+    },
+
     update (dt) {
         gs.gameLogic.update(dt);
     },

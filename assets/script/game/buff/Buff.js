@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:10:49
+ * @LastEditTime: 2019-04-24 14:44:57
  */
 
 
@@ -12,7 +12,10 @@ let Item = require("Item")
 let Action = require("Action")
 let BuffMgr = require("BuffMgr")
 let EventDef = require("EventDef")
+let SkillDef = require('SkillDef')
 let FormulaHandle = require("FormulaHandle")
+let Attribute = require("Attribute")
+let ActionDef = require("ActionDef")
 
 let EventType = EventDef.EventType;
 
@@ -22,23 +25,18 @@ cc.Class({
     name : "Buff",
 
     properties: {
-        buff_action : {
-            default: null,
-            type : Action, 
-            tooltip : "buff-动作",
+        attributes : {
+            default: [],
+            type : [Attribute], 
+            tooltip : "属性列表",
         },
 
-        buff_timer : {
-            default: null,
-            type : Timer, 
-            tooltip : "buff-计时器",
+        buff_holdId : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "buff-持有者",
         },
-
-        buff_msg : {
-            default: null,
-            // type : Timer, 
-            tooltip : "buff-信息",
-        },
+        
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -70,15 +68,17 @@ cc.Class({
     onHandle()
     {
         // console.log(this.buff_msg);
-        console.log('触发！！！', '[' + EventType[this.buff_msg.event_type] + "]", new Date());
+        // console.log('触发！！！', '[' + EventType[this.buff_msg.event_type] + "]", new Date());
         FormulaHandle.executeAction(this.buff_msg, this.buff_action);
         // console.log(ActionHandle);
     },
 
-    init(msg, action)
+    init(msg, action, buff_hold)
     {
         this.buff_msg = msg;
         this.buff_action = action;
+        this.buff_hold = buff_hold;
+        this.buff_type = msg.skill_id;
 
         this.buff_timer = action.action_timer.clone();
         this.buff_timer.setCallBack(this.onHandle.bind(this));

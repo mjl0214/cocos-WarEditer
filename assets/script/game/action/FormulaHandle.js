@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-18 13:35:54
+ * @LastEditTime: 2019-04-24 15:46:41
  */
 
 let EventDef = require("EventDef")
@@ -38,6 +38,9 @@ module.exports = {
             case FormulaTool.FormulaEnum.attack_damage_function01:
             case FormulaTool.FormulaEnum.attack_damage_function02:
                 this._attack_damage_func(msg, action);
+                break;
+            case FormulaTool.FormulaEnum.buff_function:
+                this._buff_func(msg, action);
                 break;
             default:
                 break;
@@ -169,72 +172,8 @@ module.exports = {
         }
     },
 
-    // 执行动作
-    _implementHold(msg, imps)
+    _buff_func(msg, action)
     {
-        // data.implement_type = this.implement_type;
-        // data.implement_value_type = this.implement_value_type;
-        // data.implement_value_list = this.implement_value_list;
-        // data.damage_source_type = this.damage_source_type;
-        // data.implement_function = this.implement_function;
-        // console.log('action_type', msg.action_type);
-        var dv = 0;
-        var ta = 0;
-        var dt = 0;
-        var at = 0;
-        var damage = 0;
-        var func_index = -1;
-        var damage_source_type = ActionDef.DamageSourceType.nothing;
-        for (let index = 0; index < imps.length; index++) {
-            const implement = imps[index];
-            if (implement.implement_type == ImpType.function_used) {
-                func_index = implement.implement_function;
-            }
-            else if (implement.implement_type == ImpType.damage_value) {
-                dv = implement.implement_value_list[0];
-                dv = this._getHurtVal(msg.holder_id, msg.skill_level, implement);
-            }
-            else if (implement.implement_type == ImpType.damage_source) {
-                damage_source_type = implement.damage_source_type;
-            }
-        }
         
-        var funcName = FormulaTool.FormulaEnum[func_index];
-        // console.log('funcName', funcName);
-        if (funcName == null && func_index > -1) {
-            console.error('未知函数');
-            return;
-        }
-
-        var formula_func = FormulaTool[funcName];
-        // console.log('func', func);
-
-        for (let index = 0; index < msg.targets.length; index++) {
-            const element = msg.targets[index];
-            // console.log('element', element);
-            var actor = ActorMgr.getActorById(element.actorId);
-            // console.log('actor', actor);
-            if (actor == null) {
-                continue;
-            }
-            ta = actor.getVal('armor');
-            
-            damage = formula_func(dv, dt, ta, at);
-
-            actor.modifyVal('health', -damage);
-
-            var holderId = this._getDamageSource(msg.holder_id, element.actorId, damage_source_type);
-
-            var event_type = EventType.attribute_change;
-            var send_data = {
-                event_type : EventType[event_type],
-                attribute : 'health', 
-                value : -damage,
-                targetId : element.actorId,
-                holderId : holderId,
-            };
-            console.log(send_data);
-            Listener.dispatch(EventType[event_type], send_data);
-        }
     },
 };

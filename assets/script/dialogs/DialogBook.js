@@ -46,9 +46,14 @@ cc.Class({
         DialogMgr.showDialog(DialogDef.DialogID.dialog_tip, 1);
     },
 
+    onClickProp()
+    {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_prop, 1);
+    },
+
     onClickCloseAll()
     {
-        DialogMgr.closeAllDialog(true);
+        DialogMgr.closeAllDialog(1);
     },
 
     // update (dt) {},

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-18 15:44:13
+ * @LastEditTime: 2019-04-24 15:39:20
  */
 
 
@@ -67,26 +67,26 @@ ActorDef.AttributeType = cc.Enum({
     attack_type : 4,                // 攻击类型
     armor_point : 5,                // 护甲值
     armor_type : 6,                 // 护甲类型
-    anger_point : 7,                // 愤怒值
-    action_point : 8,               // 行动值
-    heath_recover_rate : 9,
-    mana_recover_rate : 10,
-    motion_speed_point : 11,
-    strength_point : 12,
-    intelligence_point : 13,
-    agility_point : 14,
-    day_vision : 15,
-    night_vision : 16,
-    attack_speed_point : 17,
-    level_point : 18,               // 等级
-    race_point : 19,                // 种族
-    classes_point : 20,             // 职业
+    action_point : 7,               // 行动值
+    heath_recover_rate : 8,         // 生命恢复速率
+    mana_recover_rate : 9,         // 魔法恢复速率
+    motion_speed_point : 10,        // 移动速率
+    strength_point : 11,            // 力量值
+    intelligence_point : 12,        // 智力值
+    agility_point : 13,             // 敏捷值
+    day_vision : 14,                // 昼视
+    night_vision : 15,              // 夜视
+    attack_speed_point : 16,        // 攻击速率
+    level_point : 17,               // 等级
+    race_point : 18,                // 种族
+    classes_point : 19,             // 职业
+    attack_range_max_point : 20,    // 最大攻击距离
+    attack_range_min_point : 21,    // 最小攻击距离
 
     health_point_ex : 101,          // 额外生命值(生命偷取、加血光环...)
     mana_point_ex : 102,            // 额外魔法值(魔法偷取、加魔光环...)
     attack_point_ex : 103,          // 额外攻击值(攻击偷取、加攻光环...)
     armor_point_ex : 104,           // 额外护甲值(护甲偷取、加甲光环...)
-    anger_point_ex : 105,           // 额外愤怒值(愤怒偷取、加怒光环...)
 });
 
 // 攻击类型

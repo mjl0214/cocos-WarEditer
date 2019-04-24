@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2019-04-19 14:15:50
+ * @LastEditTime: 2019-04-23 09:01:52
  */
 
 let DialogMgr = require("DialogMgr")
@@ -36,6 +36,11 @@ cc.Class({
             visible : false,
         },
 
+        single : {
+            default: false,
+            tooltip : "单一",
+        },
+
         poolNum : {
             default: 1,
             type : cc.Integer, 
@@ -53,6 +58,11 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {},
+
+    onDestroy()
+    {
+        DialogMgr.closeDialog(this, false);
+    },
 
     // start () {
 
