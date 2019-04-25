@@ -33,22 +33,17 @@ cc.Class({
 
     onEnter(params)
     {
-
+        // console.log('Item onEnter');
     },
 
     onLeave()
     {
-
+        // console.log('Item onLeave');
     },
 
     onClickClose()
     {
         this.closeDialog();
-    },
-
-    onClickOpen()
-    {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book);
     },
 
     // update (dt) {},

@@ -37,7 +37,7 @@ cc.Class({
 
     onClickOpenBook()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, 1);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book);
     },
 
     // update (dt) {},

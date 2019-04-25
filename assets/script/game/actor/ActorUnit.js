@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:58:24
+ * @LastEditTime: 2019-04-25 15:42:18
  */
 
 
@@ -14,13 +14,19 @@ let EventDef = require("EventDef")
 let ActorMgr = require("ActorMgr")
 let SkillDef = require("SkillDef")
 let PoolManager = require("PoolManager")
+let DialogMgr = require("DialogMgr")
+let DialogDef = require("DialogDef")
 
 cc.Class({
     extends: cc.Component,
     mixins: [Actor],
 
     properties: {
-        
+        tipNode : {
+            default: null,
+            type : cc.Node, 
+            tooltip : "显示文字",
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -31,11 +37,16 @@ cc.Class({
         this.onEnter();
 
         this.actor_id = ActorMgr.createActorId();
-        // this.initSkill();
+        
+        this.initEvent();
     },
 
     onDestroy () {
         this.onExit();
+
+        this.tipNode.off(cc.Node.EventType.MOUSE_ENTER);
+        this.tipNode.off(cc.Node.EventType.MOUSE_LEAVE);
+        this.tipNode.off(cc.Node.EventType.MOUSE_MOVE);
     },
 
     start () {
@@ -76,6 +87,26 @@ cc.Class({
     getTeamId()
     {
         return this.team_id;
+    },
+
+    initEvent()
+    {
+        this.tipNode.on(cc.Node.EventType.MOUSE_ENTER, function (event) {
+                DialogMgr.showDialog(DialogDef.DialogID.dialog_actor_tip, {unit_id : this.unit_id});
+            }, this);
+
+        this.tipNode.on(cc.Node.EventType.MOUSE_LEAVE, function (event) {
+                DialogMgr.closeDialog(DialogDef.DialogID.dialog_actor_tip);
+            }, this);
+
+        this.tipNode.on(cc.Node.EventType.MOUSE_MOVE, function (event) {
+                // console.log(event.getLocation())
+                var dialog = DialogMgr.getDialog(DialogDef.DialogID.dialog_actor_tip);
+                if (dialog) {
+                    dialog.node.setPosition(event.getLocation());
+                }
+                // DialogMgr.closeDialog(DialogDef.DialogID.dialog_actor_tip);
+            }, this);
     },
 
     // update (dt) {},

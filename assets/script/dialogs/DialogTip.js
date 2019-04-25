@@ -42,7 +42,7 @@ cc.Class({
         }
         
         if (this._delay <= 0 && this._state == 1) {
-            this.closeDialog(1);
+            this.closeDialog();
         }
     },
 });

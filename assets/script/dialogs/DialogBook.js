@@ -33,27 +33,32 @@ cc.Class({
 
     onClickClose()
     {
-        this.closeDialog(1);
+        this.closeDialog();
     },
 
     onClickOpen()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_book, 1);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_book);
     },
 
     onClickTip()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_tip, 1);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_tip);
     },
 
     onClickProp()
     {
-        DialogMgr.showDialog(DialogDef.DialogID.dialog_prop, 1);
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_prop);
+    },
+
+    onClickItem()
+    {
+        DialogMgr.showDialog(DialogDef.DialogID.dialog_item);
     },
 
     onClickCloseAll()
     {
-        DialogMgr.closeAllDialog(1);
+        DialogMgr.closeAllDialog();
     },
 
     // update (dt) {},

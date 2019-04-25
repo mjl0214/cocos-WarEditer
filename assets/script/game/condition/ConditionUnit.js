@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-23 15:09:27
- * @LastEditTime: 2019-04-24 16:24:28
+ * @LastEditTime: 2019-04-25 16:47:04
  */
 
 
@@ -64,16 +64,6 @@ cc.Class({
     getJson()
     {
         return this.getData();
-    },
-
-    getData()
-    {
-        var data = {
-            'condition_type' : this.condition_type,
-            'logic_gate' : this.logic_gate,
-            'condition_value' : this.temp_value,
-        }
-        return data;
     },
 
     _setUnknownDesc()

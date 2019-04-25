@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-23 15:09:37
- * @LastEditTime: 2019-04-24 16:06:08
+ * @LastEditTime: 2019-04-25 16:19:21
  */
 
 
@@ -116,7 +116,7 @@ cc.Class({
                 desc = '周期性定时器';
                 break;
             case EventType.unit_create:
-                desc = '单位被创建出来';
+                desc = '被创建出来';
                 break;
             case EventType.game_begin:
                 desc = '游戏开始';

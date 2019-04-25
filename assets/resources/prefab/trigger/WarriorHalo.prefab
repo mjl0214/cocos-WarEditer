@@ -148,7 +148,9 @@
     ],
     "_N$implement_type": 1,
     "_N$user_attribute_key": 5,
+    "_N$value_actor_attribute": 0,
     "_N$damage_source_type": 1,
+    "_N$damage_type": 1,
     "_N$implement_value_type": 0
   },
   {

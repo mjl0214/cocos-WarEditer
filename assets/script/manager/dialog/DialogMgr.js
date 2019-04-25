@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-15 08:38:25
- * @LastEditTime: 2019-04-23 10:04:33
+ * @LastEditTime: 2019-04-25 10:14:05
  */
 
 let DialogDef = require("DialogDef")
@@ -37,7 +37,7 @@ module.exports = {
         // });
     },
 
-    showDialog(id, ani, params)
+    showDialog(id, params)
     {
         var dialog_name = DialogDef.DialogID[id];
         if (dialog_name == null) {
@@ -77,19 +77,13 @@ module.exports = {
 
         this._getParent().addChild(maskPrefab, zIndex);
         this._getParent().addChild(dialogPrefab, zIndex);
-        console.log('zIndex', zIndex);
+        // console.log('zIndex', zIndex);
         
         dlgComp.onEnter(params);
 
         this.m_dialogs.push(dialogPrefab);
 
-        if (ani && ani > 0) {
-            dlgComp.playShowAni(ani);
-        }
-        else
-        {
-            dlgComp.setState(1);
-        }
+        dlgComp.playOpenAni();
 
         this._autoMaxZIndex();
     },
@@ -99,7 +93,7 @@ module.exports = {
      * @param dialog(class or number)
      * @return: 
      */
-    closeDialog(dialog, ani)
+    closeDialog(dialog)
     {
         var _dialog = dialog;
         // console.log(typeof dialog);
@@ -107,22 +101,16 @@ module.exports = {
             _dialog = this.getDialog(dialog);
         }
 
-        if (ani && ani > 0) {
-            _dialog.playCloseAni(ani);
-        }
-        else
-        {
-            this._closeDialog(_dialog);
-        }
+        _dialog.playCloseAni();
     },
 
-    closeAllDialog(ani)
+    closeAllDialog()
     {
         // console.log(this.m_dialogs);
         for (let index = this.m_dialogs.length - 1; index >= 0; index--) {
             const dialogPrefab = this.m_dialogs[index];
             var dlgComp = dialogPrefab.getComponent('DialogBase');
-            this.closeDialog(dlgComp, ani);
+            this.closeDialog(dlgComp);
         }
     },
 
@@ -150,11 +138,11 @@ module.exports = {
         this._autoMaxZIndex();
 
         var maskPrefab = this._getMask(dialog.getMaskId());
-        console.log(maskPrefab);
+        // console.log(maskPrefab);
         if (maskPrefab) {
             var maskComp = maskPrefab.getComponent('DialogMask');
             maskComp.node.zIndex = zIndex;
-            console.log(maskComp.node.zIndex);
+            // console.log(maskComp.node.zIndex);
         }
         
         // console.log('dialog.node.zIndex', dialog.node.zIndex)
@@ -164,7 +152,6 @@ module.exports = {
     {
         var dialog_name = dialog.getDialogName();
         var maskId = dialog.getMaskId();
-        dialog.setState(-1);
         dialog.onLeave();
         PoolManager.recoveryPerfab(dialog_name, dialog.node);
 

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 16:54:34
+ * @LastEditTime: 2019-04-25 15:58:15
  */
 
 
@@ -34,7 +34,7 @@ ActionDef.ImplementValueType = cc.Enum({
     level_user : 1,         // 使用者等级
     level_skill : 2,        // 技能等级
     random_value : 3,       // 随机 
-    percentage : 4,         // 百分比    
+    percentage : 4,         // 百分比   
 });
 
 // 执行类型
@@ -45,7 +45,7 @@ ActionDef.ImplementType = cc.Enum({
     damage_value : 3,       // 伤害值
     damage_targets : 4,     // 伤害目标数组
     consume_mana : 5,       // 魔法消耗
-    consume_anger : 6,      // 怒气消耗
+    damage_type : 6,        // 伤害类型
 });
 
 // // 执行事件

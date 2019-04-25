@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 13
+      "__id__": 14
     },
     "_opacity": 255,
     "_color": {
@@ -157,10 +157,13 @@
       },
       {
         "__id__": 11
+      },
+      {
+        "__id__": 12
       }
     ],
     "action_timer": {
-      "__id__": 12
+      "__id__": 13
     },
     "action_trigger_actorId": -1
   },
@@ -205,18 +208,36 @@
   },
   {
     "__type__": "Implement",
-    "implement_value_list": [],
+    "implement_value_list": [
+      100
+    ],
     "_N$implement_type": 2,
-    "_N$user_attribute_key": 0,
+    "_N$user_attribute_key": 3,
+    "_N$value_actor_attribute": 0,
     "_N$damage_source_type": 1,
-    "_N$implement_value_type": 0
+    "_N$damage_type": 1,
+    "_N$implement_value_type": 4
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [
+      100
+    ],
+    "_N$implement_type": 3,
+    "_N$user_attribute_key": 3,
+    "_N$value_actor_attribute": 3,
+    "_N$damage_source_type": 0,
+    "_N$damage_type": 1,
+    "_N$implement_value_type": 4
   },
   {
     "__type__": "Implement",
     "implement_value_list": [],
-    "_N$implement_type": 3,
-    "_N$user_attribute_key": 3,
+    "_N$implement_type": 6,
+    "_N$user_attribute_key": 0,
+    "_N$value_actor_attribute": 0,
     "_N$damage_source_type": 0,
+    "_N$damage_type": 1,
     "_N$implement_value_type": 0
   },
   {

@@ -1,9 +1,9 @@
 /*
- * @Description: 条件
+ * @Description: 条件类
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 16:25:33
+ * @LastEditTime: 2019-04-25 16:26:46
  */
 
 
@@ -151,6 +151,18 @@ cc.Class({
 
     ctor () {
 
+    },
+
+    getData()
+    {
+        var data = {
+            'condition_type' : this.condition_type,
+            'logic_gate' : this.logic_gate,
+            'condition_value' : this.temp_value,
+            'actor_classes' : this.actor_classes,
+            'actor_race' : this.actor_race,
+        }
+        return data;
     },
 
     _setEventDesc()

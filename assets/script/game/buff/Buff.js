@@ -3,7 +3,8 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 14:44:57
+ * @LastEditTime: 2019-04-25 17:56:12
+ * You know nothing.Jon Snow
  */
 
 
@@ -65,28 +66,41 @@ cc.Class({
 
     },
 
-    onHandle()
+    init(msg, list)
     {
-        // console.log(this.buff_msg);
-        // console.log('触发！！！', '[' + EventType[this.buff_msg.event_type] + "]", new Date());
-        FormulaHandle.executeAction(this.buff_msg, this.buff_action);
-        // console.log(ActionHandle);
-    },
+        // this.buff_msg = msg;
+        // this.buff_action = action;
+        this.buff_hold = msg.unit_id;
+        // this.buff_type = msg.skill_id;
 
-    init(msg, action, buff_hold)
-    {
-        this.buff_msg = msg;
-        this.buff_action = action;
-        this.buff_hold = buff_hold;
-        this.buff_type = msg.skill_id;
+        // this.buff_timer = action.action_timer.clone();
+        // this.buff_timer.setCallBack(this.onHandle.bind(this));
 
-        this.buff_timer = action.action_timer.clone();
-        this.buff_timer.setCallBack(this.onHandle.bind(this));
-    },
-
-    update (dt) {
-        if (this.buff_timer && this.buff_timer.unit_active == false) {
-            this.onExit();
+        // console.log(action);
+        for (let index = 0; index < list.length; index++) {
+            const data = list[index];
+            var arri = new Attribute();
+            arri.attribute = data.key;
+            arri.value_type = data.value;
+            this.attributes.push(arri);
         }
+        console.log(this.attributes)
     },
+
+    getValue(key)
+    {
+        for (let index = 0; index < this.attributes.length; index++) {
+            const arri = this.attributes[index];
+            if (arri.attribute == key) {
+                return arri.value_type;
+            }
+        }
+        return 0;
+    },
+
+    // update (dt) {
+    //     if (this.buff_timer && this.buff_timer.unit_active == false) {
+    //         this.onExit();
+    //     }
+    // },
 });

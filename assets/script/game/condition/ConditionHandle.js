@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-22 12:56:53
+ * @LastEditTime: 2019-04-25 16:55:14
  */
 
 
@@ -12,28 +12,38 @@ let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
 let ActorMgr = require("ActorMgr")
 let StateDef = require("StateDef")
+let ActorDef = require("ActorDef")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
 let TarType = ActionDef.TargetType;
 let StateType = StateDef.StateType;
 
+let RaceType = ActorDef.RaceType;
+let ClassesType = ActorDef.ClassesType;
+
 module.exports = {
 
     condition_type : CondType.unknown,
     condition_value : 0,
     logic_gate : LGType.equal,
+    actor_race : RaceType.unknown,
+    actor_classes : ClassesType.unknown,
     m_msg : null,
+    condition : null,
 
     isConditionHold(msg, condition)
     {
         // 赋值传参
         this.m_msg = msg;
+        this.condition = condition;
 
-        var condData = condition.getData();
-        this.logic_gate = condData.logic_gate;
-        this.condition_value = condData.condition_value;
-        this.condition_type = condData.condition_type;
+        // var condData = condition.getData();
+        // this.logic_gate = condData.logic_gate;
+        // this.condition_value = condData.condition_value;
+        // this.condition_type = condData.condition_type;
+        // this.actor_race = condData.actor_race;
+        // this.actor_classes = condData.actor_classes;
         
         var result = this._isConditionHold();
 
@@ -52,7 +62,7 @@ module.exports = {
     {
         var isHold = true;
         // 判断传入的值是否< > = <= >= != this.temp_value
-        switch (this.condition_type) {
+        switch (this.condition.condition_type) {
             case CondType.unknown:
                 isHold = isHold && this.handle_unknown();
                 break;
@@ -70,6 +80,9 @@ module.exports = {
                 break;
             case CondType.unit_dead:
                 isHold = isHold && this.handle_unit_dead();
+                break;
+            case CondType.actor_attribute:
+                isHold = isHold && this.handle_actor_attribute();
                 break;
 
             default:
@@ -132,14 +145,14 @@ module.exports = {
 
     handle_skill_id(){
         return this._juageLogicGate(this.m_msg.skill_id, 
-            this.condition_value, 
-            this.logic_gate);
+            this.condition.condition_value, 
+            this.condition.logic_gate);
     },
 
     handle_target_amount(){
         return this._juageLogicGate(this.m_msg.target_ids.length, 
-            this.condition_value, 
-            this.logic_gate);
+            this.condition.condition_value, 
+            this.condition.logic_gate);
     },
 
     handle_target_appoint(){ 
@@ -164,7 +177,7 @@ module.exports = {
         }
 
         var result = true;
-        switch (this.condition_value) {
+        switch (this.condition.condition_value) {
             case TarType.none:
                 result = true;
                 break;
@@ -210,7 +223,7 @@ module.exports = {
             var actor = ActorMgr.getActorByUnitId(unit_id);
             if (actor != null) {
                 var state = actor.getState();
-                if (this.logic_gate == LGType.logic_true) {
+                if (this.condition.logic_gate == LGType.logic_true) {
                     result = result && (state != StateType.death);
                 } else {
                     result = result && (state == StateType.death);
@@ -230,7 +243,7 @@ module.exports = {
             var actor = ActorMgr.getActorByUnitId(unit_id);
             if (actor != null) {
                 var state = actor.getState();
-                if (this.logic_gate == LGType.logic_true) {
+                if (this.condition.logic_gate == LGType.logic_true) {
                     result = result && (state == StateType.death);
                 } else {
                     result = result && (state != StateType.death);
@@ -239,6 +252,24 @@ module.exports = {
         }
 
         return result;
+    },
+
+    handle_actor_attribute()
+    {
+        // console.log(this.condition_value, this.actor_race, this.actor_classes)
+        var actor = ActorMgr.getActorByUnitId(this.m_msg.unit_id);
+        if (actor == null) {
+            return false;
+        }
+
+        if (this.condition.actor_attribute_key == ActorDef.AttributeKey.race) {
+            return this.condition.actor_race == actor.getVal('race');
+        }
+        else if (this.condition.actor_attribute_key == ActorDef.AttributeKey.classes) {
+            return this.condition.actor_classes == actor.getVal('classes');
+        }
+
+        return false;
     },
 
 };

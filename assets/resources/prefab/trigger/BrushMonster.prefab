@@ -84,7 +84,7 @@
     "unit_list": [],
     "trigger_id": -1,
     "trigger_name": "刷兵",
-    "turn_on": true,
+    "turn_on": false,
     "show_general": true,
     "trigger_events": [
       {

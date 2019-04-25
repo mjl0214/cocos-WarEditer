@@ -3,7 +3,8 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 16:04:30
+ * @LastEditTime: 2019-04-25 18:05:11
+ * The winter is coming！
  */
 
 
@@ -14,7 +15,7 @@ let Attribute = require("Attribute")
 let Listener = require("Listener")
 let StateDef = require("StateDef")
 let SkillDef = require("SkillDef")
-let Buff = require("Buff")
+let BuffMgr = require("BuffMgr")
 let EventDef = require("EventDef")
 let TriggerMsg = require("TriggerMsg")
 
@@ -147,17 +148,28 @@ cc.Class({
 
         this.current_attack_type = this._getVal(AT.attack_type);
         this.current_armor_type = this._getVal(AT.armor_type);
+
+        this.current_race = this._getVal(AT.race_point);
+        this.current_classes = this._getVal(AT.classes_point);
     },
 
     // 'health' 'attack' 'armor' 'level'
     getVal(name)
     {
         var key = 'current_' + name;
+        var value = 0;
         if (this.hasOwnProperty(key)) {
-            return this[key];
+            value = this[key];
         }
 
-        return 0;
+        var buffList = BuffMgr.getBuffList(this.getUnitId());
+
+        for (let index = 0; index < buffList.length; index++) {
+            const buff = buffList[index];
+            value += buff.getValue(ActorDef.AttributeKey[name]);
+        }
+
+        return value;
     },
 
     // 

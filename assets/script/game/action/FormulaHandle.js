@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-24 15:46:41
+ * @LastEditTime: 2019-04-25 17:31:39
  */
 
 let EventDef = require("EventDef")
@@ -13,7 +13,7 @@ let ActorMgr = require("ActorMgr")
 let ActorDef = require("ActorDef")
 let FormulaTool = require("FormulaTool")
 let ConditionHandle = require("ConditionHandle")
-// let Buff = require("Buff")
+let UnitCreator = require("UnitCreator")
 
 
 // let ImplementEvent = ActionDef.ImplementEvent;
@@ -59,14 +59,12 @@ module.exports = {
         }
         return isCondition;
     },
-    
-    // 获取伤害值
-    _getHurtVal(unitId, skillLevel, implement)
+
+    _getValue(unitId, skillLevel, implement)
     {
         var actor = ActorMgr.getActorByUnitId(unitId);
 
         var ivt = implement.implement_value_type;
-
         if (ivt == ActionDef.ImplementValueType.constant) {
             return implement.implement_value_list[0];
         }
@@ -85,17 +83,36 @@ module.exports = {
             var value = window.getRandom(implement.implement_value_list[0], implement.implement_value_list[1]);
             return value;
         }
-        else if (ivt == ActionDef.ImplementValueType.attribute_user) {
+        return 0;
+    },
+    
+    // 获取伤害值
+    _getHurtVal(unitId, skillLevel, implement)
+    {
+        var actor = ActorMgr.getActorByUnitId(unitId);
+
+        var ivt = implement.implement_value_type;
+
+
+        if (implement.value_actor_attribute == ActorDef.AttributeKey.unknown) {
+            this._getValue(unitId, skillLevel, implement); 
+        } else {
             if (actor == null) {
                 return 0;
             }
-
-            var key = ActorDef.AttributeKey[implement.user_attribute_key];
+            var key = ActorDef.AttributeKey[implement.value_actor_attribute];
 
             var actorAttributeValue = actor.getVal(key);
-            // console.log('actorAttributeValue', actorAttributeValue)
-            return actorAttributeValue;
+            if (ivt == ActionDef.ImplementValueType.constant) {
+                return actorAttributeValue;
+            }
+            else if (ivt == ActionDef.ImplementValueType.percentage)
+            {
+                return actorAttributeValue * implement.implement_value_list[0] / 100;
+            }
         }
+
+        return 0;
     },
 
     // 获取伤害来源
@@ -174,6 +191,22 @@ module.exports = {
 
     _buff_func(msg, action)
     {
-        
+        // console.log(msg)
+        // console.log(action)
+        var buff = UnitCreator.createUnitByName('buff');
+
+        var list = new Array();
+        for (let index = 0; index < action.action_implements.length; index++) {
+            const implement = action.action_implements[index];
+            if (implement.implement_type == ActionDef.ImplementType.actor_attribute) {
+                var data = {};
+                data.value = this._getValue(msg.unit_id, 0, implement);
+                data.key = implement.user_attribute_key;
+                list.push(data);
+            }
+        }
+
+        buff.init(msg, list);
+        buff.onEnter();
     },
 };

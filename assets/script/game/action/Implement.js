@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 17:02:43
+ * @LastEditTime: 2019-04-25 16:03:28
  */
 
 
@@ -44,6 +44,20 @@ cc.Class({
             },
         },
 
+        value_actor_attribute : {
+            default: ActorDef.AttributeKey.unknown,
+            type : cc.Enum(ActorDef.AttributeKey), 
+            tooltip : "使用者属性键值",
+            // displayName : "Implement Value List",
+            visible() {
+                var result = (this.implement_type == ImpType.damage_value)
+                return result;
+            },
+            notify() {
+
+            },
+        },
+
         damage_source_type : {
             default: ActionDef.DamageSourceType.nothing,
             type : cc.Enum(ActionDef.DamageSourceType), 
@@ -51,6 +65,19 @@ cc.Class({
             // displayName : "Implement Value List",
             visible() {
                 return this.implement_type == ImpType.damage_source;
+            },
+            notify() {
+
+            },
+        },
+
+        damage_type : {
+            default: ActorDef.AttackType.normal,
+            type : cc.Enum(ActorDef.AttackType), 
+            tooltip : "伤害类型",
+            // displayName : "Implement Value List",
+            visible() {
+                return this.implement_type == ImpType.damage_type;
             },
             notify() {
 
@@ -65,9 +92,9 @@ cc.Class({
                 if (this.implement_type == ImpType.damage_source) {
                     return false;
                 }
-                // else if (this.implement_type == ImpType.attribute_user) {
-                //     return false;
-                // }
+                else if (this.implement_type == ImpType.damage_type) {
+                    return false;
+                }
 
                 return true;
             },
@@ -83,6 +110,9 @@ cc.Class({
             // displayName : "Implement Value",
             visible() {
                 if (this.implement_type == ImpType.damage_source) {
+                    return false;
+                }
+                else if (this.implement_type == ImpType.damage_type) {
                     return false;
                 }
                 
@@ -157,6 +187,9 @@ cc.Class({
                 break;
             case ActionDef.ImplementValueType.random_value:
                 desc = '随机';
+                break;
+            case ActionDef.ImplementValueType.percentage:
+                desc = '百分比';
                 break;
 
             default:
@@ -236,8 +269,8 @@ cc.Class({
                 this.temp_type_desc = '魔法消耗';
                 this._setListFirst(false);
                 break;
-            case ImpType.consume_anger:
-                this.temp_type_desc = '怒气消耗';
+            case ImpType.damage_type:
+                this.temp_type_desc = '伤害类型';
                 this._setListFirst(false);
                 break;
 

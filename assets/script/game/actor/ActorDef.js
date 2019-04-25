@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 15:39:20
+ * @LastEditTime: 2019-04-25 15:56:13
  */
 
 
@@ -69,7 +69,7 @@ ActorDef.AttributeType = cc.Enum({
     armor_type : 6,                 // 护甲类型
     action_point : 7,               // 行动值
     heath_recover_rate : 8,         // 生命恢复速率
-    mana_recover_rate : 9,         // 魔法恢复速率
+    mana_recover_rate : 9,          // 魔法恢复速率
     motion_speed_point : 10,        // 移动速率
     strength_point : 11,            // 力量值
     intelligence_point : 12,        // 智力值
@@ -82,6 +82,7 @@ ActorDef.AttributeType = cc.Enum({
     classes_point : 19,             // 职业
     attack_range_max_point : 20,    // 最大攻击距离
     attack_range_min_point : 21,    // 最小攻击距离
+    spell_resistance : 22,          // 魔法抗性
 
     health_point_ex : 101,          // 额外生命值(生命偷取、加血光环...)
     mana_point_ex : 102,            // 额外魔法值(魔法偷取、加魔光环...)
@@ -91,7 +92,7 @@ ActorDef.AttributeType = cc.Enum({
 
 // 攻击类型
 ActorDef.AttackType = cc.Enum({
-    unknown : 0,     // 未知
+    unknown : 0,    // 未知
     normal : 1,     // 普通
     magic : 2,      // 魔法
     hero : 3,       // 英雄
@@ -103,7 +104,7 @@ ActorDef.AttackType = cc.Enum({
 
 // 防御类型
 ActorDef.DefenseType = cc.Enum({
-    unknown : 0,      // 未知
+    unknown : 0,     // 未知
     small : 1,       // 轻甲
     medium : 2,      // 中甲
     large : 3,       // 重甲
