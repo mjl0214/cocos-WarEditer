@@ -1,9 +1,9 @@
 /*
  * @Description: 预制体注册类(挂到节点上用于初始化需要的预制体,预制体节点上要挂上 SkillUnit 组件)
  * @Author: mengjl
- * @LastEditors: megjl
+ * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-14 21:52:01
+ * @LastEditTime: 2019-04-26 15:01:49
  */
 
 let PoolManager = require("PoolManager")
@@ -26,6 +26,14 @@ cc.Class({
             default: false,
             // type: cc.Boolean,
             tooltip : '加载技能日志',
+            // serializable: true, 
+        },
+
+        initialization : {
+            // ATTRIBUTES:
+            default: true,
+            // type: cc.Boolean,
+            tooltip : '立刻初始化',
             // serializable: true, 
         },
 
@@ -77,6 +85,9 @@ cc.Class({
         else if (this.unitType == UnitDef.TypeID.trigger) {
             this._componetName = 'TriggerUnit';
         }
+        else if (this.unitType == UnitDef.TypeID.actor) {
+            this._componetName = 'ActorUnit';
+        }
     },
 
     // 向PoolManager中注册预制体
@@ -114,7 +125,9 @@ cc.Class({
             if (idx == -1) {
                 PoolManager.initPool(poolName, prefab, poolUnit.poolNum);
 
-                this._initialization(poolName);
+                if (this.initialization == true) {
+                    this._initialization(poolName);
+                }
 
                 var collect = PoolManager.getCollect(poolName);
                 this._log_('load[' + poolName + ']', collect);

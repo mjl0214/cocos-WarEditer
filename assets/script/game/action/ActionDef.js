@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 15:58:15
+ * @LastEditTime: 2019-04-26 16:36:03
  */
 
 
@@ -46,6 +46,9 @@ ActionDef.ImplementType = cc.Enum({
     damage_targets : 4,     // 伤害目标数组
     consume_mana : 5,       // 魔法消耗
     damage_type : 6,        // 伤害类型
+    buff_type : 7,          // buff
+    // pick_up_unit : 8,       // 挑选unit
+    // act_type : 9,           // 作用目标类型
 });
 
 // // 执行事件

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 18:05:11
+ * @LastEditTime: 2019-04-26 14:48:44
  * The winter is coming！
  */
 
@@ -108,8 +108,6 @@ cc.Class({
 
     onEnter () {
         this._super();
-        // console.log(this.getAttributeValue(AT.health_point));
-        // console.log(this.getAttributeValue(AT.attack_point));
         this.initAttributeValue();
 
         var event_type = EventDef.EventType.unit_create;

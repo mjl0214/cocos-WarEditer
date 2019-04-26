@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-23 15:09:27
- * @LastEditTime: 2019-04-25 16:47:04
+ * @LastEditTime: 2019-04-26 17:01:12
  */
 
 
@@ -12,6 +12,7 @@ let ConditionDef = require("ConditionDef")
 let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
 let ActorDef = require("ActorDef")
+let BuffDef = require("BuffDef")
 let Condition = require("Condition")
 
 let CondType = ConditionDef.ConditionType;
@@ -81,10 +82,28 @@ cc.Class({
         this.temp_desc = desc;
     },
 
+    _setBuffDesc()
+    {
+        this.temp_name = 'BUFF';
+        var desc = BuffDef.BuffID[this.buff_id];
+        this.temp_name += ' ' + desc;
+        this.temp_value = this.buff_id;
+        this.temp_desc = desc;
+    },
+
     _setTargetTypeDesc()
     {
         this.temp_name = '目标类型';
         var desc = ActionDef.TargetType[this.target_type];
+        this.temp_value = this.target_type;
+        this.temp_desc = desc;
+    },
+
+    _setPickUpDesc()
+    {
+        this.temp_name = '选取目标';
+        var desc = ActionDef.TargetType[this.target_type];
+        this.temp_name += desc;
         this.temp_value = this.target_type;
         this.temp_desc = desc;
     },
@@ -189,7 +208,13 @@ cc.Class({
                 break;                
             case CondType.unit_dead:
                 this._setValue('目标死亡');
-                break; 
+                break;
+            case CondType.have_buff:
+                this._setBuffDesc();
+                break;
+            case CondType.pick_up:
+                this._setPickUpDesc();
+                break;
                 
             default:
                 this._setUnknownDesc();

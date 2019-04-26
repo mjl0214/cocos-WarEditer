@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-25 17:31:39
+ * @LastEditTime: 2019-04-26 16:40:52
  */
 
 let EventDef = require("EventDef")
@@ -95,7 +95,7 @@ module.exports = {
 
 
         if (implement.value_actor_attribute == ActorDef.AttributeKey.unknown) {
-            this._getValue(unitId, skillLevel, implement); 
+            return this._getValue(unitId, skillLevel, implement); 
         } else {
             if (actor == null) {
                 return 0;
@@ -146,13 +146,15 @@ module.exports = {
         var dt = 0;
         var at = 0;
         var damage_source_type = ActionDef.DamageSourceType.nothing;
+
+        var target_ids = msg.target_ids;
         
         // 参数列表
         for (let index = 0; index < action.action_implements.length; index++) {
             const implement = action.action_implements[index];
 
             if (implement.implement_type == ImpType.damage_value) {
-                dv = implement.implement_value_list[0];
+                // dv = implement.implement_value_list[0];
                 dv = this._getHurtVal(msg.unit_id, msg.skill_level, implement);
             }
             else if (implement.implement_type == ImpType.damage_source) {
@@ -160,8 +162,8 @@ module.exports = {
             }
         }
 
-        for (let index = 0; index < msg.target_ids.length; index++) {
-            const unit_id = msg.target_ids[index];
+        for (let index = 0; index < target_ids.length; index++) {
+            const unit_id = target_ids[index];
             // console.log('element', element);
             var actor = ActorMgr.getActorByUnitId(unit_id);
             // console.log('actor', actor);
@@ -191,11 +193,8 @@ module.exports = {
 
     _buff_func(msg, action)
     {
-        // console.log(msg)
-        // console.log(action)
-        var buff = UnitCreator.createUnitByName('buff');
-
         var list = new Array();
+        var buff_id = -1;
         for (let index = 0; index < action.action_implements.length; index++) {
             const implement = action.action_implements[index];
             if (implement.implement_type == ActionDef.ImplementType.actor_attribute) {
@@ -204,9 +203,19 @@ module.exports = {
                 data.key = implement.user_attribute_key;
                 list.push(data);
             }
+            else if (implement.implement_type == ActionDef.ImplementType.buff_type)
+            {
+                buff_id = implement.buff_id;
+            }
         }
 
-        buff.init(msg, list);
+        if (buff_id == -1) {
+            console.error('Buff ID no Define');
+            return;
+        }
+
+        var buff = UnitCreator.createUnitByName('buff');
+        buff.init(buff_id, msg, list);
         buff.onEnter();
     },
 };

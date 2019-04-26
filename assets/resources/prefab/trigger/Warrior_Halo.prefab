@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "WarriorHalo",
+    "_name": "Warrior_Halo",
     "_objFlags": 0,
     "_parent": null,
     "_children": [],
@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 8
+      "__id__": 10
     },
     "_opacity": 255,
     "_color": {
@@ -83,7 +83,7 @@
     "unit_active": false,
     "unit_list": [],
     "trigger_id": -1,
-    "trigger_name": "战士光环",
+    "trigger_name": "",
     "turn_on": true,
     "show_general": true,
     "trigger_events": [
@@ -91,10 +91,17 @@
         "__id__": 3
       }
     ],
-    "trigger_conditions": [],
-    "trigger_actions": [
+    "trigger_conditions": [
       {
         "__id__": 4
+      },
+      {
+        "__id__": 5
+      }
+    ],
+    "trigger_actions": [
+      {
+        "__id__": 6
       }
     ],
     "poolNum": 1,
@@ -106,25 +113,21 @@
     "__type__": "EventUnit",
     "_N$unit_type": 1,
     "_N$event_type": 9,
-    "event_desc": "[任意单位]单位被创建出来"
+    "event_desc": "[任意单位]被创建出来"
   },
   {
-    "__type__": "ActionUnit",
-    "action_conditions": [
-      {
-        "__id__": 5
-      }
-    ],
-    "action_formula": 3,
-    "action_implements": [
-      {
-        "__id__": 6
-      }
-    ],
-    "action_timer": {
-      "__id__": 7
-    },
-    "action_trigger_actorId": -1
+    "__type__": "ConditionUnit",
+    "temp_value": 101,
+    "_N$condition_type": 9,
+    "_N$logic_gate": 7,
+    "_N$condition_value": 0,
+    "_N$skill_id": 0,
+    "_N$target_type": 0,
+    "_N$actor_attribute_key": 0,
+    "_N$actor_race": 0,
+    "_N$actor_classes": 0,
+    "_N$buff_id": 101,
+    "condition_desc": "[BUFF warrior_halo] = [false]"
   },
   {
     "__type__": "ConditionUnit",
@@ -135,9 +138,38 @@
     "_N$skill_id": 0,
     "_N$target_type": 0,
     "_N$actor_attribute_key": 10,
-    "_N$actor_race": 1,
+    "_N$actor_race": 0,
     "_N$actor_classes": 1,
+    "_N$buff_id": 0,
     "condition_desc": "[actor属性classes] = [warrior]"
+  },
+  {
+    "__type__": "ActionUnit",
+    "action_conditions": [],
+    "action_formula": 3,
+    "action_implements": [
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 8
+      }
+    ],
+    "action_timer": {
+      "__id__": 9
+    },
+    "action_trigger_actorId": -1
+  },
+  {
+    "__type__": "Implement",
+    "implement_value_list": [],
+    "buff_id": 101,
+    "_N$implement_type": 7,
+    "_N$user_attribute_key": 0,
+    "_N$value_actor_attribute": 0,
+    "_N$damage_source_type": 0,
+    "_N$damage_type": 1,
+    "_N$implement_value_type": 0
   },
   {
     "__type__": "Implement",
@@ -146,10 +178,11 @@
       8,
       9
     ],
+    "buff_id": 0,
     "_N$implement_type": 1,
     "_N$user_attribute_key": 5,
     "_N$value_actor_attribute": 0,
-    "_N$damage_source_type": 1,
+    "_N$damage_source_type": 0,
     "_N$damage_type": 1,
     "_N$implement_value_type": 0
   },

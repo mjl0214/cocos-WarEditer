@@ -3,9 +3,32 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-18 16:52:16
- * @LastEditTime: 2019-04-19 00:24:47
+ * @LastEditTime: 2019-04-26 09:47:45
  */
 
+ /**
+ *      ┌─┐       ┌─┐
+ *   ┌──┘ ┴───────┘ ┴──┐
+ *   │                 │
+ *   │       ───       │
+ *   │  ─┬┘       └┬─  │
+ *   │                 │
+ *   │       ─┴─       │
+ *   │                 │
+ *   └───┐         ┌───┘
+ *       │         │
+ *       │         │
+ *       │         │
+ *       │         └──────────────┐
+ *       │                        │
+ *       │                        ├─┐
+ *       │                        ┌─┘
+ *       │                        │
+ *       └─┐  ┐  ┌───────┬──┐  ┌──┘
+ *         │ ─┤ ─┤       │ ─┤ ─┤
+ *         └──┴──┘       └──┴──┘
+ *             GOD BLESS YOU
+ */
 
 let PoolManager = require("PoolManager")
 let DialogMgr = require("DialogMgr")

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 15:42:18
+ * @LastEditTime: 2019-04-26 15:29:34
  */
 
 
@@ -16,12 +16,30 @@ let SkillDef = require("SkillDef")
 let PoolManager = require("PoolManager")
 let DialogMgr = require("DialogMgr")
 let DialogDef = require("DialogDef")
+let NameDef = require("NameDef")
 
 cc.Class({
     extends: cc.Component,
     mixins: [Actor],
 
     properties: {
+        actor_name : {
+            default : '',
+        },
+
+        poolNum : {
+            default : 1,
+            type : cc.Integer,
+            tooltip : '预制体池初始化数量',
+            visible : false, 
+        },
+
+        actor_name : {
+            default : NameDef.no_one,
+            type : cc.Enum(NameDef),
+            tooltip : '英雄名字',
+        },
+        
         tipNode : {
             default: null,
             type : cc.Node, 
@@ -32,12 +50,8 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        // var actor = new Actor();
-        // actor.onLoad.apply(this);
         this.onEnter();
-
         this.actor_id = ActorMgr.createActorId();
-        
         this.initEvent();
     },
 
@@ -53,25 +67,9 @@ cc.Class({
 
     },
 
-    initSkill()
+    getPoolName()
     {
-        this._skills = new Array();
-
-        // for (let index = 0; index < this.skill_list.length; index++) {
-        //     const id = this.skill_list[index];
-        //     var skillNode = PoolManager.getPerfab(SkillDef.SkillID[id]);
-        //     if (skillNode == null) {
-        //         console.error('技能不存在[', SkillDef.SkillID[id], ']');
-        //         continue;
-        //     }
-        //     this.node.addChild(skillNode);
-        //     this._skills.push(skillNode);
-            
-        //     var skill = skillNode.getComponent("SkillUnit");
-        //     if (skill) {
-        //         skill.setHolderId(this.getActorId());
-        //     }
-        // }
+        return NameDef[this.actor_name];
     },
 
     getSkills()

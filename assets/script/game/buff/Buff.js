@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 17:56:12
+ * @LastEditTime: 2019-04-26 13:02:13
  * You know nothing.Jon Snow
  */
 
@@ -12,6 +12,7 @@ let Timer = require("Timer")
 let Item = require("Item")
 let Action = require("Action")
 let BuffMgr = require("BuffMgr")
+let BuffDef = require("BuffDef")
 let EventDef = require("EventDef")
 let SkillDef = require('SkillDef')
 let FormulaHandle = require("FormulaHandle")
@@ -38,6 +39,17 @@ cc.Class({
             tooltip : "buff-持有者",
         },
         
+        buff_id : {
+            default: BuffDef.BuffID.unknown,
+            type : cc.Enum(BuffDef.BuffID), 
+            tooltip : "BuffID",
+        },
+
+        skill_id : {
+            default: SkillDef.SkillID.unknown,
+            type : cc.Enum(SkillDef.SkillID), 
+            tooltip : "技能ID",
+        },
     },
 
     // LIFE-CYCLE CALLBACKS:
@@ -66,12 +78,12 @@ cc.Class({
 
     },
 
-    init(msg, list)
+    init(buffid, msg, list)
     {
         // this.buff_msg = msg;
-        // this.buff_action = action;
+        this.skill_id = msg.skill_id;
         this.buff_hold = msg.unit_id;
-        // this.buff_type = msg.skill_id;
+        this.buff_id = buffid;
 
         // this.buff_timer = action.action_timer.clone();
         // this.buff_timer.setCallBack(this.onHandle.bind(this));
@@ -84,7 +96,7 @@ cc.Class({
             arri.value_type = data.value;
             this.attributes.push(arri);
         }
-        console.log(this.attributes)
+        // console.log(this.attributes)
     },
 
     getValue(key)

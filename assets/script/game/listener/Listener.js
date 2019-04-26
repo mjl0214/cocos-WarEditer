@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 15:52:06
+ * @LastEditTime: 2019-04-26 13:50:47
  */
 
 
@@ -42,7 +42,7 @@ module.exports = {
 
     dispatch(key, param)
     {
-        console.warn(key, param);
+        // console.warn(key, param);
         for (let i = this.m_funcArray.length - 1; i >= 0; i--) {
             const o = this.m_funcArray[i];
             if(key == o.key || (o.type && o.type == 'all')){

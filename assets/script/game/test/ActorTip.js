@@ -8,6 +8,12 @@ cc.Class({
     extends: DialogBase,
 
     properties: {
+
+        bgNode : {
+            default: null,
+            type : cc.Node, 
+            tooltip : "显示文字",
+        },
         showLabel : {
             default: null,
             type : cc.Label, 
@@ -38,6 +44,11 @@ cc.Class({
         this.showLabel.string += '魔法: ' + actor.getVal('mana') + '\n';
         this.showLabel.string += '护甲: ' + actor.getVal('armor') + '\n';
         this.showLabel.string += '攻击: ' + actor.getVal('attack') + '\n';
+
+        setTimeout(() => {
+            this.bgNode.width = this.showLabel.node.width + 24*2;
+            this.bgNode.height = this.showLabel.node.height + 24;
+        }, 300);
     },
 
     onLeave()

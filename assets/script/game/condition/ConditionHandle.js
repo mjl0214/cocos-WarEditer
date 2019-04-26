@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 16:55:14
+ * @LastEditTime: 2019-04-26 10:10:39
  */
 
 
@@ -13,6 +13,7 @@ let ActionDef = require("ActionDef")
 let ActorMgr = require("ActorMgr")
 let StateDef = require("StateDef")
 let ActorDef = require("ActorDef")
+let BuffMgr = require("BuffMgr")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
@@ -24,11 +25,6 @@ let ClassesType = ActorDef.ClassesType;
 
 module.exports = {
 
-    condition_type : CondType.unknown,
-    condition_value : 0,
-    logic_gate : LGType.equal,
-    actor_race : RaceType.unknown,
-    actor_classes : ClassesType.unknown,
     m_msg : null,
     condition : null,
 
@@ -37,13 +33,6 @@ module.exports = {
         // 赋值传参
         this.m_msg = msg;
         this.condition = condition;
-
-        // var condData = condition.getData();
-        // this.logic_gate = condData.logic_gate;
-        // this.condition_value = condData.condition_value;
-        // this.condition_type = condData.condition_type;
-        // this.actor_race = condData.actor_race;
-        // this.actor_classes = condData.actor_classes;
         
         var result = this._isConditionHold();
 
@@ -83,6 +72,9 @@ module.exports = {
                 break;
             case CondType.actor_attribute:
                 isHold = isHold && this.handle_actor_attribute();
+                break;
+            case CondType.have_buff:
+                isHold = isHold && this.handle_have_buff();
                 break;
 
             default:
@@ -145,7 +137,7 @@ module.exports = {
 
     handle_skill_id(){
         return this._juageLogicGate(this.m_msg.skill_id, 
-            this.condition.condition_value, 
+            this.condition.skill_id, 
             this.condition.logic_gate);
     },
 
@@ -267,6 +259,25 @@ module.exports = {
         }
         else if (this.condition.actor_attribute_key == ActorDef.AttributeKey.classes) {
             return this.condition.actor_classes == actor.getVal('classes');
+        }
+
+        return false;
+    },
+
+    handle_have_buff()
+    {
+        var actor = ActorMgr.getActorByUnitId(this.m_msg.unit_id);
+        if (actor == null) {
+            return false;
+        }
+
+        var buff = BuffMgr.getBuff(this.condition.skill_id, this.m_msg.unit_id);
+        if (this.condition.logic_gate == LGType.logic_true) {
+            return buff != null;
+        }
+        else if (this.condition.logic_gate == LGType.logic_false)
+        {
+            return buff == null;
         }
 
         return false;

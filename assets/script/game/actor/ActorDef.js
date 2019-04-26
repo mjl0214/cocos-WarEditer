@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 15:56:13
+ * @LastEditTime: 2019-04-26 11:14:03
  */
 
 
@@ -83,6 +83,9 @@ ActorDef.AttributeType = cc.Enum({
     attack_range_max_point : 20,    // 最大攻击距离
     attack_range_min_point : 21,    // 最小攻击距离
     spell_resistance : 22,          // 魔法抗性
+    position_x : 23,                // 位置
+    position_y : 24,                // 位置
+    position_z : 25,                // 位置
 
     health_point_ex : 101,          // 额外生命值(生命偷取、加血光环...)
     mana_point_ex : 102,            // 额外魔法值(魔法偷取、加魔光环...)

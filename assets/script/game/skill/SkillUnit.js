@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-23 13:12:28
+ * @LastEditTime: 2019-04-26 10:16:54
  */
 
 
@@ -30,7 +30,8 @@ cc.Class({
         poolNum : {
             default : 1,
             type : cc.Integer,
-            tooltip : '预制体池初始化数量', 
+            tooltip : '预制体池初始化数量',
+            visible : false,
         },
     },
 

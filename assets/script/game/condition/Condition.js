@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 16:26:46
+ * @LastEditTime: 2019-04-26 16:40:28
  */
 
 
@@ -11,6 +11,7 @@ let ConditionDef = require("ConditionDef")
 let SkillDef = require("SkillDef")
 let ActionDef = require("ActionDef")
 let ActorDef = require("ActorDef")
+let BuffDef = require("BuffDef")
 
 let CondType = ConditionDef.ConditionType;
 let LGType = ConditionDef.LogicGateType;
@@ -68,6 +69,15 @@ cc.Class({
                     }
                 }
 
+                switch (this.logic_gate) {
+                    case LGType.logic_true:
+                    case LGType.logic_false:
+                        return false;
+
+                    default:
+                        break;
+                }
+
                 return true;
             },
             notify() {
@@ -81,7 +91,13 @@ cc.Class({
             tooltip : "技能ID",
             displayName : "Condition Value",
             visible() {
-                return this.condition_type == CondType.skill_id;
+                if (this.condition_type == CondType.skill_id) {
+                    return true;
+                } 
+                // else if (this.condition_type == CondType.have_buff) {
+                //     return true;
+                // }
+                return false;
             },
             notify() {
                 this._setEventDesc();
@@ -94,7 +110,12 @@ cc.Class({
             tooltip : "目标类型",
             displayName : "Condition Value",
             visible() {
-                return this.condition_type == CondType.target_appoint;
+                if (this.condition_type == CondType.target_appoint) {
+                    return true;
+                } else if (this.condition_type == CondType.pick_up) {
+                    return true;
+                }
+                return false;
             },
             notify() {
                 this._setEventDesc();
@@ -134,6 +155,18 @@ cc.Class({
             // displayName : "Condition Value",
             visible() {
                 return this.actor_attribute_key == AttributeKey.classes;
+            },
+            notify() {
+                this._setEventDesc();
+            },
+        },
+
+        buff_id : {
+            default: BuffDef.BuffID.unknown,
+            type : cc.Enum(BuffDef.BuffID),
+            tooltip : "BUFF ID", 
+            visible() {
+                return this.condition_type == CondType.have_buff;
             },
             notify() {
                 this._setEventDesc();

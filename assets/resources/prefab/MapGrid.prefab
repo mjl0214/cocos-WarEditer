@@ -12,7 +12,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "ActorTip",
+    "_name": "MapGrid",
     "_objFlags": 0,
     "_parent": null,
     "_children": [
@@ -80,7 +80,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "BG",
+    "_name": "New Sprite(Splash)",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -96,23 +96,23 @@
     "_prefab": {
       "__id__": 4
     },
-    "_opacity": 152,
+    "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 204,
+      "g": 184,
+      "b": 124,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 100,
-      "height": 100
+      "width": 80,
+      "height": 80
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0
+      "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
@@ -175,14 +175,14 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1419d178-049d-48e0-bfb9-c8460eea4983"
+      "__uuid__": "e59ede53-d7b0-4fb0-b05d-d234f4fd1136"
     },
-    "fileId": "cfjMvfNYZP8I4siLrMWK5W",
+    "fileId": "e9e2LTHlFHYJma7xkxOYeE",
     "sync": false
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "New Sprite(Splash)",
     "_objFlags": 0,
     "_parent": {
       "__id__": 1
@@ -201,20 +201,20 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 41,
-      "g": 255,
-      "b": 0,
+      "r": 194,
+      "g": 174,
+      "b": 110,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 73.4,
-      "height": 30
+      "width": 75,
+      "height": 75
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
       "x": 0.5,
-      "y": 0
+      "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
@@ -244,28 +244,31 @@
     "_id": ""
   },
   {
-    "__type__": "cc.Label",
+    "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 5
     },
     "_enabled": true,
-    "_srcBlendFactor": 1,
+    "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_useOriginalSize": false,
-    "_string": "Label",
-    "_N$string": "Label",
-    "_fontSize": 30,
-    "_lineHeight": 30,
-    "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
-    "_spacingX": 0,
-    "_N$horizontalAlign": 1,
-    "_N$verticalAlign": 1,
-    "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_spriteFrame": {
+      "__uuid__": "a23235d1-15db-4b95-8439-a2e005bfff91"
+    },
+    "_type": 0,
+    "_sizeMode": 0,
+    "_fillType": 0,
+    "_fillCenter": {
+      "__type__": "cc.Vec2",
+      "x": 0,
+      "y": 0
+    },
+    "_fillStart": 0,
+    "_fillRange": 0,
+    "_isTrimmedMode": true,
+    "_state": 0,
+    "_atlas": null,
     "_id": ""
   },
   {
@@ -274,37 +277,23 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1419d178-049d-48e0-bfb9-c8460eea4983"
+      "__uuid__": "e59ede53-d7b0-4fb0-b05d-d234f4fd1136"
     },
-    "fileId": "b1NOvrol1GFIzXSL/vyowB",
+    "fileId": "b2NNyaATNCSpTWt1pVJjWO",
     "sync": false
   },
   {
-    "__type__": "e2629bRV5RMr64f1X1Yim46",
+    "__type__": "08d21noLCRNNInlp3pybnWq",
     "_name": "",
     "_objFlags": 0,
     "node": {
       "__id__": 1
     },
     "_enabled": true,
-    "dialog_id": 5,
-    "isMask": false,
-    "isInput": false,
-    "maskId": -1,
-    "single": true,
-    "close_animation": 1,
-    "random_animation": false,
-    "poolNum": 1,
-    "_state": 0,
-    "riginal_scale": 1,
-    "_N$open_animation": 1,
-    "_N$same_animation": true,
-    "bgNode": {
-      "__id__": 2
-    },
-    "showLabel": {
-      "__id__": 6
-    },
+    "poolName": 1,
+    "poolNameEx": "",
+    "custom": false,
+    "poolNum": 64,
     "_id": ""
   },
   {
@@ -313,9 +302,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "1419d178-049d-48e0-bfb9-c8460eea4983"
+      "__uuid__": "e59ede53-d7b0-4fb0-b05d-d234f4fd1136"
     },
-    "fileId": "3cAADluhpBlK3dax0dVdWw",
+    "fileId": "38cJdegg5N8KlnUe5sE0bo",
     "sync": false
   }
 ]

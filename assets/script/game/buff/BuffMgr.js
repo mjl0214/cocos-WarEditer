@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-23 10:55:44
+ * @LastEditTime: 2019-04-26 10:40:31
  */
 
 let DataPool = require("DataPool")
@@ -50,12 +50,12 @@ module.exports = {
         Listener.dispatch(GameMsg.GAME_BUFF_UPDATE);
     },
 
-    getBuff(key, unitId)
+    getBuff(buffId, unitId)
     {
         var pool = this.m_buffs.getPool('buff');
         for (let index = pool.length - 1; index >= 0; index--) {
             const buff = pool[index];
-            if (buff.buff_type == key && buff.buff_hold == unitId) {
+            if (buff.buff_id == buffId && buff.buff_hold == unitId) {
                 return buff;
             }
         }  

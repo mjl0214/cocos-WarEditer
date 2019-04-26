@@ -3,12 +3,13 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 16:03:28
+ * @LastEditTime: 2019-04-26 16:36:46
  */
 
 
 let ActionDef = require("ActionDef")
 let ActorDef = require("ActorDef")
+let BuffDef = require("BuffDef")
 let FormulaTool = require("FormulaTool")
 
 let ImpType = ActionDef.ImplementType;
@@ -35,14 +36,40 @@ cc.Class({
             tooltip : "使用者属性键值",
             // displayName : "Implement Value List",
             visible() {
-                var result = (this.implement_type == ImpType.actor_attribute) || 
-                    (this.implement_type == ImpType.damage_source);
-                return result;
+                // var result = (this.implement_type == ImpType.actor_attribute) || 
+                //     (this.implement_type == ImpType.damage_source);
+                // return result;
+                if (this.implement_type == ImpType.actor_attribute) {
+                    return true;
+                }
+                else if (this.implement_type == ImpType.damage_source) {
+                    return true;
+                }
+                return false;
             },
             notify() {
 
             },
         },
+
+        // target_type : {
+        //     default: ActionDef.TargetType.none,
+        //     type : cc.Enum(ActionDef.TargetType), 
+        //     tooltip : "目标类型",
+        //     // displayName : "Condition Value",
+        //     visible() {
+        //         if (this.implement_type == ImpType.pick_up_unit) {
+        //             return true;
+        //         }
+        //         else if (this.implement_type == ImpType.act_type) {
+        //             return true;
+        //         }
+        //         return false;
+        //     },
+        //     notify() {
+
+        //     },
+        // },
 
         value_actor_attribute : {
             default: ActorDef.AttributeKey.unknown,
@@ -50,8 +77,14 @@ cc.Class({
             tooltip : "使用者属性键值",
             // displayName : "Implement Value List",
             visible() {
-                var result = (this.implement_type == ImpType.damage_value)
-                return result;
+                // var result = (this.implement_type == ImpType.damage_value)
+                if (this.implement_type == ImpType.damage_value) {
+                    return true;
+                }
+                // else if (this.implement_type == ImpType.buff_type) {
+                //     return false;
+                // }
+                return false;
             },
             notify() {
 
@@ -95,6 +128,15 @@ cc.Class({
                 else if (this.implement_type == ImpType.damage_type) {
                     return false;
                 }
+                else if (this.implement_type == ImpType.buff_type) {
+                    return false;
+                }
+                // else if (this.implement_type == ImpType.pick_up_unit) {
+                //     return false;
+                // }
+                // else if (this.implement_type == ImpType.act_type) {
+                //     return false;
+                // }
 
                 return true;
             },
@@ -115,17 +157,28 @@ cc.Class({
                 else if (this.implement_type == ImpType.damage_type) {
                     return false;
                 }
+                else if (this.implement_type == ImpType.buff_type) {
+                    return false;
+                }
+                // else if (this.implement_type == ImpType.pick_up_unit) {
+                //     return false;
+                // }
+                // else if (this.implement_type == ImpType.act_type) {
+                //     return false;
+                // }
                 
-                // if (this.implement_value_type == ActionDef.ImplementValueType.attribute_user) {
-                //     return false;
-                // }
-                // if (this.implement_type == ImpType.function_used) {
-                //     return false;
-                // }
                 return true;
             },
         },
 
+        buff_id : {
+            default: BuffDef.BuffID.unknown,
+            type : cc.Enum(BuffDef.BuffID),
+            tooltip : "BUFF ID", 
+            visible() {
+                return this.implement_type == ImpType.buff_type;
+            },
+        },
 
         // temp_value : {
         //     default: '', 

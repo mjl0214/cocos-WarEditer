@@ -1,0 +1,334 @@
+[
+  {
+    "__type__": "cc.Prefab",
+    "_name": "",
+    "_objFlags": 0,
+    "_native": "",
+    "data": {
+      "__id__": 1
+    },
+    "optimizationPolicy": 0,
+    "asyncLoadAssets": false
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "GreatMaster",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_active": true,
+    "_level": 1,
+    "_components": [
+      {
+        "__id__": 4
+      },
+      {
+        "__id__": 5
+      }
+    ],
+    "_prefab": {
+      "__id__": 15
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 0,
+      "height": 0
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 0.4,
+      "y": 0.4,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "TipNode",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_level": 2,
+    "_components": [],
+    "_prefab": {
+      "__id__": 3
+    },
+    "_opacity": 255,
+    "_color": {
+      "__type__": "cc.Color",
+      "r": 255,
+      "g": 255,
+      "b": 255,
+      "a": 255
+    },
+    "_contentSize": {
+      "__type__": "cc.Size",
+      "width": 150,
+      "height": 350
+    },
+    "_anchorPoint": {
+      "__type__": "cc.Vec2",
+      "x": 0.5,
+      "y": 0.5
+    },
+    "_position": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 170,
+      "z": 0
+    },
+    "_scale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_rotationX": 0,
+    "_rotationY": 0,
+    "_quat": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_skewX": 0,
+    "_skewY": 0,
+    "_zIndex": 0,
+    "groupIndex": 0,
+    "_id": ""
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "82457a4c-52ed-4820-b08e-855ff45cfb11"
+    },
+    "fileId": "acZEwRB1tKapLCjITIC+vO",
+    "sync": false
+  },
+  {
+    "__type__": "sp.Skeleton",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "_srcBlendFactor": 770,
+    "_dstBlendFactor": 771,
+    "paused": false,
+    "defaultSkin": "",
+    "defaultAnimation": "walk",
+    "loop": true,
+    "premultipliedAlpha": true,
+    "timeScale": 1,
+    "_N$skeletonData": {
+      "__uuid__": "1c773853-e41d-471d-9601-6de697cd3187"
+    },
+    "_N$debugSlots": false,
+    "_N$debugBones": false,
+    "_id": ""
+  },
+  {
+    "__type__": "52626Ncx3xEppoveCxa3ctj",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 1
+    },
+    "_enabled": true,
+    "unit_type": 1,
+    "unit_active": false,
+    "unit_list": [],
+    "actor_id": -1,
+    "team_id": 1,
+    "skill_list": [
+      1,
+      5
+    ],
+    "attributes": [
+      {
+        "__id__": 6
+      },
+      {
+        "__id__": 7
+      },
+      {
+        "__id__": 8
+      },
+      {
+        "__id__": 9
+      },
+      {
+        "__id__": 10
+      },
+      {
+        "__id__": 11
+      },
+      {
+        "__id__": 12
+      },
+      {
+        "__id__": 13
+      },
+      {
+        "__id__": 14
+      }
+    ],
+    "current_health": -1,
+    "current_mana": -1,
+    "current_attack": -1,
+    "current_armor": -1,
+    "current_level": 1,
+    "actor_state": 0,
+    "actor_name": 1,
+    "poolNum": 1,
+    "tipNode": {
+      "__id__": 2
+    },
+    "_id": ""
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 1,
+    "value_type": 0,
+    "attribute_value": 20,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 2,
+    "value_type": 0,
+    "attribute_value": 0,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 3,
+    "value_type": 0,
+    "attribute_value": 5,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 4,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 1,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 5,
+    "value_type": 0,
+    "attribute_value": 5,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 6,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 1,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 7,
+    "value_type": 0,
+    "attribute_value": 0,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 8,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 18,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 1,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "cc.PrefabInfo",
+    "root": {
+      "__id__": 1
+    },
+    "asset": {
+      "__uuid__": "82457a4c-52ed-4820-b08e-855ff45cfb11"
+    },
+    "fileId": "f5Ht8X6JFN8bFDZEkGYRPB",
+    "sync": false
+  }
+]
