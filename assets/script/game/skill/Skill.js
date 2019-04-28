@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 22:47:30
- * @LastEditTime: 2019-04-18 00:50:29
+ * @LastEditTime: 2019-04-28 17:20:33
  */
 
 let Item = require("Item")
@@ -56,6 +56,38 @@ cc.Class({
             tooltip : '技能等级', 
         },
 
+        skill_mana : {
+            default : 0,
+            type : cc.Integer,
+            tooltip : '魔法消耗',
+        },
+
+        skill_range : {
+            default : 1,
+            type : cc.Integer,
+            tooltip : '技能范围(格子)',
+        },
+
+        skill_location : {
+            default : SkillDef.LoactionType.loc_any,
+            type : cc.Enum(SkillDef.LoactionType),
+            tooltip : '技能位置(格子)',
+        },
+
+        skill_x : {
+            default : 0,
+            type : cc.Integer,
+            tooltip : '技能坐标x',
+            visible : false,
+        },
+
+        skill_y : {
+            default : 0,
+            type : cc.Integer,
+            tooltip : '技能坐标y',
+            visible : false,
+        },
+
         trigger_unit : {
             default: null,
             type : Trigger, 
@@ -106,5 +138,11 @@ cc.Class({
     setHolderId(holderId)
     {
         this.holder_id = holderId;
+    },
+
+    clone()
+    {
+        var skill = window.clone(this);
+        return skill;
     },
 });

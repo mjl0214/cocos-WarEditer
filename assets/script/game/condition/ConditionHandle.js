@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 10:10:39
+ * @LastEditTime: 2019-04-28 16:09:30
  */
 
 
@@ -41,7 +41,7 @@ module.exports = {
         }
         else
         {
-            console.error(result, '{条件}', condition.condition_desc);
+            console.error(result, '{条件}', msg, condition);
         }
         return result;
     },
@@ -76,7 +76,7 @@ module.exports = {
             case CondType.have_buff:
                 isHold = isHold && this.handle_have_buff();
                 break;
-
+                
             default:
                 isHold = isHold && false;
                 break;

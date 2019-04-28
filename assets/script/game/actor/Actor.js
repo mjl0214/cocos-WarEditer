@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 14:48:44
+ * @LastEditTime: 2019-04-28 15:40:03
  * The winter is coming！
  */
 
@@ -95,6 +95,20 @@ cc.Class({
             readonly : true,
         },
 
+        current_x : {
+            default: 0,
+            type : cc.Float, 
+            tooltip : "实际x坐标",
+            // readonly : true,
+        },
+
+        current_y : {
+            default: 0,
+            type : cc.Float, 
+            tooltip : "实际y坐标",
+            // readonly : true,
+        },
+
         actor_state : {
             default: StateType.idle,
             type : cc.Enum(StateType),
@@ -140,15 +154,19 @@ cc.Class({
     {
         this.current_health = this._getVal(AT.health_point) + this._getVal(AT.health_point_ex);
         this.current_mana = this._getVal(AT.mana_point) + this._getVal(AT.mana_point_ex);
-        this.current_attack = this._getVal(AT.attack_point) + this._getVal(AT.attack_point_ex);
+        this.current_attack = (this._getVal(AT.attack_max_point) + this._getVal(AT.attack_min_point)) / 2;
         this.current_armor = this._getVal(AT.armor_point) + this._getVal(AT.armor_point_ex);
         this.current_level = this._getVal(AT.level_point);
+        this.current_attack_max = this._getVal(AT.attack_max_point);
+        this.current_attack_min = this._getVal(AT.attack_min_point);
 
         this.current_attack_type = this._getVal(AT.attack_type);
         this.current_armor_type = this._getVal(AT.armor_type);
 
         this.current_race = this._getVal(AT.race_point);
         this.current_classes = this._getVal(AT.classes_point);
+        this.current_range_max = this._getVal(AT.attack_range_max_point);
+        this.current_range_min = this._getVal(AT.attack_range_min_point);
     },
 
     // 'health' 'attack' 'armor' 'level'

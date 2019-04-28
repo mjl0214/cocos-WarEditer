@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-22 15:57:30
- * @LastEditTime: 2019-04-24 13:55:21
+ * @LastEditTime: 2019-04-28 14:15:47
  */
 
 let Timer = require("Timer")
@@ -104,7 +104,7 @@ cc.Class({
         this.cache_data = data;
         this.cache_action = action;
 
-        this.cache_timer = action.action_timer.clone();
+        this.cache_timer = action.act_timer.clone();
         this.cache_timer.setCallBack(this.onHandle.bind(this));
     },
 

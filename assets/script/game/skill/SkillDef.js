@@ -3,13 +3,18 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 11:27:15
+ * @LastEditTime: 2019-04-28 16:00:15
  */
 
 
 var SkillDef = module.exports;
 
-// 动作类型
+SkillDef.LoactionType = cc.Enum({
+    loc_any : 0,
+    loc_fllow_trigger : 1,
+    loc_range : 2,
+});
+// 技能ID
 SkillDef.SkillID = cc.Enum({
     unknown : 0,                    // 未知
     attack_normal : 1,              // 普通攻击

@@ -31,7 +31,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 16
+      "__id__": 18
     },
     "_opacity": 255,
     "_color": {
@@ -53,8 +53,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -9,
-      "y": -163,
+      "x": 0,
+      "y": 0,
       "z": 0
     },
     "_scale": {
@@ -87,7 +87,7 @@
     },
     "_children": [],
     "_active": true,
-    "_level": 3,
+    "_level": 2,
     "_components": [],
     "_prefab": {
       "__id__": 3
@@ -143,9 +143,9 @@
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "bb450102-879c-4219-8f06-b12aa8a055a6"
+      "__uuid__": "44fba34d-ceff-4d39-9c16-08b17c6a61de"
     },
-    "fileId": "21SxfxSX9Mm4OC4Y0Hga6+",
+    "fileId": "acZEwRB1tKapLCjITIC+vO",
     "sync": false
   },
   {
@@ -183,7 +183,7 @@
     "unit_active": false,
     "unit_list": [],
     "actor_id": -1,
-    "team_id": 2,
+    "team_id": 1,
     "skill_list": [
       1
     ],
@@ -217,6 +217,12 @@
       },
       {
         "__id__": 15
+      },
+      {
+        "__id__": 16
+      },
+      {
+        "__id__": 17
       }
     ],
     "current_health": -1,
@@ -224,6 +230,8 @@
     "current_attack": -1,
     "current_armor": -1,
     "current_level": 1,
+    "current_x": 0,
+    "current_y": 0,
     "actor_state": 0,
     "actor_name": 2,
     "poolNum": 1,
@@ -234,40 +242,30 @@
   },
   {
     "__type__": "Attribute",
+    "attribute": 26,
+    "value_type": 0,
+    "attribute_value": 55,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 27,
+    "value_type": 0,
+    "attribute_value": 50,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
     "attribute": 1,
     "value_type": 0,
-    "attribute_value": 20,
+    "attribute_value": 650,
     "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 2,
-    "value_type": 0,
-    "attribute_value": 0,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 3,
-    "value_type": 0,
-    "attribute_value": 5,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 4,
-    "value_type": 0,
-    "attribute_value": 1,
-    "_N$attack_type_value": 1,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 0,
     "_N$classes_type_value": 0
@@ -284,17 +282,7 @@
   },
   {
     "__type__": "Attribute",
-    "attribute": 6,
-    "value_type": 0,
-    "attribute_value": 1,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 1,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 7,
+    "attribute": 22,
     "value_type": 0,
     "attribute_value": 0,
     "_N$attack_type_value": 0,
@@ -304,9 +292,39 @@
   },
   {
     "__type__": "Attribute",
-    "attribute": 8,
+    "attribute": 20,
     "value_type": 0,
     "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 21,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 16,
+    "value_type": 0,
+    "attribute_value": 1.2,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 8,
+    "value_type": 0,
+    "attribute_value": 0,
     "_N$attack_type_value": 0,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 0,
@@ -333,14 +351,24 @@
     "_N$classes_type_value": 1
   },
   {
+    "__type__": "Attribute",
+    "attribute": 17,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
     "__type__": "cc.PrefabInfo",
     "root": {
       "__id__": 1
     },
     "asset": {
-      "__uuid__": "bb450102-879c-4219-8f06-b12aa8a055a6"
+      "__uuid__": "44fba34d-ceff-4d39-9c16-08b17c6a61de"
     },
-    "fileId": "b1T+ukEVtOgIYoktJrvlMj",
+    "fileId": "f5Ht8X6JFN8bFDZEkGYRPB",
     "sync": false
   }
 ]

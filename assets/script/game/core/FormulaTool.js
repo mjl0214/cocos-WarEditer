@@ -3,8 +3,32 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-23 14:44:12
+ * @LastEditTime: 2019-04-28 17:20:09
  */
+
+window.clone = function(obj) {
+    var o;
+    if (typeof obj == "object") {
+        if (obj === null) {
+            o = null;
+        } else {
+            if (obj instanceof Array) {
+                o = [];
+                for (var i = 0, len = obj.length; i < len; i++) {
+                    o.push(window.clone(obj[i]));
+                }
+            } else {
+                o = {};
+                for (var j in obj) {
+                    o[j] = window.clone(obj[j]);
+                }
+            }
+        }
+    } else {
+        o = obj;
+    }
+    return o;
+};
 
 window.getRandom = function (min, max)
 {

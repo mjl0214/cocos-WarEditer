@@ -31,7 +31,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 15
+      "__id__": 18
     },
     "_opacity": 255,
     "_color": {
@@ -185,8 +185,7 @@
     "actor_id": -1,
     "team_id": 1,
     "skill_list": [
-      1,
-      5
+      1
     ],
     "attributes": [
       {
@@ -215,6 +214,15 @@
       },
       {
         "__id__": 14
+      },
+      {
+        "__id__": 15
+      },
+      {
+        "__id__": 16
+      },
+      {
+        "__id__": 17
       }
     ],
     "current_health": -1,
@@ -222,6 +230,8 @@
     "current_attack": -1,
     "current_armor": -1,
     "current_level": 1,
+    "current_x": 0,
+    "current_y": 0,
     "actor_state": 0,
     "actor_name": 1,
     "poolNum": 1,
@@ -232,40 +242,30 @@
   },
   {
     "__type__": "Attribute",
+    "attribute": 26,
+    "value_type": 0,
+    "attribute_value": 55,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 27,
+    "value_type": 0,
+    "attribute_value": 50,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
     "attribute": 1,
     "value_type": 0,
-    "attribute_value": 20,
+    "attribute_value": 650,
     "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 2,
-    "value_type": 0,
-    "attribute_value": 0,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 3,
-    "value_type": 0,
-    "attribute_value": 5,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 0,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 4,
-    "value_type": 0,
-    "attribute_value": 1,
-    "_N$attack_type_value": 1,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 0,
     "_N$classes_type_value": 0
@@ -282,17 +282,7 @@
   },
   {
     "__type__": "Attribute",
-    "attribute": 6,
-    "value_type": 0,
-    "attribute_value": 1,
-    "_N$attack_type_value": 0,
-    "_N$armor_type_value": 1,
-    "_N$race_type_value": 0,
-    "_N$classes_type_value": 0
-  },
-  {
-    "__type__": "Attribute",
-    "attribute": 7,
+    "attribute": 22,
     "value_type": 0,
     "attribute_value": 0,
     "_N$attack_type_value": 0,
@@ -302,9 +292,39 @@
   },
   {
     "__type__": "Attribute",
-    "attribute": 8,
+    "attribute": 20,
     "value_type": 0,
     "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 21,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 16,
+    "value_type": 0,
+    "attribute_value": 1.2,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 8,
+    "value_type": 0,
+    "attribute_value": 0,
     "_N$attack_type_value": 0,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 0,
@@ -318,6 +338,26 @@
     "_N$attack_type_value": 0,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 1,
+    "_N$classes_type_value": 0
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 19,
+    "value_type": 0,
+    "attribute_value": 2,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
+    "_N$classes_type_value": 2
+  },
+  {
+    "__type__": "Attribute",
+    "attribute": 17,
+    "value_type": 0,
+    "attribute_value": 1,
+    "_N$attack_type_value": 0,
+    "_N$armor_type_value": 0,
+    "_N$race_type_value": 0,
     "_N$classes_type_value": 0
   },
   {

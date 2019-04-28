@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 13:02:13
+ * @LastEditTime: 2019-04-28 17:01:35
  * You know nothing.Jon Snow
  */
 
@@ -55,13 +55,13 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onEnter () {
-        // console.log('Buff onLoad')
+        console.log('Buff onEnter')
         this._super();
         BuffMgr.pushBuff(this);
 
-        if (this.buff_timer) {
-            this.buff_timer.onEnter();
-        }
+        // if (this.buff_timer) {
+        //     this.buff_timer.onEnter();
+        // }
     },
 
     onExit () {
@@ -69,9 +69,9 @@ cc.Class({
         this._super();
         BuffMgr.removeBuff(this);
 
-        if (this.buff_timer) {
-            this.buff_timer.onExit();
-        }
+        // if (this.buff_timer) {
+        //     this.buff_timer.onExit();
+        // }
     },
 
     start () {

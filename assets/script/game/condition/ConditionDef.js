@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 16:38:16
+ * @LastEditTime: 2019-04-28 16:09:45
  */
 
 
@@ -21,7 +21,8 @@ ConditionDef.ConditionType = cc.Enum({
     unit_dead : 7,          // 死亡的单位
     actor_attribute : 8,    // actor属性
     have_buff : 9,          // 拥有buff
-    pick_up : 10,           // 选取单位
+    // skill_range : 10,       // 技能距离内
+    // attack_range : 11,      // 攻击范围内
 });
 
 // 逻辑门

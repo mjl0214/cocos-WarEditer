@@ -538,10 +538,10 @@
     "unitType": 4,
     "prefabList": [
       {
-        "__uuid__": "1cbd4652-8e39-4e47-88bd-491f85786e63"
+        "__uuid__": "23e7de84-b07b-4255-9d44-fd1517e29d36"
       },
       {
-        "__uuid__": "e57b9fdc-41df-4d78-bce3-a40e0b2d62a1"
+        "__uuid__": "af9a328f-023f-4d80-a81a-804f2338673d"
       }
     ],
     "_id": "a8BTk8D11AKYcwl4g0jr3E"
@@ -619,14 +619,7 @@
     "loadLog": true,
     "initialization": true,
     "unitType": 5,
-    "prefabList": [
-      {
-        "__uuid__": "e72403dc-6ed0-480d-93bf-163f73b4bc9d"
-      },
-      {
-        "__uuid__": "aa47352d-7172-454b-96d6-8050f53a3a14"
-      }
-    ],
+    "prefabList": [],
     "_id": "abAwopMPVAzYHUyYqTZTHt"
   },
   {
@@ -704,7 +697,7 @@
     "unitType": 1,
     "prefabList": [
       {
-        "__uuid__": "bb450102-879c-4219-8f06-b12aa8a055a6"
+        "__uuid__": "44fba34d-ceff-4d39-9c16-08b17c6a61de"
       },
       {
         "__uuid__": "82457a4c-52ed-4820-b08e-855ff45cfb11"

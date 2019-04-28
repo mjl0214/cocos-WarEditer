@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-15 14:34:20
+ * @LastEditTime: 2019-04-28 17:26:49
  */
 
 
@@ -34,6 +34,12 @@ module.exports = {
             }
         }
         return null;
+    },
+
+    getAllActor()
+    {
+        var pool = UnitMgr.getUnitPool(UnitDef.TypeID.actor);
+        return pool;
     },
 
     getActorById(actorId)

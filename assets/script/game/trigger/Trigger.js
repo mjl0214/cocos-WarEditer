@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-25 13:55:56
+ * @LastEditTime: 2019-04-28 16:54:01
  *  I don't distrucst you because you're a woman. I distrust you because you're not as smart as you think you are
  */
 
@@ -12,11 +12,15 @@ let EventUnit = require("EventUnit")
 let ConditionUnit = require("ConditionUnit")
 let ConditionHandle = require("ConditionHandle")
 let EventHandle = require("EventHandle")
-let ActionHandle = require("ActionHandle")
+let ActHandle = require("ActHandle")
 let ActionUnit = require("ActionUnit")
 let Unit = require("Unit")
 let TriggerMgr = require("TriggerMgr")
 let UnitDef = require("UnitDef")
+
+let ActBase= require("ActBase")
+let Event = require("Event")
+let Condition = require("Condition")
 
 cc.Class({
     extends: Unit,
@@ -69,19 +73,19 @@ cc.Class({
 
         trigger_events : {
             default: [],
-            type : [EventUnit], 
+            type : [Event], 
             tooltip : "事件",
         },
 
         trigger_conditions : {
             default: [],
-            type : [ConditionUnit], 
+            type : [Condition], 
             tooltip : "条件",
         },
 
         trigger_actions : {
             default: [],
-            type : [ActionUnit], 
+            type : [ActBase], 
             tooltip : "动作",
         },
     },
@@ -138,13 +142,11 @@ cc.Class({
             }
         }
 
-        var isAction = true;
+        console.log('触发成功 执行Actions');
+        // 触发成功 执行Actions
         for (let index = 0; index < this.trigger_actions.length; index++) {
             const action = this.trigger_actions[index];
-            isAction = isAction && ActionHandle.isActionHold(msg, action);
-            if (isAction == false) {
-                return false;
-            }
+            ActHandle.actionHold(msg, action);
         }
 
         return true;
@@ -154,17 +156,17 @@ cc.Class({
     {
         var data = {};
 
-        data['events'] = new Array();
-        for (let index = 0; index < this.trigger_events.length; index++) {
-            const event = this.trigger_events[index];
-            data['events'].push(event.getJson()); 
-        }
+        // data['events'] = new Array();
+        // for (let index = 0; index < this.trigger_events.length; index++) {
+        //     const event = this.trigger_events[index];
+        //     data['events'].push(event.getJson()); 
+        // }
 
-        data['conditions'] = new Array();
-        for (let index = 0; index < this.trigger_conditions.length; index++) {
-            const condition = this.trigger_conditions[index];
-            data['conditions'].push(condition.getJson());  
-        }
+        // data['conditions'] = new Array();
+        // for (let index = 0; index < this.trigger_conditions.length; index++) {
+        //     const condition = this.trigger_conditions[index];
+        //     data['conditions'].push(condition.getJson());  
+        // }
 
         return data;
     },
@@ -176,32 +178,32 @@ cc.Class({
         var condDesc = '条件:\n';
         var actionDesc = '动作:\n';
 
-        for (let index = 0; index < this.trigger_events.length; index++) {
-            const event = this.trigger_events[index];
-            eventDesc += '   事件[' + (index) + '] : ' + event.getEventDesc() + '\n'; 
-        }
+        // for (let index = 0; index < this.trigger_events.length; index++) {
+        //     const event = this.trigger_events[index];
+        //     eventDesc += '   事件[' + (index) + '] : ' + event.getEventDesc() + '\n'; 
+        // }
 
-        if (this.trigger_events.length <= 0) {
-            eventDesc += '   无\n';
-        }
+        // if (this.trigger_events.length <= 0) {
+        //     eventDesc += '   无\n';
+        // }
 
-        for (let index = 0; index < this.trigger_conditions.length; index++) {
-            const condition = this.trigger_conditions[index];
-            condDesc += '   条件[' + (index) + '] : ' + condition.getConditionDesc() + '\n'; 
-        }
+        // for (let index = 0; index < this.trigger_conditions.length; index++) {
+        //     const condition = this.trigger_conditions[index];
+        //     condDesc += '   条件[' + (index) + '] : ' + condition.getConditionDesc() + '\n'; 
+        // }
 
-        if (this.trigger_conditions.length <= 0) {
-            condDesc += '   无\n';
-        }
+        // if (this.trigger_conditions.length <= 0) {
+        //     condDesc += '   无\n';
+        // }
 
-        for (let index = 0; index < this.trigger_actions.length; index++) {
-            const action = this.trigger_actions[index];
-            actionDesc += '   动作[' + (index) + '] : ' + action.getActionDesc() + '\n'; 
-        }
+        // for (let index = 0; index < this.trigger_actions.length; index++) {
+        //     const action = this.trigger_actions[index];
+        //     actionDesc += '   动作[' + (index) + '] : ' + action.getActionDesc() + '\n'; 
+        // }
 
-        if (this.trigger_actions.length <= 0) {
-            actionDesc += '   无\n';
-        }
+        // if (this.trigger_actions.length <= 0) {
+        //     actionDesc += '   无\n';
+        // }
 
         this.general_desc += eventDesc;
         this.general_desc += condDesc;

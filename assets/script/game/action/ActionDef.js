@@ -3,11 +3,18 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 16:36:03
+ * @LastEditTime: 2019-04-28 10:37:45
  */
 
 
 var ActionDef = module.exports;
+
+ActionDef.ActionType = cc.Enum({
+    none : 0,                    // 没有类型
+    unit : 1,                    // 单位
+    unit_group : 2,              // 单位组
+    custom_script : 3,           // 自定义脚本
+});
 
 // 目标类型
 ActionDef.TargetType = cc.Enum({

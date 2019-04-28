@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 11:14:03
+ * @LastEditTime: 2019-04-28 15:39:15
  */
 
 
@@ -12,16 +12,22 @@ var ActorDef = module.exports;
 // actor属性key
 ActorDef.AttributeKey = cc.Enum({
     unknown : 0,
-    health : 1,       // 生命值
-    mana : 2,         // 魔法值
-    attack : 3,       // 攻击值
-    attack_type : 4,  // 攻击类型
-    armor : 5,        // 护甲值
-    armor_type : 6,   // 护甲类型
-    anger : 7,        // 愤怒值
-    level : 8,        // 等级
-    race : 9,         // 种族
-    classes : 10,     // 职业
+    health : 1,             // 生命值
+    mana : 2,               // 魔法值
+    attack : 3,             // 攻击值
+    attack_type : 4,        // 攻击类型
+    armor : 5,              // 护甲值
+    armor_type : 6,         // 护甲类型
+    anger : 7,              // 愤怒值
+    level : 8,              // 等级
+    race : 9,               // 种族
+    classes : 10,           // 职业
+    attack_max : 11,        // 攻击值
+    attack_min : 12,        // 攻击值
+    x : 13,                 // x
+    y : 14,                 // y
+    range_max : 15,         // 攻击值
+    range_min : 16,         // 攻击值
 });
 
 // 种族类型
@@ -86,6 +92,8 @@ ActorDef.AttributeType = cc.Enum({
     position_x : 23,                // 位置
     position_y : 24,                // 位置
     position_z : 25,                // 位置
+    attack_max_point : 26,          // 最大攻击值
+    attack_min_point : 27,          // 最小攻击值
 
     health_point_ex : 101,          // 额外生命值(生命偷取、加血光环...)
     mana_point_ex : 102,            // 额外魔法值(魔法偷取、加魔光环...)

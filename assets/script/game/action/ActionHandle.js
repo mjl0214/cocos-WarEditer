@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-24 13:53:20
+ * @LastEditTime: 2019-04-28 14:01:15
  */
 
 
@@ -28,6 +28,7 @@ module.exports = {
     // 是否触发成功
     isActionHold(msg, action)
     {
+        console.log(action);
         var temp = this._isActionHold(msg, action);
 
         // console.log(temp, action);
