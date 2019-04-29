@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-28 16:09:30
+ * @LastEditTime: 2019-04-29 10:01:19
  */
 
 
@@ -168,8 +168,10 @@ module.exports = {
             }
         }
 
+        // console.error(this.condition)
+
         var result = true;
-        switch (this.condition.condition_value) {
+        switch (this.condition.target_type) {
             case TarType.none:
                 result = true;
                 break;
@@ -187,7 +189,6 @@ module.exports = {
             // case TarType.enemy_team_random:
                 for (let index = 0; index < targets.length; index++) {
                     const target = targets[index];
-                    var actor = ActorMgr.getActorByUnitId(target.unit_id);
                     if (target.team_id == holder_team) {
                         result = false;
                         break;

@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-28 17:20:09
+ * @LastEditTime: 2019-04-29 12:48:28
  */
 
 window.clone = function(obj) {
@@ -51,6 +51,7 @@ module.exports = {
         attack_damage_function02 : 2,
         buff_function : 3,
         trigger_function : 4,
+        buff_remove_function : 5,
     }),
 
     /**
@@ -108,6 +109,16 @@ module.exports = {
     * @return: 
     */
    trigger_function()
+   {
+
+   },
+
+   /**
+    * @description: 
+    * @param {type} 
+    * @return: 
+    */
+   buff_remove_function()
    {
 
    },

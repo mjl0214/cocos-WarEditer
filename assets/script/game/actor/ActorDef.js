@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-28 15:39:15
+ * @LastEditTime: 2019-04-29 10:14:58
  */
 
 
@@ -28,6 +28,7 @@ ActorDef.AttributeKey = cc.Enum({
     y : 14,                 // y
     range_max : 15,         // 攻击值
     range_min : 16,         // 攻击值
+    spell_resistance : 17,  // 魔抗
 });
 
 // 种族类型

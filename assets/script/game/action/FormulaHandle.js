@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-17 22:08:06
- * @LastEditTime: 2019-04-28 17:38:21
+ * @LastEditTime: 2019-04-29 14:58:49
  */
 
 let EventDef = require("EventDef")
@@ -14,6 +14,7 @@ let ActorDef = require("ActorDef")
 let FormulaTool = require("FormulaTool")
 let ConditionHandle = require("ConditionHandle")
 let UnitCreator = require("UnitCreator")
+let BuffMgr = require("BuffMgr")
 
 let ActDef = require("ActDef")
 // let ImplementEvent = ActionDef.ImplementEvent;
@@ -55,13 +56,13 @@ module.exports = {
                 
                 break;
             case ActDef.ActType.condition:
-                // this._exeActUnit(msg, action);
+                this._exeActCondition(msg, action.act_condition);
                 break;
             case ActDef.ActType.unit:
                 this._exeActUnit(msg, action.act_unit);
                 break;
             case ActDef.ActType.unit_group:
-            this._exeActUnitGroup(msg, action.act_unit_group);
+                this._exeActUnitGroup(msg, action.act_unit_group);
                 break;
             default:
                 break;
@@ -82,6 +83,9 @@ module.exports = {
             case FormulaTool.FormulaEnum.buff_function:
                 this._buff_func(msg, action);
                 break;
+            case FormulaTool.FormulaEnum.buff_remove_function:
+                this._buff_remove_func(msg, action);
+                break;
             default:
                 break;
         }
@@ -91,12 +95,14 @@ module.exports = {
     {
         var actor = ActorMgr.getActorByUnitId(msg.unit_id);
         var actors = ActorMgr.getAllActor();
-        var target_ids = {};
+        var target_ids = [];
         for (let index = 0; index < actors.length; index++) {
             const _actor_ = actors[index];
             
             target_ids.push(_actor_.getUnitId());
         }
+
+        // console.log(target_ids)
 
         if (action.use_region == true) {
             var x = -1;
@@ -109,23 +115,56 @@ module.exports = {
                 y = actor.getVal('y');
             }
 
-            target_ids = {};
+            target_ids = [];
             for (let index = 0; index < actors.length; index++) {
                 const _actor_ = actors[index];
-                if (Math.pow(_actor_.getVal('x') - x, 2) + Math.pow(_actor_.getVal('y') - y, 2) <= Math.pow(action.act_region.region_radius, 2)) {
+                if (Math.pow(_actor_.getVal('x') - x, 2) + Math.pow(_actor_.getVal('y') - y, 2) <= 2 * Math.pow(action.act_region.region_radius, 2)) {
                     target_ids.push(_actor_.getUnitId());
                 }
             }
         }
 
-        var _target_ids = {};
+        // console.log(target_ids)
+
+        var _target_ids = [];
         for (let index = 0; index < target_ids.length; index++) {
             const _actor_id_ = target_ids[index];
-            var _msg_ = {target_ids = [_actor_id_], };
-            if (this._isActionConditionHold(_msg_, action.pick_conditions)) {
-                _target_ids.push(_actor_id_);
+            // var _msg_ = {target_ids : [_actor_id_], };
+            var child_msg = window.clone(msg);
+            child_msg.target_ids = [_actor_id_];
+            if (this._isActionConditionHold(child_msg, action.pick_conditions)) {
+                // _target_ids.push(_actor_id_);
+                for (let idx = 0; idx < action.loop_actions.length; idx++) {
+                    const _action = action.loop_actions[idx];
+                    this.executeAction(child_msg, _action);
+                }
             }
         }
+
+    },
+
+    _exeActCondition(msg, action)
+    {
+        // console.log(action); return;
+        if (this._isActionConditionHold(msg, action.if_conditions.act_conditions)) {
+            for (let idx = 0; idx < action.if_conditions.act_actions.length; idx++) {
+                const _action = action.if_conditions.act_actions[idx];
+                this.executeAction(msg, _action);
+            }
+        }
+        else
+        {
+            for (let index = 0; index < action.else_conditions.length; index++) {
+                const _condition = action.else_conditions[index];
+                if (this._isActionConditionHold(msg, _condition.act_conditions)) {
+                    for (let idx = 0; idx < _condition.act_actions.length; idx++) {
+                        const _action = _condition.act_actions[idx];
+                        this.executeAction(msg, _action);
+                    }
+                }
+            }
+        }
+        
     },
 
     // 动作的条件是否成立
@@ -144,18 +183,20 @@ module.exports = {
 
     _getValue(unitId, skillLevel, parameter)
     {
+        // console.error(unitId, skillLevel, parameter)
         var actor = ActorMgr.getActorByUnitId(unitId);
 
-        var ivt = parameter.implement_value_type;
+        var ivt = parameter.value_type;
         if (ivt == ActDef.ValueType.constant) {
             return parameter.value_list[0];
         }
         else if (ivt == ActDef.ValueType.level_user) {
             var actorLevel = 0;
+            // console.error(actor)
             if (actor == null) {
                 return 0;
             }
-            actorLevel = actor.getVal('level');
+            actorLevel = actor.getVal('level') - 1;
             return parameter.value_list[actorLevel];
         }
         else if (ivt == ActDef.ValueType.level_skill) {
@@ -171,6 +212,7 @@ module.exports = {
     // 获取伤害值
     _getHurtVal(unitId, skillLevel, parameter)
     {
+        // console.log(parameter)
         var actor = ActorMgr.getActorByUnitId(unitId);
 
         var ivt = parameter.value_type;
@@ -209,7 +251,7 @@ module.exports = {
     },
 
     // 获取伤害来源
-    _getDamageSource(unitId, targetId, sourceType)
+    _getSource(unitId, targetId, sourceType)
     {
         if (sourceType == ActDef.UnitType.unit_none) {
             return -1;
@@ -227,6 +269,7 @@ module.exports = {
 
     _attack_damage_func(msg, action)
     {
+        // console.error(msg);
         var funcName = FormulaTool.FormulaEnum[action.act_formula];
         // console.log('funcName', funcName);
         if (funcName == null && func_index > -1) {
@@ -270,12 +313,15 @@ module.exports = {
                 continue;
             }
             ta = actor.getVal('armor');
+            if (damage_type == ActorDef.AttackType.magic) {
+                ta = actor.getVal('spell_resistance');
+            }
             
             var damage = formula_func(dv, dt, ta, at);
 
             actor.modifyVal('health', -damage);
 
-            var unitId = this._getDamageSource(msg.unit_id, unit_id, damage_source);
+            var unitId = this._getSource(msg.unit_id, unit_id, damage_source);
 
             var event_type = EventType.attribute_change;
             var send_data = {
@@ -286,11 +332,12 @@ module.exports = {
                 unitId : unitId,
                 damage_type : damage_type,
             };
-            console.log(send_data);
+            console.warn(send_data);
             Listener.dispatch(EventType[event_type], send_data);
         }
     },
 
+    // 添加buff
     _buff_func(msg, action)
     {
         var list = new Array();
@@ -317,5 +364,23 @@ module.exports = {
         var buff = UnitCreator.createUnitByName('buff');
         buff.init(buff_id, msg, list);
         buff.onEnter();
+    },
+
+    // 移除buff
+    _buff_remove_func(msg, action)
+    {
+        // var buff_ids = [];
+        for (let index = 0; index < action.act_parameters.length; index++) {
+            const parameter = action.act_parameters[index];
+            if (parameter.parameter_type == ActDef.ParameterType.buff_type)
+            {
+                // buff_ids.push(buff_id);
+                // var unitId = this._getSource(msg.unit_id, unit_id, action.unit_type);
+                var buff = BuffMgr.getBuff(parameter.buff_id, msg.unit_id);
+                if (buff) {
+                    buff.onExit();
+                }
+            }
+        }
     },
 };

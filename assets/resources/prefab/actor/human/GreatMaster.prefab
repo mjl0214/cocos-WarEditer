@@ -183,7 +183,7 @@
     "unit_active": false,
     "unit_list": [],
     "actor_id": -1,
-    "team_id": 1,
+    "team_id": 2,
     "skill_list": [
       1
     ],
@@ -229,6 +229,7 @@
     "current_mana": -1,
     "current_attack": -1,
     "current_armor": -1,
+    "current_spell_resistance": -1,
     "current_level": 1,
     "current_x": 0,
     "current_y": 0,
@@ -284,7 +285,7 @@
     "__type__": "Attribute",
     "attribute": 22,
     "value_type": 0,
-    "attribute_value": 0,
+    "attribute_value": 10,
     "_N$attack_type_value": 0,
     "_N$armor_type_value": 0,
     "_N$race_type_value": 0,

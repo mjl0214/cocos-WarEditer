@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-28 15:40:03
+ * @LastEditTime: 2019-04-29 14:46:06
  * The winter is coming！
  */
 
@@ -88,6 +88,13 @@ cc.Class({
             readonly : true,
         },
 
+        current_spell_resistance : {
+            default: -1,
+            type : cc.Float, 
+            tooltip : "实际魔抗",
+            readonly : true,
+        },
+
         current_level : {
             default: 1,
             type : cc.Float, 
@@ -162,6 +169,7 @@ cc.Class({
 
         this.current_attack_type = this._getVal(AT.attack_type);
         this.current_armor_type = this._getVal(AT.armor_type);
+        this.current_spell_resistance = this._getVal(AT.spell_resistance);
 
         this.current_race = this._getVal(AT.race_point);
         this.current_classes = this._getVal(AT.classes_point);
@@ -205,10 +213,10 @@ cc.Class({
         var key = 'current_' + name;
         if (this.hasOwnProperty(key)) {
             this[key] += value;
-            console.log(key, this[key]);
+            // console.log(key, this[key]);
             return true;
         }
-        console.log(key);
+        // console.log(key);
         return false;
     },
 
@@ -268,5 +276,11 @@ cc.Class({
         // console.log(this);
     },
 
-    // update (dt) {},
+    update (dt) {
+        if (this.actor_state != StateDef.StateType.death) {
+            if (this.getVal('health') <= 0) {
+                this.actor_state = StateDef.StateType.death;
+            }
+        }
+    },
 });

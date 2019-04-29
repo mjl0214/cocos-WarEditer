@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 33
+      "__id__": 41
     },
     "_opacity": 255,
     "_color": {
@@ -126,6 +126,9 @@
       },
       {
         "__id__": 22
+      },
+      {
+        "__id__": 33
       }
     ]
   },
@@ -422,11 +425,89 @@
   },
   {
     "__type__": "ActUnit",
-    "unit_type": 0,
+    "unit_type": 2,
     "act_formula": 3,
     "act_parameters": [
       {
         "__id__": 31
+      }
+    ]
+  },
+  {
+    "__type__": "ActParameter",
+    "from_unit_type": 2,
+    "value_list": [],
+    "buff_id": 5,
+    "_N$parameter_type": 6,
+    "_N$user_attribute_key": 0,
+    "_N$damage_type": 1,
+    "_N$value_type": 0
+  },
+  {
+    "__type__": "Timer",
+    "unit_type": 7,
+    "unit_active": false,
+    "unit_list": [],
+    "time_interval": 0,
+    "time_duration": 0,
+    "time_delay": 0,
+    "timer_current": 0
+  },
+  {
+    "__type__": "ActBase",
+    "act_type": 1,
+    "act_unit": null,
+    "act_timer": {
+      "__id__": 34
+    },
+    "act_unit_group": null,
+    "act_condition": {
+      "__id__": 35
+    }
+  },
+  {
+    "__type__": "Timer",
+    "unit_type": 7,
+    "unit_active": false,
+    "unit_list": [],
+    "time_interval": -1,
+    "time_duration": 5,
+    "time_delay": 0,
+    "timer_current": 0
+  },
+  {
+    "__type__": "ActCondition",
+    "if_conditions": {
+      "__id__": 36
+    },
+    "else_conditions": []
+  },
+  {
+    "__type__": "IfCondition",
+    "act_conditions": [],
+    "act_actions": [
+      {
+        "__id__": 37
+      }
+    ]
+  },
+  {
+    "__type__": "Act",
+    "act_type": 2,
+    "act_unit": {
+      "__id__": 38
+    },
+    "act_timer": {
+      "__id__": 40
+    }
+  },
+  {
+    "__type__": "ActUnit",
+    "unit_type": 2,
+    "act_formula": 5,
+    "act_parameters": [
+      {
+        "__id__": 39
       }
     ]
   },

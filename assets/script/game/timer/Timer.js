@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-23 13:47:52
+ * @LastEditTime: 2019-04-29 13:54:08
  */
 
 let Unit = require("Unit")
@@ -57,8 +57,8 @@ cc.Class({
         /*
         * 说明
         * interval >= 0 (call at first)
-        * interval < 0  duration > 0 (call at end)
-        * interval -1 (no call at any)
+        * interval > 0  duration > 0 (call every interval)
+        * interval -1  duration > 0 (call at end)
         */
     },
 
@@ -137,7 +137,7 @@ cc.Class({
         }
 
         if (this.timer_current >= this.time_duration && this.time_duration >= 0) {
-            if (this.time_interval > 0) {
+            if (this.time_interval > 0 || this.time_interval == -1) {
                 this.doCall();
             }
             this.unit_active = false;
