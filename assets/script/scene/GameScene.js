@@ -86,8 +86,9 @@ cc.Class({
         hero1.setPosition(cc.v2(-100, 0));
         hero2.setPosition(cc.v2(100, 0));
         var actor2 = gs.gameLogic.getActorUnit(hero2);
-        actor2.setVal('x', 2);
-        actor2.setVal('y', 2);
+        actor2.setVal('x', 1);
+        actor2.setVal('y', 1);
+        actor2.setVal('level', 2);
 
         this._heroList.push(hero1);
         this._heroList.push(hero2);

@@ -3,10 +3,12 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-17 22:12:52
+ * @LastEditTime: 2019-04-29 17:31:12
  */
 
 let DataPool = require("DataPool")
+let UnitMgr = require("UnitMgr")
+let UnitDef = require("UnitDef")
 
 module.exports = {
     m_timers : new DataPool(), // 定时器列表
@@ -39,5 +41,28 @@ module.exports = {
     {
         // console.log('removeTimer', timer);
         this.m_timers.removeFromPool('timer', timer);
+    },
+
+    getTimerMachine(unitId)
+    {
+        var machines = [];
+        var pool = UnitMgr.getUnitPool(UnitDef.TypeID.timer);
+        for (let index = 0; index < pool.length; index++) {
+            const timer = pool[index];
+            if (timer.hasOwnProperty('trigger_id') && timer.trigger_id == unitId) {
+                machines.push(timer)
+            }
+        }
+
+        return machines;
+    },
+
+    removeAllTimerMachine(unitId)
+    {
+        var machines = this.getTimerMachine(unitId);
+        for (let index = 0; index < machines.length; index++) {
+            const machine = machines[index];
+            machine.onExit();
+        }
     },
 };

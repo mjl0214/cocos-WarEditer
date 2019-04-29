@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-22 15:57:30
- * @LastEditTime: 2019-04-28 14:15:47
+ * @LastEditTime: 2019-04-29 17:25:44
  */
 
 let Timer = require("Timer")
@@ -57,11 +57,11 @@ cc.Class({
         //     tooltip : "buff-类型",
         // },
 
-        // buff_hold : {
-        //     default: -1,
-        //     type : cc.Integer, 
-        //     tooltip : "buff-持有者",
-        // },
+        trigger_id : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "触发者ID",
+        },
         
     },
 
@@ -103,6 +103,7 @@ cc.Class({
     {
         this.cache_data = data;
         this.cache_action = action;
+        this.trigger_id = data.unit_id;
 
         this.cache_timer = action.act_timer.clone();
         this.cache_timer.setCallBack(this.onHandle.bind(this));

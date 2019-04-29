@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-29 14:46:06
+ * @LastEditTime: 2019-04-29 17:36:50
  * The winter is coming！
  */
 
@@ -18,6 +18,7 @@ let SkillDef = require("SkillDef")
 let BuffMgr = require("BuffMgr")
 let EventDef = require("EventDef")
 let TriggerMsg = require("TriggerMsg")
+let TimerMgr = require("TimerMgr")
 
 let StateType = StateDef.StateType;
 
@@ -279,8 +280,20 @@ cc.Class({
     update (dt) {
         if (this.actor_state != StateDef.StateType.death) {
             if (this.getVal('health') <= 0) {
-                this.actor_state = StateDef.StateType.death;
+                this.onDead();
             }
         }
     },
+
+
+    onDead()
+    {
+        // 设置状态
+        this.actor_state = StateDef.StateType.death;
+        // 移除buff 
+        BuffMgr.removeAllBuff(this.getUnitId());
+        // 停止技能
+        TimerMgr.removeAllTimerMachine(this.getUnitId());
+    },
+    
 });

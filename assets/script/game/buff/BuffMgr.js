@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 10:40:31
+ * @LastEditTime: 2019-04-29 17:12:44
  */
 
 let DataPool = require("DataPool")
@@ -75,6 +75,15 @@ module.exports = {
         }
         
         return list;
+    },
+
+    removeAllBuff(unitId)
+    {
+        var list = this.getBuffList(unitId);
+        for (let index = 0; index < list.length; index++) {
+            const buff = list[index];
+            buff.onExit();
+        }
     },
 
 };
