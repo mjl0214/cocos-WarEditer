@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-28 10:49:56
- * @LastEditTime: 2019-04-28 16:31:04
+ * @LastEditTime: 2019-04-30 14:11:00
  */
 
 
@@ -53,3 +53,9 @@ ActDef.ParameterType = cc.Enum({
     // pick_up_unit : 8,       // 挑选unit
     // act_type : 9,           // 作用目标类型
 });
+
+ActDef.ActTimerType = cc.Enum({
+    use_custom : 0,
+    durtion_of_skill : 1, 
+    buff_durtion_of_skill : 2,            // 没有来源
+}); 

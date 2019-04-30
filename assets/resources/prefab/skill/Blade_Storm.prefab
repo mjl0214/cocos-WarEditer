@@ -24,7 +24,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 41
+      "__id__": 24
     },
     "_opacity": 255,
     "_color": {
@@ -82,21 +82,93 @@
     "unit_type": 4,
     "unit_active": false,
     "unit_list": [],
-    "holder_id": -1,
     "skill_id": 5,
-    "skill_name": "",
-    "skill_desc": "",
+    "skill_name": "剑刃风暴",
+    "skill_desc": "自身旋转 对剑圣周围的敌人造成伤害并使主宰技能免疫 作用范围：周身1格 伤害：50/100/150 持续时间：5秒 冷却时间：12秒",
+    "damage_type": 2,
     "skill_level": 1,
-    "skill_mana": 0,
-    "skill_range": 1,
-    "skill_location": 1,
+    "skill_grade": [
+      {
+        "__id__": 3
+      },
+      {
+        "__id__": 5
+      },
+      {
+        "__id__": 7
+      }
+    ],
     "skill_x": 0,
     "skill_y": 0,
+    "holder_id": -1,
     "trigger_unit": {
-      "__id__": 3
+      "__id__": 9
     },
     "poolNum": 1,
     "_id": ""
+  },
+  {
+    "__type__": "SkillGrade",
+    "skill_duration": 5,
+    "skill_cooldown": 12,
+    "skill_damage": 50,
+    "skill_mana": 100,
+    "skill_range": 1,
+    "skill_buffs": [
+      {
+        "__id__": 4
+      }
+    ]
+  },
+  {
+    "__type__": "SkillBuff",
+    "buff_id": 5,
+    "buff_duration": 5,
+    "buff_influence": 0,
+    "value_type": 0,
+    "value_list": []
+  },
+  {
+    "__type__": "SkillGrade",
+    "skill_duration": 5,
+    "skill_cooldown": 12,
+    "skill_damage": 100,
+    "skill_mana": 100,
+    "skill_range": 1,
+    "skill_buffs": [
+      {
+        "__id__": 6
+      }
+    ]
+  },
+  {
+    "__type__": "SkillBuff",
+    "buff_id": 5,
+    "buff_duration": 5,
+    "buff_influence": 0,
+    "value_type": 0,
+    "value_list": []
+  },
+  {
+    "__type__": "SkillGrade",
+    "skill_duration": 5,
+    "skill_cooldown": 12,
+    "skill_damage": 150,
+    "skill_mana": 100,
+    "skill_range": 1,
+    "skill_buffs": [
+      {
+        "__id__": 8
+      }
+    ]
+  },
+  {
+    "__type__": "SkillBuff",
+    "buff_id": 5,
+    "buff_duration": 5,
+    "buff_influence": 0,
+    "value_type": 0,
+    "value_list": []
   },
   {
     "__type__": "Trigger",
@@ -109,26 +181,20 @@
     "show_general": true,
     "trigger_events": [
       {
-        "__id__": 4
+        "__id__": 10
       }
     ],
     "trigger_conditions": [
       {
-        "__id__": 5
+        "__id__": 11
       }
     ],
     "trigger_actions": [
       {
-        "__id__": 6
+        "__id__": 12
       },
       {
-        "__id__": 18
-      },
-      {
-        "__id__": 22
-      },
-      {
-        "__id__": 33
+        "__id__": 21
       }
     ]
   },
@@ -152,238 +218,31 @@
   },
   {
     "__type__": "ActBase",
-    "act_type": 3,
+    "act_type": 1,
     "act_unit": null,
     "act_timer": {
-      "__id__": 7
-    },
-    "act_unit_group": {
-      "__id__": 8
-    },
-    "act_condition": null
-  },
-  {
-    "__type__": "Timer",
-    "unit_type": 7,
-    "unit_active": false,
-    "unit_list": [],
-    "time_interval": 1,
-    "time_duration": 5,
-    "time_delay": 0,
-    "timer_current": 0
-  },
-  {
-    "__type__": "ActUnitGroup",
-    "use_region": true,
-    "act_region": {
-      "__id__": 9
-    },
-    "pick_conditions": [
-      {
-        "__id__": 10
-      },
-      {
-        "__id__": 11
-      }
-    ],
-    "loop_actions": [
-      {
-        "__id__": 12
-      }
-    ]
-  },
-  {
-    "__type__": "ActRegion",
-    "center_x": 2,
-    "center_y": 2,
-    "region_radius": 1
-  },
-  {
-    "__type__": "Condition",
-    "temp_value": null,
-    "_N$condition_type": 4,
-    "_N$logic_gate": 0,
-    "_N$condition_value": 0,
-    "_N$skill_id": 0,
-    "_N$target_type": 3,
-    "_N$actor_attribute_key": 0,
-    "_N$actor_race": 0,
-    "_N$actor_classes": 0,
-    "_N$buff_id": 0
-  },
-  {
-    "__type__": "Condition",
-    "temp_value": null,
-    "_N$condition_type": 6,
-    "_N$logic_gate": 6,
-    "_N$condition_value": 0,
-    "_N$skill_id": 0,
-    "_N$target_type": 0,
-    "_N$actor_attribute_key": 0,
-    "_N$actor_race": 0,
-    "_N$actor_classes": 0,
-    "_N$buff_id": 0
-  },
-  {
-    "__type__": "Act",
-    "act_type": 2,
-    "act_unit": {
       "__id__": 13
-    },
-    "act_timer": {
-      "__id__": 17
-    }
-  },
-  {
-    "__type__": "ActUnit",
-    "unit_type": 4,
-    "act_formula": 2,
-    "act_parameters": [
-      {
-        "__id__": 14
-      },
-      {
-        "__id__": 15
-      },
-      {
-        "__id__": 16
-      }
-    ]
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [],
-    "buff_id": 0,
-    "_N$parameter_type": 2,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 1,
-    "_N$value_type": 0
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [],
-    "buff_id": 0,
-    "_N$parameter_type": 5,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 2,
-    "_N$value_type": 0
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [
-      50,
-      100,
-      150
-    ],
-    "buff_id": 0,
-    "_N$parameter_type": 3,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 1,
-    "_N$value_type": 1
-  },
-  {
-    "__type__": "Timer",
-    "unit_type": 7,
-    "unit_active": false,
-    "unit_list": [],
-    "time_interval": 0,
-    "time_duration": 0,
-    "time_delay": 0,
-    "timer_current": 0
-  },
-  {
-    "__type__": "ActBase",
-    "act_type": 2,
-    "act_unit": {
-      "__id__": 19
-    },
-    "act_timer": {
-      "__id__": 21
-    },
-    "act_unit_group": null,
-    "act_condition": null
-  },
-  {
-    "__type__": "ActUnit",
-    "unit_type": 2,
-    "act_formula": 0,
-    "act_parameters": [
-      {
-        "__id__": 20
-      }
-    ]
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [],
-    "buff_id": 0,
-    "_N$parameter_type": 4,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 1,
-    "_N$value_type": 0
-  },
-  {
-    "__type__": "Timer",
-    "unit_type": 7,
-    "unit_active": false,
-    "unit_list": [],
-    "time_interval": 0,
-    "time_duration": 0,
-    "time_delay": 0,
-    "timer_current": 0
-  },
-  {
-    "__type__": "ActBase",
-    "act_type": 1,
-    "act_unit": {
-      "__id__": 23
-    },
-    "act_timer": {
-      "__id__": 25
     },
     "act_unit_group": null,
     "act_condition": {
-      "__id__": 26
+      "__id__": 14
     }
   },
   {
-    "__type__": "ActUnit",
-    "unit_type": 2,
-    "act_formula": 3,
-    "act_parameters": [
-      {
-        "__id__": 24
-      }
-    ]
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [],
-    "buff_id": 5,
-    "_N$parameter_type": 6,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 1,
-    "_N$value_type": 0
-  },
-  {
-    "__type__": "Timer",
+    "__type__": "ActTimer",
     "unit_type": 7,
     "unit_active": false,
     "unit_list": [],
     "time_interval": 0,
-    "time_duration": 5,
+    "time_duration": 0,
     "time_delay": 0,
-    "timer_current": 0
+    "timer_current": 0,
+    "use_grade_time": true
   },
   {
     "__type__": "ActCondition",
     "if_conditions": {
-      "__id__": 27
+      "__id__": 15
     },
     "else_conditions": []
   },
@@ -391,12 +250,12 @@
     "__type__": "IfCondition",
     "act_conditions": [
       {
-        "__id__": 28
+        "__id__": 16
       }
     ],
     "act_actions": [
       {
-        "__id__": 29
+        "__id__": 17
       }
     ]
   },
@@ -417,10 +276,10 @@
     "__type__": "Act",
     "act_type": 2,
     "act_unit": {
-      "__id__": 30
+      "__id__": 18
     },
     "act_timer": {
-      "__id__": 32
+      "__id__": 20
     }
   },
   {
@@ -429,7 +288,7 @@
     "act_formula": 3,
     "act_parameters": [
       {
-        "__id__": 31
+        "__id__": 19
       }
     ]
   },
@@ -444,82 +303,33 @@
     "_N$value_type": 0
   },
   {
-    "__type__": "Timer",
+    "__type__": "ActTimer",
     "unit_type": 7,
     "unit_active": false,
     "unit_list": [],
     "time_interval": 0,
     "time_duration": 0,
     "time_delay": 0,
-    "timer_current": 0
+    "timer_current": 0,
+    "use_grade_time": true
   },
   {
     "__type__": "ActBase",
-    "act_type": 1,
-    "act_unit": null,
-    "act_timer": {
-      "__id__": 34
-    },
-    "act_unit_group": null,
-    "act_condition": {
-      "__id__": 35
-    }
-  },
-  {
-    "__type__": "Timer",
-    "unit_type": 7,
-    "unit_active": false,
-    "unit_list": [],
-    "time_interval": -1,
-    "time_duration": 5,
-    "time_delay": 0,
-    "timer_current": 0
-  },
-  {
-    "__type__": "ActCondition",
-    "if_conditions": {
-      "__id__": 36
-    },
-    "else_conditions": []
-  },
-  {
-    "__type__": "IfCondition",
-    "act_conditions": [],
-    "act_actions": [
-      {
-        "__id__": 37
-      }
-    ]
-  },
-  {
-    "__type__": "Act",
     "act_type": 2,
     "act_unit": {
-      "__id__": 38
+      "__id__": 22
     },
     "act_timer": {
-      "__id__": 40
-    }
+      "__id__": 23
+    },
+    "act_unit_group": null,
+    "act_condition": null
   },
   {
     "__type__": "ActUnit",
-    "unit_type": 2,
-    "act_formula": 5,
-    "act_parameters": [
-      {
-        "__id__": 39
-      }
-    ]
-  },
-  {
-    "__type__": "ActParameter",
-    "from_unit_type": 2,
-    "value_list": [],
-    "buff_id": 5,
-    "_N$parameter_type": 6,
-    "_N$user_attribute_key": 0,
-    "_N$damage_type": 1,
-    "_N$value_type": 0
+    "unit_type": 0,
+    "act_formula": 0,
+    "act_parameters": []
   },
   {
     "__type__": "Timer",

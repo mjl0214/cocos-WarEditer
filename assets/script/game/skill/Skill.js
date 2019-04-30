@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 22:47:30
- * @LastEditTime: 2019-04-28 17:20:33
+ * @LastEditTime: 2019-04-30 11:02:58
  */
 
 let Item = require("Item")
@@ -11,6 +11,8 @@ let UnitDef = require("UnitDef")
 let SkillDef = require('SkillDef')
 let Trigger = require("Trigger")
 let SkillMgr = require("SkillMgr")
+let ActorDef = require("ActorDef")
+let SkillGrade = require("SkillGrade")
 
 cc.Class({
     extends: Item,
@@ -22,13 +24,6 @@ cc.Class({
             tooltip : "Unit类型",
             readonly : true,
             override : true,
-        },
-
-        holder_id : {
-            default: -1,
-            type : cc.Integer, 
-            tooltip : "技能持有者ID",
-            visible : false,
         },
 
         skill_id : {
@@ -50,29 +45,41 @@ cc.Class({
             multiline : true,
         },
 
+        damage_type : {
+            default : ActorDef.AttackType.unknown,
+            type : cc.Enum(ActorDef.AttackType),
+            tooltip : '技能伤害类型',
+        },
+
         skill_level : {
             default : 1,
             type : cc.Integer,
             tooltip : '技能等级', 
         },
 
-        skill_mana : {
-            default : 0,
-            type : cc.Integer,
-            tooltip : '魔法消耗',
+        skill_grade : {
+            default : [],
+            type : [SkillGrade],
+            tooltip : '技能等级配置', 
         },
 
-        skill_range : {
-            default : 1,
-            type : cc.Integer,
-            tooltip : '技能范围(格子)',
-        },
+        // skill_mana : {
+        //     default : 0,
+        //     type : cc.Integer,
+        //     tooltip : '魔法消耗',
+        // },
 
-        skill_location : {
-            default : SkillDef.LoactionType.loc_any,
-            type : cc.Enum(SkillDef.LoactionType),
-            tooltip : '技能位置(格子)',
-        },
+        // skill_range : {
+        //     default : 1,
+        //     type : cc.Integer,
+        //     tooltip : '技能范围(格子)',
+        // },
+
+        // skill_location : {
+        //     default : SkillDef.LoactionType.loc_any,
+        //     type : cc.Enum(SkillDef.LoactionType),
+        //     tooltip : '技能位置(格子)',
+        // },
 
         skill_x : {
             default : 0,
@@ -85,6 +92,13 @@ cc.Class({
             default : 0,
             type : cc.Integer,
             tooltip : '技能坐标y',
+            visible : false,
+        },
+
+        holder_id : {
+            default: -1,
+            type : cc.Integer, 
+            tooltip : "技能持有者ID",
             visible : false,
         },
 

@@ -3,13 +3,13 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-28 12:28:51
- * @LastEditTime: 2019-04-28 14:13:16
+ * @LastEditTime: 2019-04-30 14:04:16
  */
 
 
 let ActDef = require("ActDef")
 let ActUnit = require("ActUnit")
-let Timer = require("Timer")
+let ActTimer = require("ActTimer")
 // let ActUnitGroup = require("ActUnitGroup")
 // let ActCondition = require("ActCondition")
 
@@ -37,7 +37,7 @@ cc.Class({
 
         act_timer : {
             default: null,
-            type : Timer, 
+            type : ActTimer, 
             tooltip : "计时器",
         },
 

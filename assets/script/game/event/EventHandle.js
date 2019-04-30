@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-23 10:54:43
+ * @LastEditTime: 2019-04-30 09:14:03
  */
 
 
@@ -21,7 +21,7 @@ module.exports = {
         var result = this._isEventHold(msg, event);
 
         if (result) {
-            console.log(result, '{事件}', event.event_desc);
+            console.log(result, '{事件}', EventDef.EventType[event.event_type]);
         }
         else
         {

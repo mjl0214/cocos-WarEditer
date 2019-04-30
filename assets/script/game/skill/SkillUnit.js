@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-26 10:16:54
+ * @LastEditTime: 2019-04-30 10:34:52
  */
 
 
@@ -19,13 +19,6 @@ cc.Class({
     mixins: [Skill],
 
     properties: {
-
-        // unit_list : {
-        //     default: [],
-        //     type : [Trigger], 
-        //     tooltip : "Unit列表",
-        //     override : true,
-        // },
 
         poolNum : {
             default : 1,

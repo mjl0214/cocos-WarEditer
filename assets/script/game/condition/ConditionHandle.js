@@ -3,7 +3,7 @@
  * @Author: mengjl
  * @LastEditors: mengjl
  * @Date: 2019-04-12 08:51:20
- * @LastEditTime: 2019-04-29 10:01:19
+ * @LastEditTime: 2019-04-30 09:17:04
  */
 
 
@@ -37,11 +37,11 @@ module.exports = {
         var result = this._isConditionHold();
 
         if (result) {
-            console.log(result, '{条件}', condition.condition_desc);
+            console.log(result, '{条件}', CondType[condition.condition_type]);
         }
         else
         {
-            console.error(result, '{条件}', msg, condition);
+            console.error(result, '{条件}', CondType[condition.condition_type]);
         }
         return result;
     },
@@ -272,7 +272,7 @@ module.exports = {
             return false;
         }
 
-        var buff = BuffMgr.getBuff(this.condition.skill_id, this.m_msg.unit_id);
+        var buff = BuffMgr.getBuff(this.condition.buff_id, this.m_msg.unit_id);
         if (this.condition.logic_gate == LGType.logic_true) {
             return buff != null;
         }
