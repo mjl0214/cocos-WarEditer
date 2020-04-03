@@ -1,0 +1,24 @@
+{
+    "name" : "common_attack",
+    "event" : "evt_common_attack",
+    "conditions": {
+        
+    },
+    "actions": {
+        "aduio" : {
+            "effect_name" : "click", 
+            "target" : "caster"
+        },
+        "damage" : {
+            "type" : "damage_common", 
+            "damage" : "%caster|attack_point", 
+            "target" : {
+                "center" : "target",
+                "teams" : "target_team_enemy",
+                "type" : "single",
+                "radius" : "%caster|attack_range_point"
+            }
+        }
+    },
+    "desc" : "普通攻击"
+}
